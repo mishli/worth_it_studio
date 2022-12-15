@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 {%- set pageTitle %}{% if title %}{{ title }} | {% endif %}{{ meta.siteName }}{% endset -%}
 {%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
 {%- set pageSocialImg %}{{ meta.url }}/previews/{% if title %}{{ title | slug }}{% else %}home{% endif %}.png{% endset -%}
@@ -21,6 +21,7 @@
     <meta property="og:image" content="{{pageSocialImg}}" />
     <meta name="twitter:image" content="{{pageSocialImg}}" />
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ meta.siteName }}" href="/feed/" />
+    <script src="{{ '/scripts/main.js' | url }}" defer></script>
  </head>
  <body>
     {{ content | safe }}
@@ -38,4 +39,5 @@
             </div>
         </div>
     </footer>
-</body>undefined</html>
+</body>
+</html>

@@ -2,17 +2,21 @@
 
 <nav aria-labelledby="tdbc-siteid" class="tdbc-sitenav">
   <div class="tdbc-sitenav__container">
-    <img src="/img/worth-it-logo-web.svg" height="60" alt="{{ meta.siteName }}">
-    {# <a id="tdbc-siteid" href="/"
-    {% if currentUrl === '/' %}aria-current="page"{% endif %}
-    >{{ meta.siteName }}</a> #}
+    <a href="/"><img src="/img/worth-it-logo-web.svg" height="60" alt="{{ meta.siteName }}"></a>
     <ul role="list" class="tdbc-sitenav__navlist tdbc-list-unstyled">
-      {% for link in collections.pages %}
         <li>
             <a
-            {% if currentUrl === link.url %}aria-current="page"{% endif %}
+            {% if currentUrl === "/" %}aria-current="page" class="active"{% endif %}
+            href="/">
+                עמוד הבית
+            </a>
+        </li>
+      {% for link in collections.all | eleventyNavigation %}
+        <li>
+            <a
+            {% if currentUrl === link.url %}aria-current="page" class="active"{% endif %}
             href="{{ link.url }}">
-                {{ link.data.title }}
+                {{ link.title }}
             </a>
         </li>
       {%- endfor %}

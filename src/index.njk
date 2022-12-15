@@ -14,15 +14,15 @@ layout: base.njk
 </header>
 <main class="tdbc-container">
     <div class="tdbc-section">
-        <ul class="tdbc-column-container"> {%- for page in collections.pages -%} <li class="tdbc-card">
+        <ul class="tdbc-column-container"> 
+			{%- for page in collections.pages -%} 
+			<li class="tdbc-card">
                 <div class="tdbc-card__content">
-                    <a href="{{ page.url }}" class="tdbc-card__title">{{ page.data.title }}</a>
+                    <a href="{{ page.url }}" class="tdbc-card__title">{{ page.data.eleventyNavigation.key }}</a>
                     <p>{{ page.data.description }}</p>
                 </div>
-            </li> {%- endfor -%} </ul>
+            </li> 
+			{%- endfor -%} 
+		</ul>
     </div>
-    <style></style>
-    <h2 id="quickstart" class="tdbc-h3 tdbc-mt-lg">Quick Start</h2>
-	<h3 class="tdbc-h4">Is Netlify hosting required?</h3>
-	 It's not required, but highly recommended, and is also how the build process is setup to run against. > For more Eleventy resources, check out my extended collection on [11ty.Rocks](https://11ty.rocks)! {{ content | safe }}
 </main>
