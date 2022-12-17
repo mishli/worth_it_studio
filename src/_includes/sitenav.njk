@@ -3,19 +3,14 @@
 
 <nav aria-labelledby="tdbc-siteid" class="tdbc-sitenav">
   <div class="tdbc-sitenav__container lang-{{ lang }}">
-    <a href="{{ homeUrl }}"><img src="/img/worth-it-logo-web.svg" height="60" alt="{{ meta.siteName }}"></a>
+    <a href="{{ homeUrl }}" class="logo">
+        <img src="/img/worth-it-logo-web.svg" height="50" alt="{{ meta.siteName }}" />
+    </a>
     <ul role="list" class="tdbc-sitenav__navlist tdbc-list-unstyled">
-        {# <li>
-            <a
-            {% if currentUrl === "/" %}aria-current="page" class="active"{% endif %}
-            href="/">
-                עמוד הבית
-            </a>
-        </li> #}
         {% for page in collections["pages_" + lang] %}
         <li>
             <a
-            {% if currentUrl === link.url %}aria-current="page" class="active"{% endif %}
+            {% if currentUrl === page.url %}aria-current="page" class="active"{% endif %}
             href="{{ page.url }}">
                 {{ page.data.eleventyNavigation.key }}
             </a>

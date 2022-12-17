@@ -21,6 +21,50 @@ footer {
 	margin-top: auto;
 }
 
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0 60px 0;
+
+    &__contact-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 24px;
+
+        @include mq($tablet) {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+
+            [dir="ltr"] & {
+                flex-direction: row-reverse;
+            }
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+
+            [dir="ltr"] & {
+                flex-direction: row-reverse;
+            }
+
+            span {
+                display: flex;
+                font-size: em(21px);
+                margin-left: 8px;
+                color: $tdbc-color-body;
+                
+            }
+        }
+    }
+}
+
 article {
 	max-width: 80ch;
 

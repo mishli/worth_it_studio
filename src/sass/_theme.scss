@@ -1,18 +1,14 @@
 $tdbc-color-primary: #4DBEDD !default;
 $tdbc-color-secondary: #413C58 !default;
-$tdbc-color-background: #f9f9f9 !default;
+$tdbc-color-background: #F0F0F0 !default;
 
 $tdbc-brand-colors: (
 	"primary": $tdbc-color-primary,
 	"secondary": $tdbc-color-secondary
 ) !default;
 
-$tdbc-color-body: scale-color(
-	$tdbc-color-primary,
-	$lightness: -30%,
-	$saturation: -50%
-) !default;
-$tdbc-color-gray: mix(#767676, $tdbc-color-body, 70%) !default;
+$tdbc-color-body: #413C58;
+$tdbc-color-gray: mix(#EEEDF3, $tdbc-color-body, 70%) !default;
 
 $tdbc-colors: map-merge(
 	$tdbc-brand-colors,
@@ -55,3 +51,40 @@ $tdbc-spacing: (
 	xl: 10rem,
 	auto: "auto"
 ) !default;
+
+// base font size
+$bf: 16;
+
+// Breakpoints
+$mobile: 0;
+$mobile-l: 544;
+$tablet: 800;
+$desktop: 1024;
+$web: 1300;
+
+// MQ with PX to EM
+@mixin mq($width, $min-max: min-width) {
+	// reduce 1 pixel for max-width queries
+	@if $min-max == "max-width" {
+		$width: $width - 1;
+	}
+
+	$em: calc($width / $bf);
+
+	@media (#{$min-max}: #{$em}em) {
+		@content;
+	}
+}
+
+// PX to EM
+@function em($pixels, $context: $bf) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return calc($pixels / $context * 1rem);
+}
