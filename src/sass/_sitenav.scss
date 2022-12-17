@@ -10,7 +10,10 @@
 // stylelint-disable selector-max-type
 .tdbc-sitenav {
   background-color: tdbc-color("primary");
-
+  &__container {
+    flex-direction: row-reverse;
+  }
+  
   &__container,
   &__navlist {
     display: flex;
@@ -23,18 +26,23 @@
     width: 100%;
     max-width: 120ch;
     margin: 0 auto;
-    padding: 0.25rem 0.5rem;
+    padding: 1.5rem 2.5rem;
   }
 
   &__navlist {
     li + li {
-      margin-left: 0.5rem;
+      margin-inline-start: 1rem;
     }
   }
 
   &,
   a:not(.tdbc-button) {
     color: tdbc-color("light");
+    text-decoration: none;
+
+    &.active {
+        text-decoration: underline;
+    }
   }
 
   a:not(.tdbc-button):focus {
