@@ -3,6 +3,9 @@ const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const i18n = require('eleventy-plugin-i18n');
+const translations = require('./src/_data/i18n');
+const util = require('util');
 
 // Helper packages
 const slugify = require("slugify");
@@ -30,6 +33,22 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 	eleventyConfig.addShortcode("packageVersion", () => `v${packageVersion}`);
 
+    eleventyConfig.addPlugin(i18n, {
+        translations,
+        defaultLanguage: "he-IL",
+        fallbackLocales: {
+            'en-US': 'he-IL'
+        }
+    });
+
+    eleventyConfig.addCollection("pages_he", function (collection) {
+        return collection.getFilteredByGlob("./src/pages/*.njk");
+    });
+
+    eleventyConfig.addCollection("pages_en", function (collection) {
+        return collection.getFilteredByGlob("./src/en/pages/*.njk");
+    });
+
 	eleventyConfig.addFilter("slug", (str) => {
 		if (!str) {
 			return;
@@ -42,7 +61,11 @@ module.exports = function (eleventyConfig) {
 		});
 	});
 
-	/* Markdown Overrides */
+    eleventyConfig.addFilter('console', function(value) {
+        return util.inspect(value);
+    });
+
+/* Markdown Overrides */
 	let markdownLibrary = markdownIt({
 		html: true
 	}).use(markdownItAnchor, {
