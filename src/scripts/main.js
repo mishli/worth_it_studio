@@ -1,96 +1,143 @@
-// JS
+/**
+ * Main
+ */
 
-console.log('main.js source');
-// document.getElementById('test').classList.add('doron');
+(function() {
+
+    // Side Nav
+    var navEl = document.querySelector('nav.side-menu'),
+        revealer = new RevealFx(navEl),
+        closeCtrl = navEl.querySelector('.close-menu');
+
+    document.querySelector('.nav-icon').addEventListener('click', function() {
+        console.log('click')
+        revealer.reveal({
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
+            duration: 400, 
+            easing: 'easeInOutCubic',
+            onCover: function(contentEl, revealerEl) {
+                navEl.classList.add('menu--open');
+                contentEl.style.opacity = 1;
+            },
+            onComplete: function() {
+                closeCtrl.addEventListener('click', closeMenu);
+            }
+        });
+    });
+
+    function closeMenu() {
+        closeCtrl.removeEventListener('click', closeMenu);
+        navEl.classList.remove('menu--open');
+        revealer.reveal({
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
+            direction: 'lr',
+            duration: 400, 
+            easing: 'easeInOutCubic',
+            onCover: function(contentEl, revealerEl) {
+                navEl.classList.remove('menu--open');
+                contentEl.style.opacity = 0;
+            }
+        });
+    }
+    
+    // home content
+    let homeFoldImageElm = document.getElementById('home-fold-image'),
+    homeFoldTitleElm = document.getElementById('home-fold-title'),
+    homeFoldSubtitleElm = document.getElementById('home-fold-subtitle'),
+    homeFoldContentElm = document.getElementById('home-fold-content'),
+    watcher_home_fold = scrollMonitor.create(homeFoldImageElm),	
+    homeFoldImage = new RevealFx(homeFoldImageElm, {
+        revealSettings : {
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-second'),
+            direction: 'rl',
+            onCover: function(contentEl, revealerEl) {
+                contentEl.style.opacity = 1;
+            }
+        }
+    }),
+    homeFoldTitle = new RevealFx(homeFoldTitleElm, {
+        revealSettings : {
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
+            delay: 200,
+            onCover: function(contentEl, revealerEl) {
+                contentEl.style.opacity = 1;
+            }
+        }
+    }),
+    homeFoldSubtitle = new RevealFx(homeFoldSubtitleElm, {
+        revealSettings : {
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
+            delay: 400,
+            onCover: function(contentEl, revealerEl) {
+                contentEl.style.opacity = 1;
+            },
+            onComplete: function() {
+                setTimeout(function() {
+                    homeFoldTitleElm.classList.add("title-bg","yellow");
+                    homeFoldSubtitleElm.classList.add("title-bg","yellow");
+                }, 800);
+            }
+        }
+    });
+
+    homeFoldContent = new RevealFx(homeFoldContentElm, {
+        revealSettings : {
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-second'),
+            delay: 1200,
+            onCover: function(contentEl, revealerEl) {
+                contentEl.style.opacity = 1;
+            }
+        }
+    });
+
+    watcher_home_fold.enterViewport(function() {
+        homeFoldImage.reveal();
+        homeFoldTitle.reveal();
+        homeFoldSubtitle.reveal();
+        homeFoldContent.reveal();
+        watcher_home_fold.destroy();
+    });
+
+    // Home Why Title
+    homeWhyTitleElm = document.getElementById('home-content-why-title'),
+    watcher_why_title = scrollMonitor.create(homeWhyTitleElm, -300),
+    whyTitle = new RevealFx(homeWhyTitleElm, {
+        isContentHidden: false,
+        revealSettings : {
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-main'),
+            onCover: function(contentEl, revealerEl) {
+                contentEl.style.opacity = 1;
+            },
+            onComplete: function() {
+                homeWhyTitleElm.classList.add("title-bg","blue");
+            }
+        }
+    }),
+
+    watcher_why_title.enterViewport(function() {
+        whyTitle.reveal();
+        watcher_why_title.destroy();
+    });
 
 
-// pricing
-const pricingTable = document.querySelector('.pricing-table');
-const halfYearColumn = document.querySelector('.half-year');
-const threeMonthsColumn = document.querySelector('.three-months');
-const monthlyColumn = document.querySelector('.monthly');
-const toggleButtons = document.querySelectorAll('.toggle');
+    // Home Tailored Title
+    homeTailoredTitleElm = document.getElementById('home-content-tailored-title'),
+    watcher_tailoered_title = scrollMonitor.create(homeTailoredTitleElm, -300),
+    tailoredTitle = new RevealFx(homeTailoredTitleElm, {
+        isContentHidden: false,
+        revealSettings : {
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-main'),
+            onCover: function(contentEl, revealerEl) {
+                contentEl.style.opacity = 1;
+            },
+            onComplete: function() {
+                homeTailoredTitleElm.classList.add("title-bg","blue");
+            }
+        }
+    }),
 
-// Function to update the pricing table for the selected subscription option
-const updatePricingTable = (newState) => {
-  if (newState === 'half-year') {
-    halfYearColumn.innerHTML = `
-      <h3>Half Year</h3>
-      <p>6 months</p>
-      <h4>$99</h4>
-    `;
-    threeMonthsColumn.innerHTML = `
-      <h3>Three Months</h3>
-      <p>3 months</p>
-      <h4>$79</h4>
-    `;
-    monthlyColumn.innerHTML = `
-      <h3>Monthly</h3>
-      <p>1 month</p>
-      <h4>$29</h4>
-    `;
-  } else if (newState === 'three-months') {
-    halfYearColumn.innerHTML = `
-    <h3>Monthly</h3>
-    <p>1 month</p>
-    <h4>$29</h4>
-    `;
-  }
-}
-
-
-
-// const elements = document.querySelectorAll(".custom-switch");
-
-// for (const [i, element] of Array.from(elements).entries()) {
-//   const {className, id, name} = element;
-
-//   const wrapper = document.createElement("div");
-//   wrapper.className = "custom-switch";
-//   wrapper.id = name;
-//   element.parentNode.insertBefore(wrapper, element);
-//   wrapper.appendChild(element);
-
-//   const label = document.createElement("label");
-//   label.setAttribute("for", `custom-switch-${i}`);
-//   element.parentNode.insertBefore(label, element.nextSibling);
-
-//   element.setAttribute("id", `custom-switch-${i}`);
-//   element.setAttribute("name", name);
-// }
-
-// for (const element of Array.from(document.querySelectorAll(".custom-switch input"))) {
-//   element.addEventListener("change", () => {
-//     const value = element.value;
-//     for (const el of Array.from(document.querySelectorAll(".pricing-tables"))) {
-//       el.className = `pricing-tables plans--${value}`;
-//     }
-//   });
-// }
-
-// const elements = document.querySelectorAll(".custom-switch");
-
-// for (const [i, element] of Array.from(elements).entries()) {
-//   const {className, id, name} = element;
-
-//   const wrapper = document.createElement("div");
-//   wrapper.className = "custom-switch";
-//   wrapper.id = name;
-//   element.parentNode.insertBefore(wrapper, element);
-//   wrapper.appendChild(element);
-
-//   const label = document.createElement("label");
-//   label.setAttribute("for", `custom-switch-${i}`);
-//   element.parentNode.insertBefore(label, element.nextSibling);
-
-//   element.setAttribute("id", `custom-switch-${i}`);
-//   element.setAttribute("name", name);
-// }
-
-// for (const element of Array.from(document.querySelectorAll(".custom-switch input"))) {
-//   element.addEventListener("change", () => {
-//     for (const el of Array.from(document.querySelectorAll(".pricing-tables"))) {
-//       el.classList.toggle("plans--annually");
-//     }
-//   });
-// }
+    watcher_tailoered_title.enterViewport(function() {
+        tailoredTitle.reveal();
+        watcher_tailoered_title.destroy();
+    });
+})();

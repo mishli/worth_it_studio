@@ -1,0 +1,43 @@
+{% set currentUrl = page.url %}
+{% set homeUrl = "/en/" if lang == 'en' else "/" %}
+
+{% for page in collections["pages_" + lang] %}
+<li class="menu__item">
+    <a
+    class="menu__link" {% if currentUrl === page.url %}aria-current="page" class="active"{% endif %}
+    href="{{ page.url }}">
+        {{ page.data.eleventyNavigation.key }}
+    </a>
+</li>
+{%- endfor %}
+
+{# loop though site.languages #}
+{% for lgg in meta.languages %}
+{# {% if loop.first %}<ul class="lang-switcher tdbc-list-unstyled">{% endif %} #}
+
+{# set translatedUrl to the homepage of that language by default #}
+{% set translatedUrl = "/" + lgg.code + "/" %}
+
+{# set current language class #}
+{% set hideLang = "hide-lang" if lgg.code == lang else "" %}
+
+{# loop through all the content of the site #}
+{% for item in collections.all %}
+
+    {# for each item in the loop, check if
+    - its translationKey matches the current item translationKey
+    - its locale matches the code of the language we are looping through #}
+    {% if item.data.translationKey == translationKey and item.data.lang == lgg.code %}
+    {% set translatedUrl = item.url %}
+    
+    {% endif %}
+
+{% endfor %}
+
+<li class="lang-switcher__item menu__item {{ hideLang }}">
+{{ item.lang_direrectory }}
+    <a class="menu__link" href="{{ translatedUrl }}">{{ lgg.label }}</a>
+</li>
+
+{# {% if loop.last %}</ul>{% endif %} #}
+{% endfor %}

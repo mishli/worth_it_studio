@@ -1,43 +1,61 @@
 @use "sass:math";
 @use "theme" as *;
 
-// stylelint-disable-next-line selector-max-id, selector-max-specificity
-#tdbc-siteid {
-	font-size: $tdbc-h3-font-size;
-	text-decoration: none;
-}
-
 // stylelint-disable selector-max-type
-.tdbc-sitenav {
+.nav {
     // position: fixed;
     // top: 0;
     // left: 0;
     // width: 100%;
 	background-color: tdbc-color("primary");
+    z-index: 10000;
 
-	&__container {
-        &.lang-he {
-            // keep nav alwyas same direction
-            flex-direction: row-reverse;
-        }        
-	}
-
-	&__container,
-	&__navlist {
-		display: flex;
+	.nav-content {
+        display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 0;
+
+        .navlist {
+            display: none;
+        }
+
+        .nav-icon {
+            display: block;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        @include mq($tablet) {
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.5rem 0 0 0;
+
+            .navlist {
+                display: flex;
+                padding: 0;
+            }
+
+            .nav-icon {
+                display: none;
+            }
+        }
+
+        @include mq($desktop) {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0;
+
+            &.lang-he {
+                // keep nav alwyas same direction
+                flex-direction: row-reverse;
+            }
+        }
 	}
 
-	&__container {
-		justify-content: space-between;
-		width: 100%;
-		max-width: 120ch;
-		margin: 0 auto;
-		padding: 0 2.5rem;
-	}
-
-	&__navlist {
+	.navlist {
         margin: 0;
 
         li {
@@ -84,8 +102,11 @@
 		outline-style: solid;
 		box-shadow: 0 0 1px 2px tdbc-color("light");
 	}
+}
 
-    // lang switcher
+// lang switcher
+.navlist,
+.side-menu {
     .lang-switcher {
         &__item {
             &.hide-lang {
