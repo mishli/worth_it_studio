@@ -140,4 +140,41 @@
         tailoredTitle.reveal();
         watcher_tailoered_title.destroy();
     });
+
+
+    // Contact Overlay
+    const formEl = document.querySelector('.form-overlay'),
+        formRevealer = new RevealFx(formEl),
+        closeFormElm = formEl.querySelector('.close-form-overlay');
+
+    document.querySelector('.open-overlay button').addEventListener('click', function() {
+        formRevealer.reveal({
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
+            direction: 'bt',
+            duration: 600,
+            onCover: function(contentEl, revealerEl) {
+                formEl.classList.add('overlay-open');
+                contentEl.style.opacity = 1;
+            },
+            onComplete: function() {
+                closeFormElm.addEventListener('click', closeForm);
+            }
+        });
+    });
+
+    function closeForm() {
+        closeFormElm.removeEventListener('click', closeForm);
+        formEl.classList.remove('overlay-open');
+        formRevealer.reveal({
+            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
+            direction: 'tb',
+            duration: 600, 
+            onCover: function(contentEl, revealerEl) {
+                formEl.classList.remove('overlay-open');
+                contentEl.style.opacity = 0;
+            }
+        });
+    }
+
+    formEl.addEventListener('submit', function(ev) {ev.preventDefault();});
 })();

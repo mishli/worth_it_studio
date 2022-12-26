@@ -72,10 +72,43 @@ lang_url: "/"
             <p class="negative">לפרטים נוספים ותיאום אימון ניסיון ללא התחייבות<br>
             השאיר/י פרטים ואחזור אליך בהקדם!</p>
 
-            <div class="btn btn-main large">
+            <div class="btn btn-main large open-overlay">
                 <button>דברו אליי</button>
             </div>
         </section>
     </div>
+
+    <section class="form-overlay">
+        <button class="close-form-overlay">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <form class="form-inner" action="">
+            <h3 class="form-title">אני פה לכל שאלה. השאיר/י פרטים ואחזור אליך בהקדם!</h3>
+
+            <div class="form-section">
+                <label class="form-label">Full Name</label>
+                <input class="form-input" type="text" name="name">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Email</label>
+                <input class="form-input" type="email" name="email">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Password</label>
+                <input class="form-input" type="password" name="password">
+            </div>
+            <div class="form-section">
+                <label class="form-label">How did you hear about us?</label>
+                <select class="form-select">
+                    <option>Search engine</option>
+                    <option>Social network</option>
+                    <option>Friend's recommendation</option>
+                </select>
+            </div>            
+        </form>
+    </section>
 
 </main>
