@@ -10,16 +10,23 @@
 	display: inline-block;
 	position: relative;
 
-    @include mq($mobile-l) {
-        white-space: nowrap;
+    &.nowrap {
+        @include mq($mobile-l) {        
+            white-space: nowrap;
+        }
+    }
+
+    &.text-start {
+        align-self: flex-start;
     }
 
     &.title-bg {
         transition: 300ms all ease-in-out;
 
         &.yellow {
+            background-color: var(--color-second)
             // border-right: 6px solid var(--color-second);
-            background-color: #FDCA40;
+            // padding-inline-start: 8px;
         }
 
         &.blue {

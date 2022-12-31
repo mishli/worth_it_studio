@@ -5,6 +5,7 @@ locale: "he-IL"
 dir: "rtl"
 lang_url: "/"
 --- 
+<script src="{{ '/scripts/home.js' | url }}" defer></script>
 {% include 'sitenav.njk' %}
 <main class="page-home">
     <div class="container">
@@ -12,8 +13,8 @@ lang_url: "/"
             <div class="rev-image-text">
 				<div class="rev-grid half above">
 					<h1>
-                        <div class="rev-title-inner" id="home-fold-title">&nbsp;ברוכה הבאה לבית החדש שלך&nbsp;</div><br/>
-					    <div class="rev-title-inner" id="home-fold-subtitle">&nbsp;לכושר ולאושר בתל אביב!&nbsp;</div>
+                        <div class="rev-title-inner nowrap" id="home-fold-title">&nbsp;ברוכה הבאה לבית החדש שלך&nbsp;</div><br/>
+					    <div class="rev-title-inner nowrap" id="home-fold-subtitle">&nbsp;לכושר ולאושר בתל אביב!&nbsp;</div>
                     </h1>
 
                     <div class="rev-grid-content" id="home-fold-content">
@@ -63,52 +64,7 @@ lang_url: "/"
                 </div>
             </div>
             <img src="/img/content/hadas-worth-it-training-roxy.JPG" class="section-image" alt="Some image"/>
-        </section>        
-    </div>
-
-    <div class="container fluid cta cta-footer">
-        <section class="content-section hero center">
-            <h2 class="negative">הגיע הזמן לקפוץ למים!</h2>
-            <p class="negative">לפרטים נוספים ותיאום אימון ניסיון ללא התחייבות<br>
-            השאיר/י פרטים ואחזור אליך בהקדם!</p>
-
-            <div class="btn btn-main large open-overlay">
-                <button>דברו אליי</button>
-            </div>
         </section>
     </div>
-
-    <section class="form-overlay">
-        <button class="close-form-overlay">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        
-        <form class="form-inner" action="">
-            <h3 class="form-title">אני פה לכל שאלה. השאיר/י פרטים ואחזור אליך בהקדם!</h3>
-
-            <div class="form-section">
-                <label class="form-label">Full Name</label>
-                <input class="form-input" type="text" name="name">
-            </div>
-            <div class="form-section">
-                <label class="form-label">Email</label>
-                <input class="form-input" type="email" name="email">
-            </div>
-            <div class="form-section">
-                <label class="form-label">Password</label>
-                <input class="form-input" type="password" name="password">
-            </div>
-            <div class="form-section">
-                <label class="form-label">How did you hear about us?</label>
-                <select class="form-select">
-                    <option>Search engine</option>
-                    <option>Social network</option>
-                    <option>Friend's recommendation</option>
-                </select>
-            </div>            
-        </form>
-    </section>
-
+    {% include 'footer-cta.njk' %}
 </main>

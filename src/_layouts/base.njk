@@ -37,11 +37,59 @@
                 <span>054-584-5515</span>
                 <img src="/img/icons/i-call.svg" alt="">
             </a>
-            <a href="https://www.instagram.com/hadas.worth.it/" class="contact-item" target="_blank">
+            <a href="https://www.instagram.com/hadas.worth.it/" target="_blank" class="contact-item" target="_blank">
                 <span>hadas.worth.it</span>
                 <img src="/img/icons/i-instagram.svg" alt="">
             </a>
+            <a a href="https://www.youtube.com/@worth.it.studio" target="_blank" class="contact-item">
+                <span>worth.it.studio</span>
+                <img src="/img/icons/i-youtube.svg" alt="">
+            </a>
         </div>
     </footer>
+
+    <!-- Contact Overlay -->
+    <section class="form-overlay">
+        <button class="close-form-overlay">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <form class="form-inner" action="https://mailthis.to/hadasw88@gmail.com" method="POST" encType="multipart/form-data">
+            <h3 class="form-title">אני פה לכל שאלה!</h3>
+
+            <div class="form-section">
+                <label class="form-label">שם</label>
+                <input class="form-input" type="text" name="name" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">טלפון</label>
+                <input class="form-input" type="phone" name="phone">
+            </div>
+            {# <div class="form-section">
+                <label class="form-label">אימייל</label>
+                <input class="form-input" type="email" name="email">
+            </div> #}
+            <div class="form-section">
+                <label class="form-label">הודעה</label>
+                <textarea class="form-input" type="text" name="message"></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">איך הגעת אלי?</label>
+                <select class="form-select">
+                    <option>המלצה</option>
+                    <option>רשתות חברתיות</option>
+                    <option>חיפוש ברשת</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <input type="hidden" name="_subject" value="Contact form submitted">
+                <input type="hidden" name="_honeypot" value="">
+                <input type="hidden" name="_confirmation" value="">
+                <input type="submit" value="שליחה" class="form-input btn-form">
+            </div>
+        </form>
+    </section>
 </body>
 </html>

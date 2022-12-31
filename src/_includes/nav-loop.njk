@@ -1,12 +1,13 @@
 {% set currentUrl = page.url %}
 {% set homeUrl = "/en/" if lang == 'en' else "/" %}
+{% set navPages = collections["pages_" + lang] | eleventyNavigation %}
 
-{% for page in collections["pages_" + lang] %}
+{% for page in navPages %}
 <li class="menu__item">
     <a
-    class="menu__link" {% if currentUrl === page.url %}aria-current="page" class="active"{% endif %}
+    class="menu__link" {% if currentUrl === page.url %}aria-current="page" data-active="active"{% endif %}
     href="{{ page.url }}">
-        {{ page.data.eleventyNavigation.key }}
+        {{ page.title }}
     </a>
 </li>
 {%- endfor %}
@@ -34,10 +35,10 @@
 
 {% endfor %}
 
-<li class="lang-switcher__item menu__item {{ hideLang }}">
+{# <li class="lang-switcher__item menu__item {{ hideLang }}">
 {{ item.lang_direrectory }}
     <a class="menu__link" href="{{ translatedUrl }}">{{ lgg.label }}</a>
-</li>
+</li> #}
 
 {# {% if loop.last %}</ul>{% endif %} #}
 {% endfor %}
