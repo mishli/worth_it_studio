@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ locale }}" dir="{{ dir }}">
-{%- set pageTitle %}{% if title %}{{ title }} | {% endif %}{{ meta.siteName }}{% endset -%}
-{%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
+{%- set pageTitle %}{% if title %}{{ title }}{% endif %}{% endset -%}
+{%- set pageDescription %}{% if description %}{{ description }}{% endif %}{% endset -%}
 {%- set pageSocialImg %}{{ meta.url }}/previews/{% if title %}{{ title | slug }}{% else %}home{% endif %}.png{% endset -%}
 <head>
     <!-- Generated from the 11ty Netlify Jumpstart: https://github.com/5t3ph/11ty-netlify-jumpstart -->
@@ -53,7 +53,7 @@
             </svg>
         </button>
         
-        <form class="form-inner" action="https://mailthis.to/hadasw88@gmail.com" method="POST" encType="multipart/form-data">
+        <form class="form-inner" method="POST" data-netlify="true">
             <h3 class="form-title">אני פה לכל שאלה!</h3>
 
             <div class="form-section">
@@ -81,10 +81,7 @@
                 </select>
             </div>
             <div class="form-section">
-                <input type="hidden" name="_subject" value="Contact form submitted">
-                <input type="hidden" name="_honeypot" value="">
-                <input type="hidden" name="_confirmation" value="">
-                <input type="submit" value="שליחה" class="form-input btn-form">
+                <button type="submit" class="form-input btn-form">שליחה</button>
             </div>
         </form>
     </section>
