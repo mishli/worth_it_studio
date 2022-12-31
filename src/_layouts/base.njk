@@ -18,15 +18,12 @@
     <meta name="twitter:description" content="{{pageDescription}}" />
     <meta name="og:title" content="{{pageTitle}}" />
     <meta name="og:description" content="{{pageDescription}}" />
-    <meta property="og:image" content="{{pageSocialImg}}" />
-    <meta name="twitter:image" content="{{pageSocialImg}}" />
-    <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ meta.siteName }}" href="/feed/" />
-
+    <meta property="og:image" content="{{shareImage}}" />
+    <meta name="twitter:image" content="{{shareImage}}" />
     <script src="{{ '/scripts/anime.min.js' | url }}" defer></script>
     <script src="{{ '/scripts/scrollMonitor.js' | url }}" defer></script>
     <script src="{{ '/scripts/revealFx.js' | url }}" defer></script>
     <script src="{{ '/scripts/main.js' | url }}" defer></script>
-    <script>document.documentElement.className = 'js';</script>
  </head>
  <body>
     {{ content | safe }}
