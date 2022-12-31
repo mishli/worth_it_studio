@@ -6,19 +6,170 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	background-color: tdbc-color("background");
-	color: $tdbc-color-body;
+	color: var(--color-body);
 	font-family: $tdbc-font-family;
 }
 
 // stylelint-disable selector-max-type, selector-no-qualifying-type
-main,
-main.tdbc-container {
-	padding-top: 5vh;
-	padding-bottom: 5vh;
+.container {
+	width: 100%;
+    max-width: $web + px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    @include mq($tablet) {
+        padding: 0 2.5rem;
+    }
+
+    &.fluid {
+        max-width: 100%;
+    }
+
+    .content-section {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;        
+        padding: 24px 0;
+        text-align: start;
+
+        @include mq($tablet) {
+            padding: 60px 0;
+        }
+
+        &.hero {
+            max-width: $desktop + px;
+            align-items: center;
+        }
+
+        &.split {
+            @include mq($tablet) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            // brings image above content on mobile
+            &.align-right {
+                @include mq($tablet, max-width) {
+                    flex-direction: column-reverse;
+                }
+            }
+        }        
+
+        &.center {
+            text-align: center;
+        }
+        
+        &.single {
+            max-width: 70ch;
+            align-items: flex-start;
+        }
+
+        .content-block {
+            margin: 16px 0 40px 0;
+
+            @include mq($tablet) {
+                &.text-start {
+                    padding-inline-start: 40px;
+                }
+    
+                &.text-end {
+                    padding-inline-end: 40px;
+                }
+            }
+        }
+
+        .section-image {
+            max-width: 100%;
+
+            @include mq($mobile-l) {
+                max-width: 360px;
+            }
+
+            @include mq($desktop) {
+                max-width: 400px;
+            }
+        }
+    }
+}
+
+.page-header {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background-image: url('/img/content/hadas-worth-it-studio-pepole.jpg');
+    background-size: cover;
+    background-position: 50% 25%;
+    background-repeat: no-repeat;
+    z-index: 1;
+
+    @include mq($mobile-l) {
+        height: 280px;
+    }
+
+    @include mq($desktop) {
+        height: 320px;
+        background-position: 50% 30%;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        z-index: -1;
+    }
 }
 
 footer {
 	margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0 60px 0;
+
+    &__contact-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 24px;
+
+        @include mq($tablet) {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+
+            [dir="ltr"] & {
+                flex-direction: row-reverse;
+            }
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+
+            [dir="ltr"] & {
+                flex-direction: row-reverse;
+            }
+
+            span {
+                display: flex;
+                font-size: em(21px);
+                margin-left: 8px;
+                color: var(--color-body);
+                
+            }
+        }
+    }
 }
 
 article {
@@ -41,7 +192,7 @@ article {
 	padding: 1rem;
 }
 
-.tdbc-column-container {
+.column-container {
 	display: grid;
 	grid-gap: 2em;
 	grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
@@ -50,6 +201,7 @@ article {
 // stylelint-disable-next-line selector-no-qualifying-type, selector-max-type
 ul.tdbc-column-container {
 	padding-left: 0;
+    
 }
 
 .tdbc-section {
@@ -66,13 +218,14 @@ ul.tdbc-column-container {
 	}
 }
 
-.tdbc-hero {
+.hero {
 	display: grid;
 	min-height: 40vh;
 	place-content: center;
 	padding-top: 10vh;
 	padding-bottom: 10vh;
 	text-align: center;
+    margin: 0 auto;
 }
 
 .tdbc-row {

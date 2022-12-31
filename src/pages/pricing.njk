@@ -1,20 +1,84 @@
 --- 
 layout: base.njk
-title: "WORTH IT | תוכניות | סטודיו ביתי לאימוני כושר ממכרים"
-description: ""
+lang: "he"
+locale: "he-IL"
+dir: "rtl"
+lang_url: "/"
+title: "WORTH IT | מחירים | סטודיו ביתי לאימוני כושר ממכרים"
+description: "מגוון מנויים במחירים אטרקטיביים! אימון ניסיון ללא התחייבות ועם הרבה כיף. בואו להכיר את הסטודיו החדש שלכם שירגיש כמו בית! נתחזק ונהנה ביחד!"
+translationKey: "pricing"
 eleventyNavigation:
-    order: 3
-    key: "תוכניות"
+    order: 4
+    key: "מחירים"
 --- 
 
 {% include 'sitenav.njk' %}
-<header class="tdbc-hero">
-    <div class="tdbc-container">
-       <h1>מחירון</h1>
-    </div>
-</header>
-<main class="tdbc-container">
-    <div class="tdbc-section">
+<div class="page-header">
 
-    </div>
-</main>
+</div>
+<div class="container">
+    <section class="content-section hero">
+        <h2 class="rev-title-inner title-bg yellow" id="pricing-plams-title">&nbsp;אימונים קבוצתיים&nbsp;</h2>
+        <p>בסטודיו האימונים הקבוצתיים הם עד 6 מתאמנים בלבד, כך שמובטח היחס הכי אישי באווירה כיפית וממכרת.</p>
+
+        <div class="pricing-tabs-container">
+            <div class="pricing-tabs">
+                <button class="active">מנוי לחצי שנה</button>               
+                 <button>מנוי ל-3 חודשים</button>
+                <button>מנוי חודשי</button>
+            </div>
+            <div class="pricing-content">
+                <div class="tab-content active">
+                    <img src="/img/pricing/6-month.png" class="desktop" alt="">
+                    <img src="/img/pricing/6-month-m.png" class="mobile" alt="">
+                </div>
+                <div class="tab-content">
+                    <img src="/img/pricing/3-month.png" class="desktop" alt="">
+                    <img src="/img/pricing/3-month-m.png" class="mobile" alt="">
+                </div>
+                <div class="tab-content">
+                    <img src="/img/pricing/1-month.png" class="desktop" alt="">
+                    <img src="/img/pricing/1-month-m.png" class="mobile" alt="">
+                </div>
+            </div>
+        </div>        
+    </section>
+
+    <section class="content-section hero">
+        <h2 class="rev-title-inner title-bg yellow" id="pricing-plams-title">&nbsp;אימונים אישיים וזוגיים&nbsp;</h2>
+
+        <div class="pricing-tabs-container">
+            <div class="pricing-content">
+                <img src="/img/pricing/personal.png" class="desktop" alt="">
+                <img src="/img/pricing/personal-m.png" class="mobile" alt="">
+            </div>
+        </div>
+    </section>
+</div>
+{% include 'footer-cta.njk' %}
+
+<script>
+    // pricing tabs
+    const pricingTabs = document.querySelectorAll('.pricing-tabs button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    pricingTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from currently active tab
+            const activeTab = document.querySelector('.pricing-tabs button.active');
+            activeTab.classList.remove('active');
+            tab.classList.add('active');
+
+            // Find the index of the clicked tab
+            const tabIndex = [...pricingTabs].indexOf(tab);
+
+            // Remove active class from currently active tab content
+            const activeTabContent = document.querySelector('.tab-content.active');
+            activeTabContent.classList.remove('active');
+
+            // Add active class to corresponding tab content element
+            tabContents[tabIndex].classList.add('active');
+        });
+    });
+</script>
+

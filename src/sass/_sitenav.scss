@@ -1,55 +1,118 @@
 @use "sass:math";
 @use "theme" as *;
 
-// stylelint-disable-next-line selector-max-id, selector-max-specificity
-#tdbc-siteid {
-  font-size: $tdbc-h3-font-size;
-  text-decoration: none;
+// stylelint-disable selector-max-type
+.nav {
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+	background-color: tdbc-color("primary");
+    z-index: 10000;
+
+	.nav-content {
+        display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 0;
+
+        .navlist {
+            display: none;
+        }
+
+        .nav-icon {
+            display: block;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        @include mq($tablet) {
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.5rem 0 0 0;
+
+            .navlist {
+                display: flex;
+                padding: 0;
+            }
+
+            .nav-icon {
+                display: none;
+            }
+        }
+
+        @include mq($desktop) {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0;
+
+            &.lang-he {
+                // keep nav alwyas same direction
+                flex-direction: row-reverse;
+            }
+        }
+	}
+
+	.navlist {
+        margin: 0;
+
+        li {
+            display: flex;
+
+            + li {
+                margin-inline-start: 1rem;
+            }
+
+            a {
+                position: relative;
+                padding: 1.75rem 0;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 0;
+                    background-color: var(--color-white);
+                    transition: 180ms height ease-in-out;
+                }
+
+                &[data-active],
+                &:hover {
+                    &:after {
+                        height: 4px;
+                    }
+                }
+                
+            }
+        }
+	}
+	
+	a:not(.tdbc-button) {
+		color: tdbc-color("light");
+		text-decoration: none;
+	}
+
+	a:not(.tdbc-button):focus {
+		border-radius: math.div($tdbc-border-radius, 2);
+		outline-color: transparent;
+		outline-style: solid;
+		box-shadow: 0 0 1px 2px tdbc-color("light");
+	}
 }
 
-// stylelint-disable selector-max-type
-.tdbc-sitenav {
-  background-color: tdbc-color("primary");
-  &__container {
-    flex-direction: row-reverse;
-  }
-  
-  &__container,
-  &__navlist {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  &__container {
-    justify-content: space-between;
-    width: 100%;
-    max-width: 120ch;
-    margin: 0 auto;
-    padding: 1.5rem 2.5rem;
-  }
-
-  &__navlist {
-    li + li {
-      margin-inline-start: 1rem;
+// lang switcher
+.navlist,
+.side-menu {
+    .lang-switcher {
+        &__item {
+            &.hide-lang {
+                display: none;
+            }
+        }
     }
-  }
-
-  &,
-  a:not(.tdbc-button) {
-    color: tdbc-color("light");
-    text-decoration: none;
-
-    &.active {
-        text-decoration: underline;
-    }
-  }
-
-  a:not(.tdbc-button):focus {
-    border-radius: math.div($tdbc-border-radius, 2);
-    outline-color: transparent;
-    outline-style: solid;
-    box-shadow: 0 0 1px 2px tdbc-color("light");
-  }
 }
 // stylelint-enable

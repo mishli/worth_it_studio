@@ -1,0 +1,24 @@
+--- 
+layout: base.njk
+--- 
+{% include 'sitenav.njk' %}
+<header class="tdbc-hero">
+    <div class="tdbc-container">
+        <span class="logo">
+            English
+    </div>
+</header>
+<main class="tdbc-container">
+    <div class="tdbc-section">
+        <ul class="tdbc-column-container">           
+			{# {%- for page in collections.pages -%} 
+			<li class="tdbc-card">
+                <div class="tdbc-card__content">                    
+                    <a href="{{ page.url }}" class="tdbc-card__title">{{ page.data.eleventyNavigation.key }}</a>
+                    <p>{{ page.data.description }}</p>
+                </div>
+            </li> 
+			{%- endfor -%} 
+		</ul> #}
+    </div>
+</main>

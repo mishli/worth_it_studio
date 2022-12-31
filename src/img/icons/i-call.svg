@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>i-call</title>
+    <g id="pricing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="worth-it-3-month-plan" transform="translate(-557.000000, -1002.000000)" stroke="#413C58" stroke-width="1.60077714">
+            <g id="Group-16" transform="translate(318.000000, 983.000000)">
+                <g id="Group-15" transform="translate(32.000000, 16.000000)">
+                    <g id="Group-10" transform="translate(209.000000, 0.000000)">
+                        <path d="M2.28571429,3.86807963 L7.22715847,8.80952381 L4.94144418,11.0952381 L9.9047619,16.0585558 L12.1904762,13.7728415 L17.1319204,18.7142857 L14.0496016,21.7966045 C9.90885521,21.8899905 6.15060895,20.248815 3.45089696,17.549103 C0.751184959,14.849391 -0.889990516,11.0911448 -0.796604461,6.95039837 L2.28571429,3.86807963 Z" id="i-call"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

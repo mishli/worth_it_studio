@@ -1,0 +1,40 @@
+@use "theme" as *;
+@use "sass:math";
+
+.cta {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-top: 40px;
+    background-image: url('/img/content/hadas-worth-it-studio-pepole.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    z-index: 1;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: -1;
+    }
+
+    &.cta-footer {
+        h2, p {
+            color: var(--color-white);
+        }
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            margin-top: 8px;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="{{ locale }}" dir="{{ dir }}">
 {%- set pageTitle %}{% if title %}{{ title }} | {% endif %}{{ meta.siteName }}{% endset -%}
 {%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
 {%- set pageSocialImg %}{{ meta.url }}/previews/{% if title %}{{ title | slug }}{% else %}home{% endif %}.png{% endset -%}
@@ -21,23 +21,75 @@
     <meta property="og:image" content="{{pageSocialImg}}" />
     <meta name="twitter:image" content="{{pageSocialImg}}" />
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ meta.siteName }}" href="/feed/" />
+
+    <script src="{{ '/scripts/anime.min.js' | url }}" defer></script>
+    <script src="{{ '/scripts/scrollMonitor.js' | url }}" defer></script>
+    <script src="{{ '/scripts/revealFx.js' | url }}" defer></script>
     <script src="{{ '/scripts/main.js' | url }}" defer></script>
+    <script>document.documentElement.className = 'js';</script>
  </head>
  <body>
     {{ content | safe }}
-    <footer class="tdbc-background--secondary">
-        <div class="tdbc-container tdbc-text-align-center">
-            <div class="tdbc-row tdbc-ink--light tdbc-mx-auto">
-                <p class="tdbc-mb-none">&copy; {% year %} {{ meta.siteName }} • {% packageVersion %}</p>
-                <span class="tdbc-row tdbc-row--center-content">
-                    <a href="https://twitter.com/{{ meta.twitterUsername }}/" class="tdbc-icon-button tdbc-ink--light" aria-label="Twitter">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 28" aria-hidden="true" focusable="false">
-                             <path d="M25.312 6.375c-0.688 1-1.547 1.891-2.531 2.609 0.016 0.219 0.016 0.438 0.016 0.656 0 6.672-5.078 14.359-14.359 14.359-2.859 0-5.516-0.828-7.75-2.266 0.406 0.047 0.797 0.063 1.219 0.063 2.359 0 4.531-0.797 6.266-2.156-2.219-0.047-4.078-1.5-4.719-3.5 0.313 0.047 0.625 0.078 0.953 0.078 0.453 0 0.906-0.063 1.328-0.172-2.312-0.469-4.047-2.5-4.047-4.953v-0.063c0.672 0.375 1.453 0.609 2.281 0.641-1.359-0.906-2.25-2.453-2.25-4.203 0-0.938 0.25-1.797 0.688-2.547 2.484 3.062 6.219 5.063 10.406 5.281-0.078-0.375-0.125-0.766-0.125-1.156 0-2.781 2.25-5.047 5.047-5.047 1.453 0 2.766 0.609 3.687 1.594 1.141-0.219 2.234-0.641 3.203-1.219-0.375 1.172-1.172 2.156-2.219 2.781 1.016-0.109 2-0.391 2.906-0.781z"></path>
-                        </svg>
-                    </a>
-                </span>
-            </div>
+    <footer class="footer-container">
+        <img src="/img/worth-it-logo-square.svg" class="logo" height="180" alt="{{ meta.siteName }}" />
+        <div class="footer-container__contact-box">
+            <a a href="tel:0545845515" class="contact-item">
+                <span>054-584-5515</span>
+                <img src="/img/icons/i-call.svg" alt="">
+            </a>
+            <a href="https://www.instagram.com/hadas.worth.it/" target="_blank" class="contact-item" target="_blank">
+                <span>hadas.worth.it</span>
+                <img src="/img/icons/i-instagram.svg" alt="">
+            </a>
+            <a a href="https://www.youtube.com/@worth.it.studio" target="_blank" class="contact-item">
+                <span>worth.it.studio</span>
+                <img src="/img/icons/i-youtube.svg" alt="">
+            </a>
         </div>
     </footer>
+
+    <!-- Contact Overlay -->
+    <section class="form-overlay">
+        <button class="close-form-overlay">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <form class="form-inner" action="https://mailthis.to/hadasw88@gmail.com" method="POST" encType="multipart/form-data">
+            <h3 class="form-title">אני פה לכל שאלה!</h3>
+
+            <div class="form-section">
+                <label class="form-label">שם</label>
+                <input class="form-input" type="text" name="name" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">טלפון</label>
+                <input class="form-input" type="phone" name="phone">
+            </div>
+            {# <div class="form-section">
+                <label class="form-label">אימייל</label>
+                <input class="form-input" type="email" name="email">
+            </div> #}
+            <div class="form-section">
+                <label class="form-label">הודעה</label>
+                <textarea class="form-input" type="text" name="message"></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">איך הגעת אלי?</label>
+                <select class="form-select">
+                    <option>המלצה</option>
+                    <option>רשתות חברתיות</option>
+                    <option>חיפוש ברשת</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <input type="hidden" name="_subject" value="Contact form submitted">
+                <input type="hidden" name="_honeypot" value="">
+                <input type="hidden" name="_confirmation" value="">
+                <input type="submit" value="שליחה" class="form-input btn-form">
+            </div>
+        </form>
+    </section>
 </body>
 </html>

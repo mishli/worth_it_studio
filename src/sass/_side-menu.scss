@@ -1,0 +1,106 @@
+@use "sass:math";
+@use "theme" as *;
+
+
+.side-menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	width: 320px;
+	z-index: 10001;
+    pointer-events: none;
+
+    @include mq($tablet) {
+        display: none;
+    }
+
+    &.menu--open {
+        pointer-events: visible;
+
+        .menu__item,
+        .close-menu {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            transition: opacity 0.4s 0.135s,
+            transform 0.4s 0.135s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .menu__item {
+            &:nth-child(2) {
+                transition-delay: 0.165s;
+            }
+
+            &:nth-child(3) {
+                transition-delay: 0.195s;
+            }
+
+            &:nth-child(4) {
+                transition-delay: 0.225s;
+            }
+
+            &:nth-child(5) {
+                transition-delay: 0.255s;
+            }
+
+            &:nth-child(6) {
+                transition-delay: 0.285s;
+            }
+
+            &:nth-child(7) {
+                transition-delay: 0.315s;
+            }
+
+            &:nth-child(8) {
+                transition-delay: 0.345s;
+            }
+        }
+    }
+
+    .close-menu {
+        opacity: 0;
+        position: absolute;
+        top: 28px;
+        right: 14px;
+        display: flex;
+        z-index: 100;
+        cursor: pointer;
+    }
+
+    .block-revealer__content {
+        height: 100%;
+        position: relative;
+    }
+
+    .menu__inner {
+        width: 100%;
+        height: 100%;
+        list-style-type: none;
+        padding: 20vh 3em;
+        margin: 0;
+        background: $tdbc-color-secondary;
+        overflow: hidden;
+    }
+    
+    .menu__item {
+        padding: 0.15em;
+        transform: translate3d(-13em, 0, 0); //js
+        transition: transform 0s 0.4s; //js
+    }
+
+    .btn-close-menu {
+        opacity: 0;
+    }
+
+    .menu__link {
+        font-size: unquote("min(max(2.5rem, 5vw), #{$tdbc-h2-font-size})");
+        color: $tdbc-color-body;
+        text-decoration: none;
+
+        &:focus,
+        &:hover {
+            outline: none;
+            color: $tdbc-color-primary;
+        }
+    }
+}

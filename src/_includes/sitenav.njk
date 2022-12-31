@@ -1,24 +1,31 @@
 {% set currentUrl = page.url %}
+{% set homeUrl = "/en/" if lang == 'en' else "/" %}
 
-<nav aria-labelledby="tdbc-siteid" class="tdbc-sitenav">
-  <div class="tdbc-sitenav__container">
-    <a href="/"><img src="/img/worth-it-logo-web.svg" height="60" alt="{{ meta.siteName }}"></a>
-    <ul role="list" class="tdbc-sitenav__navlist tdbc-list-unstyled">
-        <li>
-            <a
-            {% if currentUrl === "/" %}aria-current="page" class="active"{% endif %}
-            href="/">
-                עמוד הבית
+<nav aria-label="תפריט" class="nav">
+    <div class="container">
+        <div class="nav-content lang-{{ lang }}">
+            <button class="nav-icon">
+                <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 7H1M19 1H1M19 13H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <a href="{{ homeUrl }}" class="logo">
+                <img src="/img/worth-it-logo-web.svg" height="40" alt="{{ meta.siteName }}" />
             </a>
-        </li>
-      {% for link in collections.all | eleventyNavigation %}
-        <li>
-            <a
-            {% if currentUrl === link.url %}aria-current="page" class="active"{% endif %}
-            href="{{ link.url }}">
-                {{ link.title }}
-            </a>
-        </li>
-      {%- endfor %}
+            <ul role="list" class="navlist list-unstyled">
+                {% include 'nav-loop.njk' %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav class="side-menu">
+    <button class="close-menu">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <ul class="menu__inner">
+        {% include 'nav-loop.njk' %}
     </ul>
 </nav>
