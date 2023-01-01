@@ -7,10 +7,13 @@
     height: 400px;
     background-image: url('/img/content/hadas-worth-it-studio-pepole.png');
     background-size: cover;
-    background-position: 50% 50%;
-    background-attachment: fixed;
+    background-position: 50% 50%;    
     background-repeat: no-repeat;
     z-index: 1;
+
+    @include mq($desktop) {
+        background-attachment: fixed;
+    }
 
     &::after {
         content: "";
