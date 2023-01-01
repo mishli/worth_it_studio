@@ -41,6 +41,10 @@ li {
 
 p {
 	margin: 0 0 1rem;
+
+    &.center {
+        text-align: center;
+    }
 }
 
 article {

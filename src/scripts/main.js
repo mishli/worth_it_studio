@@ -10,19 +10,22 @@
         closeCtrl = navEl.querySelector('.close-menu');
 
     document.querySelector('.nav-icon').addEventListener('click', function() {
-        console.log('click')
-        revealer.reveal({
-            bgcolor: getComputedStyle(navEl).getPropertyValue('--color-third'),
-            duration: 300, 
-            easing: 'easeInOutCubic',
-            onCover: function(contentEl, revealerEl) {
-                navEl.classList.add('menu--open');
-                contentEl.style.opacity = 1;
-            },
-            onComplete: function() {
-                closeCtrl.addEventListener('click', closeMenu);
-            }
-        });
+        navEl.classList.add('to-position');
+
+        setTimeout(() => {
+            revealer.reveal({
+                bgcolor: getComputedStyle(navEl).getPropertyValue('--color-third'),
+                duration: 300, 
+                easing: 'easeInOutCubic',
+                onCover: function(contentEl, revealerEl) {
+                    navEl.classList.add('menu--open');
+                    contentEl.style.opacity = 1;
+                },
+                onComplete: function() {
+                    closeCtrl.addEventListener('click', closeMenu);
+                }
+            });
+        }, 10);
     });
 
     function closeMenu() {
@@ -36,11 +39,12 @@
             onCover: function(contentEl, revealerEl) {
                 navEl.classList.remove('menu--open');
                 contentEl.style.opacity = 0;
+            },
+            onComplete: function() {
+                navEl.classList.remove('to-position');
             }
         });
     }
-    
-    
 
 
     // Contact Overlay
@@ -49,18 +53,22 @@
         closeFormElm = formEl.querySelector('.close-form-overlay');
 
     document.querySelector('.open-overlay button').addEventListener('click', function() {
-        formRevealer.reveal({
-            bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
-            direction: 'tb',
-            duration: 300,
-            onCover: function(contentEl, revealerEl) {
-                formEl.classList.add('overlay-open');
-                contentEl.style.opacity = 1;
-            },
-            onComplete: function() {
-                closeFormElm.addEventListener('click', closeForm);
-            }
-        });
+        formEl.classList.add('to-position');
+
+        setTimeout(() => {
+            formRevealer.reveal({
+                bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
+                direction: 'bt',
+                duration: 400,
+                onCover: function(contentEl, revealerEl) {
+                    formEl.classList.add('overlay-open');
+                    contentEl.style.opacity = 1;
+                },
+                onComplete: function() {
+                    closeFormElm.addEventListener('click', closeForm);
+                }
+            });
+        }, 10);
     });
 
     function closeForm() {
@@ -69,15 +77,36 @@
         formRevealer.reveal({
             bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
             direction: 'tb',
-            duration: 300, 
+            duration: 400, 
             onCover: function(contentEl, revealerEl) {
                 formEl.classList.remove('overlay-open');
                 contentEl.style.opacity = 0;
+            },
+            onComplete: function() {
+                formEl.classList.remove('to-position');
             }
         });
     }
 
-    formEl.addEventListener('submit', function(ev) {ev.preventDefault();});
 
-    
+    // form
+    const handleSubmit = (event) => {
+        event.preventDefault();      
+        const myForm = event.target;
+        const formData = new FormData(myForm);
+        
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+        .then(() => {
+            console.log("Form successfully submitted");
+            console.log(formData);
+            closeForm();
+        })
+        .catch((error) => alert(error));
+    };
+
+    formEl.addEventListener("submit", handleSubmit);    
 })();

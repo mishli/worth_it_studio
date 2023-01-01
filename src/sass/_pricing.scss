@@ -7,7 +7,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 24px;
 
     .pricing-tabs {
         display: flex;
@@ -48,6 +47,10 @@
     .pricing-content {
         margin-top: 24px;
 
+        &.personal {
+            margin-top: 0;
+        }
+
         .tab-content {
             display: none;
             @include transition(0.2s, all, ease-in);
@@ -55,11 +58,15 @@
             &.active {
                 display: block;
             }
+        }
 
-            img {
-                @include mq($mobile-l, max-width) {
-                    max-width: 280px;
-                }
+        img {
+            @include mq($mobile-l, max-width) {
+                max-width: 280px;
+            }
+
+            &.personal {
+                max-width: 550px;
             }
         }
 
@@ -75,5 +82,34 @@
             }
         }
     }
-  }
+}
+
+.pricing-terms {
+    margin-top: 16px;
+    
+    @include mq(400) {
+        text-align: center;
+    }
+
+    ul {
+        list-style-image: url("/img/icons/i-star-bullet.svg");
+        list-style-position: inside;
+        margin: 0;
+        padding: 0;
+
+        li {
+            font-size: em(14px);
+        }
+    }
+}
+
+.star-sep {
+    display: flex;
+    justify-content: center;
+
+    img {
+        height: 30px;
+        margin: 0 4px;
+    }
+}
   

@@ -52,10 +52,10 @@
     });
 
     watcher_home_fold.enterViewport(function() {
-        homeFoldImage.reveal();
         homeFoldTitle.reveal();
         homeFoldSubtitle.reveal();
         homeFoldContent.reveal();
+        homeFoldImage.reveal();
         watcher_home_fold.destroy();
     });
 
