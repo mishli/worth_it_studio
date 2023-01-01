@@ -13,7 +13,7 @@
         console.log('click')
         revealer.reveal({
             bgcolor: getComputedStyle(navEl).getPropertyValue('--color-third'),
-            duration: 400, 
+            duration: 300, 
             easing: 'easeInOutCubic',
             onCover: function(contentEl, revealerEl) {
                 navEl.classList.add('menu--open');
@@ -31,7 +31,7 @@
         revealer.reveal({
             bgcolor: getComputedStyle(navEl).getPropertyValue('--color-third'),
             direction: 'lr',
-            duration: 400, 
+            duration: 300, 
             easing: 'easeInOutCubic',
             onCover: function(contentEl, revealerEl) {
                 navEl.classList.remove('menu--open');
@@ -51,8 +51,8 @@
     document.querySelector('.open-overlay button').addEventListener('click', function() {
         formRevealer.reveal({
             bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
-            direction: 'bt',
-            duration: 600,
+            direction: 'tb',
+            duration: 300,
             onCover: function(contentEl, revealerEl) {
                 formEl.classList.add('overlay-open');
                 contentEl.style.opacity = 1;
@@ -69,7 +69,7 @@
         formRevealer.reveal({
             bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
             direction: 'tb',
-            duration: 600, 
+            duration: 300, 
             onCover: function(contentEl, revealerEl) {
                 formEl.classList.remove('overlay-open');
                 contentEl.style.opacity = 0;

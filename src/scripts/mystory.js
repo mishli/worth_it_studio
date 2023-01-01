@@ -67,6 +67,4 @@
         mystoryTitle3.reveal();
         watcher_mystory_title3.destroy();
     });
-
-    
 })();

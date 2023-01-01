@@ -2,7 +2,6 @@
 <html lang="{{ locale }}" dir="{{ dir }}">
 {%- set pageTitle %}{% if title %}{{ title }}{% endif %}{% endset -%}
 {%- set pageDescription %}{% if description %}{{ description }}{% endif %}{% endset -%}
-{%- set pageSocialImg %}{{ meta.url }}/previews/{% if title %}{{ title | slug }}{% else %}home{% endif %}.png{% endset -%}
 <head>
     <!-- Generated from the 11ty Netlify Jumpstart: https://github.com/5t3ph/11ty-netlify-jumpstart -->
     <meta charset="UTF-8" />
@@ -32,15 +31,15 @@
         <div class="footer-container__contact-box">
             <a a href="tel:0545845515" class="contact-item">
                 <span>054-584-5515</span>
-                <img src="/img/icons/i-call.svg" alt="">
+                <img src="/img/icons/i-call.svg" alt="" aria-hidden="true">
             </a>
             <a href="https://www.instagram.com/hadas.worth.it/" target="_blank" class="contact-item" target="_blank">
                 <span>hadas.worth.it</span>
-                <img src="/img/icons/i-instagram.svg" alt="">
+                <img src="/img/icons/i-instagram.svg" alt="" aria-hidden="true">
             </a>
             <a a href="https://www.youtube.com/@worth.it.studio" target="_blank" class="contact-item">
                 <span>worth.it.studio</span>
-                <img src="/img/icons/i-youtube.svg" alt="">
+                <img src="/img/icons/i-youtube.svg" alt="" aria-hidden="true">
             </a>
         </div>
     </footer>
@@ -51,10 +50,12 @@
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-        </button>
+        </button>        
         
         <form name="contact" class="form-inner" method="POST" data-netlify="true">
-            <h3 class="form-title">אני פה לכל שאלה!</h3>
+            <div class="form-section">
+                <h3 class="form-title">אני פה לכל שאלה!</h3>
+            </div>
 
             <div class="form-section">
                 <label class="form-label">שם</label>

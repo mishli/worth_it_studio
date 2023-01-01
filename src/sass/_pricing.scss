@@ -55,9 +55,15 @@
             &.active {
                 display: block;
             }
+
+            img {
+                @include mq($mobile-l, max-width) {
+                    max-width: 280px;
+                }
+            }
         }
 
-        .mobile {
+        .mobile {            
             @include mq($mobile-l) {
                 display: none;
             }

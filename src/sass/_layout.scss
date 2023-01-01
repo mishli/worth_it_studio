@@ -8,6 +8,7 @@ body {
 	background-color: tdbc-color("background");
 	color: var(--color-body);
 	font-family: $tdbc-font-family;
+    padding-top: 72px;
 }
 
 // stylelint-disable selector-max-type, selector-no-qualifying-type
@@ -66,7 +67,7 @@ body {
         }
 
         .content-block {
-            margin: 16px 0 40px 0;
+            margin: 16px 0;
 
             @include mq($tablet) {
                 &.text-start {
@@ -76,6 +77,11 @@ body {
                 &.text-end {
                     padding-inline-end: 40px;
                 }
+            }
+
+            ul {
+                margin-top: 0;
+                padding-inline-start: 24px;
             }
         }
 

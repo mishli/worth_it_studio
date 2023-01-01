@@ -93,7 +93,7 @@
     }
 
     .menu__link {
-        font-size: unquote("min(max(2.5rem, 5vw), #{$tdbc-h2-font-size})");
+        font-size: unquote("min(max(2rem, 3vw), #{$tdbc-h2-font-size})");
         color: $tdbc-color-body;
         text-decoration: none;
 
