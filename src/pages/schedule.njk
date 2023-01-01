@@ -12,22 +12,20 @@ eleventyNavigation:
     order: 3
     key: "מערכת שעות"
 --- 
-
+<script src="{{ '/scripts/schedule.js' | url }}" defer></script>
 {% include 'sitenav.njk' %}
 <main class="container">
     <section class="content-section hero single">
-        <h1 class="rev-title-inner text-start title-bg yellow" id="pricing-plams-title">&nbsp;מערכת שעות&nbsp;</h1>
         <div class="content-block single">
+            <h1 class="rev-title-inner text-start" id="schedule-main-title">&nbsp;מערכת שעות&nbsp;</h1>
             <p>בסטודיו Worth It הכל מבוסס על התאמה אישית.<br>
             לכן, גם מערכת האימונים נבנית בהתאמה אישית אליכם!</p>
             <p>בכל שבוע נבנית מערכת שעות חדשה בהתאם ללו"ז הדינאמי והמשתנה של כולם.</p>
+            {# <img src="/img/content/home-bg.jpeg" alt=""> #}
         </div>
-        <img src="/img/content/home-bg.jpeg" alt="">
-    </section>
-
-     <section class="content-section hero single">
-        <h2 class="rev-title-inner text-start title-bg blue" id="pricing-plams-title">איך זה עובד?</h2>
+    
         <div class="content-block">
+            <h2 class="rev-title-inner text-start" id="schedule-sub-1">איך זה עובד?</h2>
            <p>אתם שולחים לי ביום רביעי בקשות/אילוצים ומתוך זה אני בונה את המערכת.<br>
            עד יום חמישי בבוקר אני שולחת לכולם את השיבוצים לאימונים לשבוע הקרוב!<br>
            (נשבעת שאני יכולה להעביר הדרכות בניית סידור בצורה הכי מהירה ואפקטיבית לאחמ"שים בעיר!)</p>

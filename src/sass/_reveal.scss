@@ -87,7 +87,11 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #FDCA40;
+	background: var(--color-second);
 	pointer-events: none;
 	opacity: 0;
+}
+
+.block-revealer__content {
+    @include transition(0.25s, opacity, ease-in);    
 }

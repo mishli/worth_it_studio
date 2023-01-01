@@ -20,32 +20,31 @@
     homeFoldTitle = new RevealFx(homeFoldTitleElm, {
         revealSettings : {
             bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
-            delay: 200,
+            delay: 0,
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
+            },
+            onComplete: function() {
+                homeFoldTitleElm.classList.add("title-bg","yellow");
+                homeFoldSubtitleElm.classList.add("title-bg","yellow");
             }
         }
     }),
     homeFoldSubtitle = new RevealFx(homeFoldSubtitleElm, {
         revealSettings : {
             bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
-            delay: 400,
+            delay: 150,
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
-            },
-            onComplete: function() {
-                setTimeout(function() {
-                    homeFoldTitleElm.classList.add("title-bg","yellow");
-                    homeFoldSubtitleElm.classList.add("title-bg","yellow");
-                }, 800);
             }
         }
     });
 
     homeFoldContent = new RevealFx(homeFoldContentElm, {
         revealSettings : {
-            bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-second'),
-            delay: 1200,
+            bgcolor: 'transparent',
+            duration: 300,
+            delay: 800,
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
             }

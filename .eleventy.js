@@ -1,6 +1,4 @@
 // 11ty Plugins
-const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const i18n = require('eleventy-plugin-i18n');
@@ -16,8 +14,6 @@ const markdownItAnchor = require("markdown-it-anchor");
 const packageVersion = require("./package.json").version;
 
 module.exports = function (eleventyConfig) {
-	eleventyConfig.addPlugin(socialImages);
-	eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
@@ -33,13 +29,13 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 	eleventyConfig.addShortcode("packageVersion", () => `v${packageVersion}`);
 
-    eleventyConfig.addPlugin(i18n, {
-        translations,
-        defaultLanguage: "he-IL",
-        fallbackLocales: {
-            'en-US': 'he-IL'
-        }
-    });
+    // eleventyConfig.addPlugin(i18n, {
+    //     translations,
+    //     defaultLanguage: "he-IL",
+    //     fallbackLocales: {
+    //         'en-US': 'he-IL'
+    //     }
+    // });
 
     eleventyConfig.addCollection("pages_he", function (collection) {
         return collection.getFilteredByGlob("./src/pages/*.njk");

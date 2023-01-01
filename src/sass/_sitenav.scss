@@ -3,10 +3,10 @@
 
 // stylelint-disable selector-max-type
 .nav {
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 	background-color: tdbc-color("primary");
     z-index: 10000;
 
@@ -23,15 +23,25 @@
         }
 
         .nav-icon {
-            display: block;
+            display: flex;
+            align-items: center;
             height: 24px;
             cursor: pointer;
         }
 
         @include mq($tablet) {
-            flex-direction: column;
-            justify-content: center;
-            padding: 1.5rem 0 0 0;
+
+            // tablet layout - for long menus
+            // flex-direction: column;
+            // justify-content: center;
+            // padding: 1.5rem 0 0 0;
+
+            padding: 0;
+
+            &.lang-he {
+                // keep nav alwyas same direction
+                flex-direction: row-reverse;
+            }
 
             .navlist {
                 display: flex;
@@ -43,16 +53,17 @@
             }
         }
 
-        @include mq($desktop) {
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 0;
+        // when tablet mode is on
+        // @include mq($desktop) {
+        //     flex-direction: row;
+        //     justify-content: space-between;
+        //     padding: 0;
 
-            &.lang-he {
-                // keep nav alwyas same direction
-                flex-direction: row-reverse;
-            }
-        }
+        //     &.lang-he {
+        //         // keep nav alwyas same direction
+        //         flex-direction: row-reverse;
+        //     }
+        // }
 	}
 
 	.navlist {

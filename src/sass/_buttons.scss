@@ -27,7 +27,7 @@ button {
 	text-align: center;
     border-radius: 8px;
     text-decoration: none;
-    cursor: pointer;    
+    cursor: pointer; 
 
 	button,
     div {
@@ -66,6 +66,7 @@ button {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
+                color: var(--color-white);
                 background-color: var(--color-main);
                 content: attr(data-hover);
                 @include transition(all, 0.3s, ease);
@@ -75,7 +76,7 @@ button {
             &:hover,
             &:focus {
                 color: var(--color-white);
-                
+
                 button,
                 div {
                     transform: translateX(100%);
@@ -93,14 +94,13 @@ button {
     }
 }
 
-
 .btn-main {
     button,
     div {
 		font-size: em(16px);
 		padding: 8px 16px;
 		background-color: var(--color-main);
-        color: var(--color-body);
+        color: var(--color-white);
 		border: 1px solid transparent;
 		border-radius: 8px;
 
