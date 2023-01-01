@@ -37,7 +37,7 @@
 
 .rev-image-text {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column-reverse;    
 
     @include mq($tablet) {
         flex-wrap: wrap;
