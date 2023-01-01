@@ -21,18 +21,16 @@
     }
 
     &.title-bg {
-        transition: 300ms all ease-in-out;
+        transition: 300ms all ease-in-out;        
 
         &.yellow {
-            background-color: var(--color-second)
-            // border-right: 6px solid var(--color-second);
-            // padding-inline-start: 8px;
+            background-color: var(--color-second);
+            padding: 0 8px;
         }
 
         &.blue {
             border-right: 6px solid var(--color-main);
             padding-inline-start: 8px;
-            // background-color: $tdbc-color-primary;
         }
     }
 }
