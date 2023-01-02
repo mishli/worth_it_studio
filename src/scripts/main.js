@@ -23,7 +23,8 @@
                     contentEl.style.opacity = 1;
                 },
                 onComplete: function() {
-                    closeCtrl.addEventListener('click', closeMenu);                    
+                    closeCtrl.addEventListener('click', closeMenu);
+                    // document.querySelector('.menu-content').style.height = window.innerHeight + "px";
                 }
             });
         }, 10);
@@ -57,7 +58,7 @@
 
     document.querySelector('.open-overlay button').addEventListener('click', function() {
         formEl.classList.add('to-position');
-        // document.documentElement.classList.add('no-scroll');
+        document.documentElement.classList.add('no-scroll');
 
         setTimeout(() => {
             formRevealer.reveal({
@@ -70,6 +71,7 @@
                 },
                 onComplete: function() {
                     closeFormElm.addEventListener('click', closeForm);
+                    // document.querySelector('.overlay-content').style.height = window.innerHeight + "px";
                 }
             });
         }, 10);
@@ -78,7 +80,7 @@
     function closeForm() {
         closeFormElm.removeEventListener('click', closeForm);
         formEl.classList.remove('overlay-open');
-        // document.documentElement.classList.remove('no-scroll');
+        document.documentElement.classList.remove('no-scroll');
         formRevealer.reveal({
             bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
             direction: 'tb',
