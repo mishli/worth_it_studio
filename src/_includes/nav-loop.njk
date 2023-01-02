@@ -2,6 +2,9 @@
 {% set homeUrl = "/en/" if lang == 'en' else "/" %}
 {% set navPages = collections["pages_" + lang] | eleventyNavigation %}
 
+<li>
+    <a href="/" class="menu__link" {% if currentUrl === '/' %}aria-current="page" data-active="active"{% endif %}>ראשי</a>
+</li>
 {% for page in navPages %}
 <li class="menu__item">
     <a
