@@ -17,6 +17,10 @@
         background-attachment: fixed;
     }
 
+    .content-section {
+        justify-content: center;
+    }
+
     &::after {
         content: "";
         position: absolute;
