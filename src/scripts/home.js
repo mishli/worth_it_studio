@@ -61,7 +61,7 @@
 
     // Home Why Title
     homeWhyTitleElm = document.getElementById('home-content-why-title'),
-    watcher_why_title = scrollMonitor.create(homeWhyTitleElm, -300),
+    watcher_why_title = scrollMonitor.create(homeWhyTitleElm, -150),
     whyTitle = new RevealFx(homeWhyTitleElm, {
         isContentHidden: false,
         revealSettings : {
@@ -83,7 +83,7 @@
 
     // Home Tailored Title
     homeTailoredTitleElm = document.getElementById('home-content-tailored-title'),
-    watcher_tailoered_title = scrollMonitor.create(homeTailoredTitleElm, -300),
+    watcher_tailoered_title = scrollMonitor.create(homeTailoredTitleElm, -150),
     tailoredTitle = new RevealFx(homeTailoredTitleElm, {
         isContentHidden: false,
         revealSettings : {

@@ -26,7 +26,7 @@
 
     // The Studio Sub Title 1
     theStudioSubTitle1Elm = document.getElementById('the-studio-sub-1'),    
-    watcher_theStudio_sub_title1 = scrollMonitor.create(theStudioSubTitle1Elm, -300),
+    watcher_theStudio_sub_title1 = scrollMonitor.create(theStudioSubTitle1Elm, -150),
     theStudioSubTitle1 = new RevealFx(theStudioSubTitle1Elm, {
         isContentHidden: false,
         revealSettings : {
