@@ -24,7 +24,7 @@
                 },
                 onComplete: function() {
                     closeCtrl.addEventListener('click', closeMenu);
-                    // document.querySelector('.menu-content').style.height = window.innerHeight + "px";
+                    document.querySelector('.menu-content').style.height = window.innerHeight + "px";
                 }
             });
         }, 10);
@@ -71,7 +71,7 @@
                 },
                 onComplete: function() {
                     closeFormElm.addEventListener('click', closeForm);
-                    // document.querySelector('.overlay-content').style.height = window.innerHeight + "px";
+                    document.querySelector('.overlay-content').style.height = window.innerHeight + "px";
                 }
             });
         }, 10);
