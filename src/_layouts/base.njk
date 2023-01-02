@@ -46,47 +46,45 @@
 
     <!-- Contact Overlay -->
     <section class="form-overlay">
-        <div class="overlay-content">
-            <button class="close-form-overlay">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>        
-            
-            <form name="contact" class="form-inner" method="POST" data-netlify="true">
-                <input type="hidden" name="overlay-form" value="contact">
-                <div class="form-section">
-                    <h3 class="form-title">אני פה לכל שאלה!</h3>
-                </div>            
-                <div class="form-section">
-                    <label class="form-label">שם מלא*</label>
-                    <input class="form-input" type="text" name="name" required="required">
-                </div>
-                <div class="form-section">
-                    <label class="form-label">אימייל (אל תדאגו, לא שולחת ספאם)</label>
-                    <input class="form-input" type="email" name="email">
-                </div>
-                <div class="form-section">
-                    <label class="form-label">טלפון*</label>
-                    <input class="form-input" type="tel" pattern="^[0][5][0|2|3|4|5|9]{1}[-]{0,1}[0-9]{7}$" name="phone" required="required">
-                </div>            
-                <div class="form-section">
-                    <label class="form-label">הודעה</label>
-                    <textarea class="form-input" type="text" name="message"></textarea>
-                </div>
-                {# <div class="form-section">
-                    <label class="form-label">איך הגעת אלי?</label>
-                    <select class="form-select">
-                        <option>המלצה</option>
-                        <option>רשתות חברתיות</option>
-                        <option>חיפוש ברשת</option>
-                    </select>
-                </div> #}
-                <div class="form-section">
-                    <button type="submit" class="form-input btn-form">שליחה</button>
-                </div>
-            </form>
-        </div>
+        <button class="close-form-overlay">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>        
+        
+        <form name="contact" class="form-inner" method="POST" data-netlify="true">
+            <input type="hidden" name="overlay-form" value="contact">
+            <div class="form-section">
+                <h3 class="form-title">אני פה לכל שאלה!</h3>
+            </div>            
+            <div class="form-section">
+                <label class="form-label">שם מלא*</label>
+                <input class="form-input" type="text" name="name" required="required">
+            </div>
+            <div class="form-section">
+                <label class="form-label">אימייל (אל תדאגו, לא שולחת ספאם)</label>
+                <input class="form-input" type="email" name="email">
+            </div>
+            <div class="form-section">
+                <label class="form-label">טלפון*</label>
+                <input class="form-input" type="tel" pattern="^[0][5][0|2|3|4|5|9]{1}[-]{0,1}[0-9]{7}$" name="phone" required="required">
+            </div>            
+            <div class="form-section">
+                <label class="form-label">הודעה</label>
+                <textarea class="form-input" type="text" name="message"></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">איך הגעת אלי?</label>
+                <select class="form-select">
+                    <option>המלצה</option>
+                    <option>רשתות חברתיות</option>
+                    <option>חיפוש ברשת</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <button type="submit" class="form-input btn-form">שליחה</button>
+            </div>
+        </form>
     </section>
 
     <!-- Contact Alert -->
