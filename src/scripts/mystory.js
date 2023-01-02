@@ -4,36 +4,33 @@
 
 (function() {
     // My Story Title 1
-    mystoryTitle1Elm = document.getElementById('mystory-content-title-1'),    
-    watcher_mystory_title1 = scrollMonitor.create(mystoryTitle1Elm),
+    mystoryTitle1Elm = document.getElementById('mystory-content-title-1'),
     mystoryTitle1 = new RevealFx(mystoryTitle1Elm, {
         isContentHidden: false,
         revealSettings : {
-            bgcolor: getComputedStyle(mystoryTitle1Elm).getPropertyValue('--color-second'),
+            bgcolor: getComputedStyle(mystoryTitle1Elm).getPropertyValue('--color-third'),
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
+                mystoryTitle1Elm.classList.add("title-bg","yellow");
             },
             onComplete: function() {
-                mystoryTitle1Elm.classList.add("title-bg","yellow");
+                
             }
         }
     }),
 
-    watcher_mystory_title1.enterViewport(function() {
-        mystoryTitle1.reveal();
-        watcher_mystory_title1.destroy();
-    });
+    mystoryTitle1.reveal();
 
     // Title 2
     mystoryTitle2Elm = document.getElementById('mystory-content-title-2'),
-    watcher_mystory_title2 = scrollMonitor.create(mystoryTitle2Elm, -300),
+    watcher_mystory_title2 = scrollMonitor.create(mystoryTitle2Elm, -150),
     mystoryTitle2 = new RevealFx(mystoryTitle2Elm, {
         isContentHidden: false,
         revealSettings : {
             bgcolor: getComputedStyle(mystoryTitle2Elm).getPropertyValue('--color-main'),
             delay: 400,
             onCover: function(contentEl, revealerEl) {
-                contentEl.style.opacity = 1;
+                contentEl.style.opacity = 1;                
             },
             onComplete: function() {
                 mystoryTitle2Elm.classList.add("title-bg","blue");

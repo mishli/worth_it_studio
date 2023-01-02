@@ -148,7 +148,7 @@
 		
 		// Set the revealer element´s transform and transform origin.
 		var defaults = { // In case revealSettings is incomplete, its properties deafault to:
-				duration: 500,
+				duration: 400,
 				easing: 'easeInOutQuint',
 				delay: 0,
 				bgcolor: '#f0f0f0',

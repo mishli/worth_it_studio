@@ -4,25 +4,19 @@
 
 (function() {
     // Online Main Title
-    onlineMainTitleElm = document.getElementById('online-main-title'),    
-    watcher_online_main_title = scrollMonitor.create(onlineMainTitleElm),
+    onlineMainTitleElm = document.getElementById('online-main-title'),
     onlineMainTitle = new RevealFx(onlineMainTitleElm, {
         isContentHidden: false,
         revealSettings : {
-            bgcolor: getComputedStyle(onlineMainTitleElm).getPropertyValue('--color-second'),
+            bgcolor: getComputedStyle(onlineMainTitleElm).getPropertyValue('--color-third'),
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
-            },
-            onComplete: function() {
                 onlineMainTitleElm.classList.add("title-bg","yellow");
             }
         }
     }),
-
-    watcher_online_main_title.enterViewport(function() {
-        onlineMainTitle.reveal();
-        watcher_online_main_title.destroy();
-    });
+    
+    onlineMainTitle.reveal();
 
     // Online Sub Title 1
     onlineSubTitle1Elm = document.getElementById('online-sub-1'),    

@@ -4,25 +4,19 @@
 
 (function() {
     // Pricing Main Title
-    pricingMainTitleElm = document.getElementById('pricing-main-title'),    
-    watcher_pricing_main_title = scrollMonitor.create(pricingMainTitleElm),
+    pricingMainTitleElm = document.getElementById('pricing-main-title'),
     pricingMainTitle = new RevealFx(pricingMainTitleElm, {
         isContentHidden: false,
         revealSettings : {
-            bgcolor: getComputedStyle(pricingMainTitleElm).getPropertyValue('--color-second'),
+            bgcolor: getComputedStyle(pricingMainTitleElm).getPropertyValue('--color-third'),
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
-            },
-            onComplete: function() {
                 pricingMainTitleElm.classList.add("title-bg","yellow");
             }
         }
     }),
-
-    watcher_pricing_main_title.enterViewport(function() {
-        pricingMainTitle.reveal();
-        watcher_pricing_main_title.destroy();
-    });
+    
+    pricingMainTitle.reveal();
 
     // Pricing Sub Title 1
     pricingSubTitle1Elm = document.getElementById('pricing-sub-1'),    

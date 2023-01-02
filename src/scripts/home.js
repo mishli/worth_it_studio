@@ -7,9 +7,9 @@
     homeFoldTitleElm = document.getElementById('home-fold-title'),
     homeFoldSubtitleElm = document.getElementById('home-fold-subtitle'),
     homeFoldContentElm = document.getElementById('home-fold-content'),
-    watcher_home_fold = scrollMonitor.create(homeFoldImageElm),	
     homeFoldImage = new RevealFx(homeFoldImageElm, {
         revealSettings : {
+            duration: 500,
             bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-second'),
             direction: 'rl',
             onCover: function(contentEl, revealerEl) {
@@ -19,12 +19,11 @@
     }),
     homeFoldTitle = new RevealFx(homeFoldTitleElm, {
         revealSettings : {
+            duration: 500,
             bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
             delay: 0,
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
-            },
-            onComplete: function() {
                 homeFoldTitleElm.classList.add("title-bg","yellow");
                 homeFoldSubtitleElm.classList.add("title-bg","yellow");
             }
@@ -32,6 +31,7 @@
     }),
     homeFoldSubtitle = new RevealFx(homeFoldSubtitleElm, {
         revealSettings : {
+            duration: 500,
             bgcolor: getComputedStyle(homeFoldTitleElm).getPropertyValue('--color-third'),
             delay: 150,
             onCover: function(contentEl, revealerEl) {
@@ -44,21 +44,18 @@
         revealSettings : {
             bgcolor: 'transparent',
             duration: 300,
-            delay: 800,
+            delay: 470,
             onCover: function(contentEl, revealerEl) {
                 contentEl.style.opacity = 1;
             }
         }
     });
 
-    watcher_home_fold.enterViewport(function() {
-        homeFoldImage.reveal();
-        homeFoldTitle.reveal();
-        homeFoldSubtitle.reveal();
-        homeFoldContent.reveal();        
-        watcher_home_fold.destroy();
-    });
-
+    homeFoldImage.reveal();
+    homeFoldTitle.reveal();
+    homeFoldSubtitle.reveal();
+    homeFoldContent.reveal();        
+        
     // Home Why Title
     homeWhyTitleElm = document.getElementById('home-content-why-title'),
     watcher_why_title = scrollMonitor.create(homeWhyTitleElm, -150),
