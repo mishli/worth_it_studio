@@ -9,6 +9,7 @@
 	flex: none;
 	display: inline-block;
 	position: relative;
+    padding: 0 8px;
 
     &.nowrap {
         @include mq($mobile-l) {        
@@ -21,7 +22,7 @@
     }
 
     &.title-bg {
-        transition: 300ms all ease-in-out;        
+        transition: 200ms all ease-in-out;
 
         &.yellow {
             background-color: var(--color-second);
