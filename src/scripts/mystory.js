@@ -48,7 +48,7 @@
 
     // Title 2
     mystoryTitle3Elm = document.getElementById('mystory-content-title-3'),
-    watcher_mystory_title3 = scrollMonitor.create(mystoryTitle3Elm, -300),
+    watcher_mystory_title3 = scrollMonitor.create(mystoryTitle3Elm, -150),
     mystoryTitle3 = new RevealFx(mystoryTitle3Elm, {
         isContentHidden: false,
         revealSettings : {

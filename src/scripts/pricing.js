@@ -26,7 +26,7 @@
 
     // Pricing Sub Title 1
     pricingSubTitle1Elm = document.getElementById('pricing-sub-1'),    
-    watcher_pricing_sub_title1 = scrollMonitor.create(pricingSubTitle1Elm, -300),
+    watcher_pricing_sub_title1 = scrollMonitor.create(pricingSubTitle1Elm, -150),
     pricingSubTitle1 = new RevealFx(pricingSubTitle1Elm, {
         isContentHidden: false,
         revealSettings : {

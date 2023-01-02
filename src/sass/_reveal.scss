@@ -59,6 +59,11 @@
 
     &.above {
         z-index: 2;
+        
+        @include mq($tablet, max-width) {
+            max-width: 95%;
+            margin: -72px auto 0 auto;
+        }
     }
 
     &.image {

@@ -94,16 +94,22 @@
         event.preventDefault();      
         const myForm = event.target;
         const formData = new FormData(myForm);
+        const contactBoxElm = document.querySelector('.contact-message');
         
         fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(formData).toString(),
         })
-        .then(() => {
-            console.log("Form successfully submitted");
-            console.log(formData);
+        .then(() => {  
             closeForm();
+
+            setTimeout(() => {
+                contactBoxElm.classList.add('active');
+                setTimeout(() => {
+                    contactBoxElm.classList.remove('active');
+                }, 3000);                
+            }, 900);
         })
         .catch((error) => alert(error));
     };

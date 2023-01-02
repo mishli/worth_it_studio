@@ -26,7 +26,7 @@
 
     // The Studio Sub Title 1
     scheduleSubTitle1Elm = document.getElementById('schedule-sub-1'),    
-    watcher_schedule_sub_title1 = scrollMonitor.create(scheduleSubTitle1Elm, -300),
+    watcher_schedule_sub_title1 = scrollMonitor.create(scheduleSubTitle1Elm, -150),
     scheduleSubTitle1 = new RevealFx(scheduleSubTitle1Elm, {
         isContentHidden: false,
         revealSettings : {

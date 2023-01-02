@@ -26,7 +26,7 @@
 
     // Online Sub Title 1
     onlineSubTitle1Elm = document.getElementById('online-sub-1'),    
-    watcher_online_sub_title1 = scrollMonitor.create(onlineSubTitle1Elm, -300),
+    watcher_online_sub_title1 = scrollMonitor.create(onlineSubTitle1Elm, -150),
     onlineSubTitle1 = new RevealFx(onlineSubTitle1Elm, {
         isContentHidden: false,
         revealSettings : {
@@ -47,7 +47,7 @@
 
     // Online Sub Title 2
     onlineSubTitle2Elm = document.getElementById('online-sub-2'),    
-    watcher_online_sub_title2 = scrollMonitor.create(onlineSubTitle2Elm, -300),
+    watcher_online_sub_title2 = scrollMonitor.create(onlineSubTitle2Elm, -150),
     onlineSubTitle2 = new RevealFx(onlineSubTitle2Elm, {
         isContentHidden: false,
         revealSettings : {
@@ -68,7 +68,7 @@
 
     // Online Sub Title 3
     onlineSubTitle3Elm = document.getElementById('online-sub-3'),    
-    watcher_online_sub_title3 = scrollMonitor.create(onlineSubTitle3Elm, -300),
+    watcher_online_sub_title3 = scrollMonitor.create(onlineSubTitle3Elm, -150),
     onlineSubTitle3 = new RevealFx(onlineSubTitle3Elm, {
         isContentHidden: false,
         revealSettings : {
