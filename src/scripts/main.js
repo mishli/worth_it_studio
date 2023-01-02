@@ -57,7 +57,7 @@
 
     document.querySelector('.open-overlay button').addEventListener('click', function() {
         formEl.classList.add('to-position');
-        document.documentElement.classList.add('no-scroll');
+        // document.documentElement.classList.add('no-scroll');
 
         setTimeout(() => {
             formRevealer.reveal({
@@ -78,7 +78,7 @@
     function closeForm() {
         closeFormElm.removeEventListener('click', closeForm);
         formEl.classList.remove('overlay-open');
-        document.documentElement.classList.remove('no-scroll');
+        // document.documentElement.classList.remove('no-scroll');
         formRevealer.reveal({
             bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
             direction: 'tb',
