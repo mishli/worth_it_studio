@@ -19,11 +19,6 @@
         display: none;
     }
 
-    .menu-content {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
     &.menu--open {
         pointer-events: visible;
 
