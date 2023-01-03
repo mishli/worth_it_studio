@@ -23,6 +23,15 @@
     <script src="{{ '/scripts/scrollMonitor.js' | url }}" defer></script>
     <script src="{{ '/scripts/revealFx.js' | url }}" defer></script>
     <script src="{{ '/scripts/main.js' | url }}" defer></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8XSGW347Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-J8XSGW347Z');
+    </script>
  </head>
  <body>
     {{ content | safe }}
@@ -61,10 +70,10 @@
                 <label class="form-label">שם מלא*</label>
                 <input class="form-input" type="text" name="name" required="required">
             </div>
-            <div class="form-section">
+            {# <div class="form-section">
                 <label class="form-label">אימייל (אל תדאגו, לא שולחת ספאם)</label>
                 <input class="form-input" type="email" name="email">
-            </div>
+            </div> #}
             <div class="form-section">
                 <label class="form-label">טלפון*</label>
                 <input class="form-input" type="tel" pattern="^[0][5][0|2|3|4|5|9]{1}[-]{0,1}[0-9]{7}$" name="phone" required="required">
