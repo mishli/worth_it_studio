@@ -41,6 +41,7 @@ body {
         &.hero {
             max-width: $desktop + px;
             align-items: center;
+            margin: 0 auto;
         }
 
         &.split {
@@ -190,9 +191,7 @@ article {
 .no-scroll {
     overflow: hidden;
 }
-// stylelint-enable
 
-// stylelint-disable-next-line selector-max-type
 hr {
 	margin-top: 4rem;
 	margin-bottom: 4rem;
