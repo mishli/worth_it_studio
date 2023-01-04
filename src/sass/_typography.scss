@@ -27,6 +27,7 @@ h2 {
 
 h3 {
 	font-size: $tdbc-h3-font-size;
+    font-size: unquote("min(max(1.5rem, 2vw), #{$tdbc-h2-font-size})");
 }
 
 h4 {

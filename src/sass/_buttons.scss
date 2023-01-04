@@ -55,41 +55,41 @@ button {
                 border-radius: 8px;
                 transition: transform 0.3s;
             }
-
-            &::before {
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: -1;            
-                width: 100%;
-                height: 100%;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--color-white);
-                background-color: var(--color-main);
-                content: attr(data-hover);
-                @include transition(all, 0.3s, ease);
-                transform: translateX(-25%);
-            }
-
-            &:hover,
-            &:focus {
-                color: var(--color-white);
-
-                button,
-                div {
-                    transform: translateX(100%);
-                }
-            }
-
-            &:hover,
-            &:focus {
+            @include mq($tablet) {
                 &::before {
-                    transform: translateX(0%);
+                    position: absolute;
+                    top: 0;
+                    left: 0;                          
+                    width: 100%;
+                    height: 100%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--color-white);
+                    background-color: var(--color-main);
+                    content: attr(data-hover);
+                    @include transition(all, 0.3s, ease);
+                    transform: translateX(-25%);
+                    z-index: -1;
+                }
+    
+                &:hover,
+                &:focus {
+                    color: var(--color-white);
+    
+                    button,
+                    div {
+                        transform: translateX(100%);
+                    }
+                }
+    
+                &:hover,
+                &:focus {
+                    &::before {
+                        transform: translateX(0%);
+                    }
                 }
             }
-
         }
     }
 }
