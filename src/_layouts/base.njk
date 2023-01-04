@@ -23,17 +23,19 @@
     <script src="{{ '/scripts/scrollMonitor.js' | url }}" defer></script>
     <script src="{{ '/scripts/revealFx.js' | url }}" defer></script>
     <script src="{{ '/scripts/main.js' | url }}" defer></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8XSGW347Z"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-J8XSGW347Z');
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M76Q3VS');</script>
+    <!-- End Google Tag Manager -->
  </head>
  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M76Q3VS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {{ content | safe }}
     <footer class="footer-container">
         <img src="/img/worth-it-logo-square.svg" class="logo" height="180" alt="{{ meta.siteName }}" />
@@ -52,53 +54,5 @@
             </a>
         </div>
     </footer>
-
-    <!-- Contact Overlay -->
-    {# <section class="form-overlay">
-        <button class="close-form-overlay">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>        
-        
-        <form name="contact" class="form-inner" method="POST" data-netlify="true">
-            <input type="hidden" name="overlay-form" value="contact">
-            <div class="form-section">
-                <h3 class="form-title">אני פה לכל שאלה!</h3>
-            </div>            
-            <div class="form-section">
-                <label class="form-label">שם מלא*</label>
-                <input class="form-input" type="text" name="name" required="required">
-            </div>
-            <div class="form-section">
-                <label class="form-label">אימייל (אל תדאגו, לא שולחת ספאם)</label>
-                <input class="form-input" type="email" name="email">
-            </div>
-            <div class="form-section">
-                <label class="form-label">טלפון*</label>
-                <input class="form-input" type="tel" pattern="^[0][5][0|2|3|4|5|9]{1}[-]{0,1}[0-9]{7}$" name="phone" required="required">
-            </div>            
-            <div class="form-section">
-                <label class="form-label">הודעה</label>
-                <textarea class="form-input" type="text" name="message"></textarea>
-            </div>
-            <div class="form-section">
-                <label class="form-label">איך הגעת אלי?</label>
-                <select class="form-select">
-                    <option>המלצה</option>
-                    <option>רשתות חברתיות</option>
-                    <option>חיפוש ברשת</option>
-                </select>
-            </div>
-            <div class="form-section">
-                <button type="submit" class="form-input btn-form">שליחה</button>
-            </div>
-        </form>
-    </section> #}
-
-    <!-- Contact Alert -->
-    {# <div class="contact-message">
-        <p>תודה, אחזור אליך בהקדם!</p>
-    </div> #}
 </body>
 </html>
