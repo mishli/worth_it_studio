@@ -8,7 +8,7 @@
     margin-top: 24px;
     background-image: url('/img/content/hadas-worth-it-studio-pepole.png');
     background-size: cover;
-    background-position: 50% 70%;    
+    background-position: 50% 20%;    
     background-repeat: no-repeat;
     z-index: 1;
 
@@ -46,4 +46,46 @@
             margin-top: 8px;
         }
     }
+}
+
+
+.calendly-overlay {
+    z-index: 100002 !important;
+
+    .calendly-popup {
+        @include mq(975, max-width) {
+            max-height: 600px !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            height: 600px !important;
+            width: calc(100% - 40px) !important;
+            left: 50% !important;
+            right: initial !important;
+            bottom: initial !important;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+        }
+    }
+    .calendly-popup-close {
+        @include mq(975, max-width) {
+            top: 25px;
+            right: 25px;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-main);
+            z-index: -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+    }
+    
 }

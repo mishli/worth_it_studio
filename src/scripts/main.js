@@ -51,54 +51,54 @@
 
 
     // Contact Overlay
-    const formEl = document.querySelector('.form-overlay'),
-        formRevealer = new RevealFx(formEl),
-        closeFormElm = formEl.querySelector('.close-form-overlay');
+    // const formEl = document.querySelector('.form-overlay'),
+    //     formRevealer = new RevealFx(formEl),
+    //     closeFormElm = formEl.querySelector('.close-form-overlay');
 
-    document.querySelector('.open-overlay button').addEventListener('click', function() {
-        formEl.classList.add('to-position');
-        document.documentElement.classList.add('no-scroll');
-        document.querySelector('.form-inner').style.height = window.innerHeight + "px";
+    // document.querySelector('.open-overlay button').addEventListener('click', function() {
+    //     formEl.classList.add('to-position');
+    //     document.documentElement.classList.add('no-scroll');
+    //     document.querySelector('.form-inner').style.height = window.innerHeight + "px";
 
-        setTimeout(() => {
-            formRevealer.reveal({
-                bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
-                direction: 'bt',
-                duration: 400,
-                onCover: function(contentEl, revealerEl) {
-                    formEl.classList.add('overlay-open');
-                    contentEl.style.opacity = 1;
-                },
-                onComplete: function() {
-                    closeFormElm.addEventListener('click', closeForm);                    
-                }
-            });
-        }, 10);
-    });
+    //     setTimeout(() => {
+    //         formRevealer.reveal({
+    //             bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
+    //             direction: 'bt',
+    //             duration: 400,
+    //             onCover: function(contentEl, revealerEl) {
+    //                 formEl.classList.add('overlay-open');
+    //                 contentEl.style.opacity = 1;
+    //             },
+    //             onComplete: function() {
+    //                 closeFormElm.addEventListener('click', closeForm);                    
+    //             }
+    //         });
+    //     }, 10);
+    // });
 
-    function closeForm() {
-        closeFormElm.removeEventListener('click', closeForm);
-        formEl.classList.remove('overlay-open');
-        document.documentElement.classList.remove('no-scroll');
-        formRevealer.reveal({
-            bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
-            direction: 'tb',
-            duration: 400, 
-            onCover: function(contentEl, revealerEl) {
-                formEl.classList.remove('overlay-open');
-                contentEl.style.opacity = 0;
-            },
-            onComplete: function() {
-                formEl.classList.remove('to-position');
-            }
-        });
-    }
+    // function closeForm() {
+    //     closeFormElm.removeEventListener('click', closeForm);
+    //     formEl.classList.remove('overlay-open');
+    //     document.documentElement.classList.remove('no-scroll');
+    //     formRevealer.reveal({
+    //         bgcolor: getComputedStyle(formEl).getPropertyValue('--color-third'),
+    //         direction: 'tb',
+    //         duration: 400, 
+    //         onCover: function(contentEl, revealerEl) {
+    //             formEl.classList.remove('overlay-open');
+    //             contentEl.style.opacity = 0;
+    //         },
+    //         onComplete: function() {
+    //             formEl.classList.remove('to-position');
+    //         }
+    //     });
+    // }
 
     // form overlay resize
-    window.addEventListener("resize", handleResize);
-    function handleResize() {
-        document.querySelector('.form-inner').style.height = window.innerHeight + "px";
-    }
+    // window.addEventListener("resize", handleResize);
+    // function handleResize() {
+    //     document.querySelector('.form-inner').style.height = window.innerHeight + "px";
+    // }
 
     // form
     const handleSubmit = (event) => {
