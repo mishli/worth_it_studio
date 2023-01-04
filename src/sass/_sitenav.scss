@@ -22,12 +22,22 @@
             display: none;
         }
 
-        .nav-icon {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon,
+        .whatsapp-icon {
             display: flex;
             align-items: center;
             height: 24px;
             cursor: pointer;
         }
+
+        .whatsapp-icon {
+            margin-inline-start: 8px;
+        }        
 
         @include mq($tablet) {
 
@@ -48,7 +58,7 @@
                 padding: 0;
             }
 
-            .nav-icon {
+            .nav-actions {
                 display: none;
             }
         }
