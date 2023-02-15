@@ -56,6 +56,10 @@ body {
                     flex-direction: column-reverse;
                 }
             }
+
+            &.text-start {
+                align-items: flex-start;
+            }
         }        
 
         &.center {
@@ -96,6 +100,18 @@ body {
             @include mq($desktop) {
                 max-width: 400px;
             }
+        }
+
+        .img-block {
+            margin-top: 24px;
+
+            img {
+                border-radius: 8px;
+            }
+        }
+
+        .image-credit {
+            margin-top: 8px;
         }
     }
 }

@@ -36,7 +36,9 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M76Q3VS"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    {% include 'sitenav.njk' %}
     {{ content | safe }}
+    {% include 'footer-cta.njk' %}
     <footer class="footer-container">
         <img src="/img/worth-it-logo-square.svg" class="logo" height="180" alt="{{ meta.siteName }}" />
         <div class="footer-container__contact-box">

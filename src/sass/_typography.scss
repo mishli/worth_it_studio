@@ -20,12 +20,14 @@ h1 {
 	font-size: unquote("min(max(2.5rem, 4vw), #{$tdbc-h1-font-size})");
 }
 
-h2 {
+h2,
+.h2 {
 	font-size: $tdbc-h2-font-size;
 	font-size: unquote("min(max(1.75rem, 2.3vw), #{$tdbc-h2-font-size})");
 }
 
-h3 {
+h3,
+.h3 {
 	font-size: $tdbc-h3-font-size;
     font-size: unquote("min(max(1.5rem, 2vw), #{$tdbc-h2-font-size})");
 }

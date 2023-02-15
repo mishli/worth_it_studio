@@ -70,3 +70,8 @@
         });        
     });
 })();
+
+// funcs
+function goToUrl(url) {
+    document.location.href = url;
+}

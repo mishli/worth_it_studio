@@ -1,0 +1,25 @@
+---
+layout: base.njk
+---
+<div class="page-blog">
+    <header class="post-header post-{{ page.fileSlug }}" style="background-image: url('{{mainImage}}')">
+        <div class="container">
+            <header class="content-section hero">
+                <h1 class="post-title">{{ title }}</h1>
+                <p class="post-desc h3">
+                    {{ description }}
+                </p>
+                <time datetime="{{ post_date }}">{{ post_date }}</time>
+            </header>        
+        </div>
+    </header>
+    <main class="container">
+        <article class="content-section hero single">
+            {{ content | safe }}
+        </article>
+    </main>
+    <div class="post-related">
+        <h3 class="h2 rev-title-inner title-bg blue full">פוסטים נוספים</h3>
+        {% include 'posts-loop.njk' %} 
+    </div>
+</div>

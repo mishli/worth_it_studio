@@ -32,6 +32,12 @@
         &.blue {
             border-right: 6px solid var(--color-main);
             padding-inline-start: 8px;
+
+            &.full {
+                background-color: var(--color-main);
+                border: none;
+                color: var(--color-white);
+            }
         }
     }
 }
