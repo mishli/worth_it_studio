@@ -1,0 +1,27 @@
+--- 
+layout: base.njk
+lang: "he"
+locale: "he-IL"
+dir: "rtl"
+lang_url: "/"
+title: "Worth It Studio | בלוג | סטודיו ביתי לאימוני כושר ממכרים"
+description: ""
+shareImage: "/img/worth-it-logo-square.svg"
+translationKey: "blog"
+eleventyNavigation:
+    order: 6
+    key: "בלוג"
+pagination:
+  data: collections.post
+  size: 10
+  reverse: true
+  alias: post
+--- 
+<div class="page-blog">
+    <div class="blog-header">
+        <h1>ספר פתוח</h1>
+        <p>החלטתי לנצל את הבמה ולכתוב את עצמי החוצה. אין אג׳נדה מסויימת.. אין נושא מוגדר.. יש אותי :)</p>
+    </div>
+
+    {% include 'posts-loop.njk' %}    
+</div>

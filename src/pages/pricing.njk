@@ -1,5 +1,5 @@
 --- 
-layout: base.njk
+layout: page.njk
 lang: "he"
 locale: "he-IL"
 dir: "rtl"
@@ -13,10 +13,8 @@ eleventyNavigation:
     key: "מחירים"
 --- 
 <script src="{{ '/scripts/pricing.js' | url }}" defer></script>
-{% include 'sitenav.njk' %}
-<div class="page-header">
 
-</div>
+<div class="page-header"></div>
 <div class="container">
     <section class="content-section hero">
         <h1 class="rev-title-inner" id="pricing-main-title">אימונים קבוצתיים</h1>
@@ -78,7 +76,6 @@ eleventyNavigation:
         </div>
     </section>
 </div>
-{% include 'footer-cta.njk' %}
 
 <script>
     // pricing tabs
