@@ -61,6 +61,10 @@
         grid-gap: 15px;
         justify-items: center;
 
+        @include mq($tablet) {
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        }
+
         .blog-item-box {
             display: flex;
             flex-direction: column;
