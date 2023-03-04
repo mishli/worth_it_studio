@@ -4,6 +4,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const i18n = require('eleventy-plugin-i18n');
 const translations = require('./src/_data/i18n');
 const util = require('util');
+require('dotenv').config();
 
 // Helper packages
 const slugify = require("slugify");
@@ -14,6 +15,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 const packageVersion = require("./package.json").version;
 
 module.exports = function (eleventyConfig) {
+    eleventyConfig.addGlobalData('env', process.env);    
 	eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
@@ -72,7 +74,11 @@ module.exports = function (eleventyConfig) {
         return util.inspect(value);
     });
 
-/* Markdown Overrides */
+    eleventyConfig.addFilter("filterContent", function(value) {
+        return value;
+    });
+
+    /* Markdown Overrides */
 	let markdownLibrary = markdownIt({
 		html: true
 	}).use(markdownItAnchor, {
@@ -100,6 +106,7 @@ module.exports = function (eleventyConfig) {
 			input: "src",
 			output: "public",
 			layouts: "_layouts"
-		}
+		},
+        jsDataFileSuffix: '.data',
 	};
 };

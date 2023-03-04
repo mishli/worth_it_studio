@@ -1,21 +1,24 @@
 ---
 layout: base.njk
 ---
+{# <script src="{{ '/scripts/edjsHTML.js' | url }}" defer></script> #}
+
 <div class="page-blog">
-    <header class="post-header post-{{ page.fileSlug }}" style="background-image: url('{{mainImage}}')">
+    <header class="post-header post-{{ post.slug }}" 
+    style="background-image: url('{{ env.STRAPI_ROOT_URL }}{{ post.featured_image.data.attributes.url }}')">
         <div class="container">
             <header class="content-section hero">
-                <h1 class="post-title">{{ title }}</h1>
-                <p class="post-desc h3">
-                    {{ description }}
+                <h1 class="post-title">{{ post.title }}</h1>
+                <p class="post-desc h3">                    
+                    {{ post.excerpt }}
                 </p>
-                <time datetime="{{ display_date }}">{{ display_date }}</time>
+                <time datetime="{{ post.date }}">{{ post.date }}</time>
             </header>        
         </div>
     </header>
     <main class="container">
         <article class="content-section hero single">
-            {{ content | safe }}
+            {{ post.content | filterContent | safe }}
         </article>
     </main>
     <div class="post-related">
