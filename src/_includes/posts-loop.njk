@@ -1,18 +1,16 @@
-
 <section class="content-section hero">
     <div class="container blog-home-grid">
-        
         {%- for post in posts -%}
-            {% if post.slug != page.url %}
-            <div class="blog-item-box" onclick="goToUrl('../post/{{post.slug}}')">
+            {% if ("/post/" + post.slug + "/") != page.url %}
+            <div class="blog-item-box" onclick="goToUrl('/post/{{post.slug}}')">
                 <div class="item-head">
-                    <img src="http://localhost:1337{{ post.featured_image.data.attributes.url }}" alt="">
+                    <img src="{{ post.featured_image.data.attributes.url }}" alt="">
                 </div>
 
                 <div class="item-content">
                     <h2>{{ post.title }}</h2>
                     <p>{{ post.excerpt }}</p>
-                    <a href="../post/{{ post.slug | url }}" class="btn btn-main second">
+                    <a href="/post/{{ post.slug | url }}" class="btn btn-main second">
                         <div>להמשך קריאה</div>
                     </a>
                 </div>

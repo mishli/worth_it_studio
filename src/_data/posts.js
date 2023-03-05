@@ -3,7 +3,7 @@ const { default: axios } = require("axios");
 module.exports = async () => {
 	try {
 		const res = await axios.get(
-			`${process.env.STRAPI_ROOT_URL}/api/posts?populate=*`
+			`${process.env.STRAPI_ROOT_URL}/api/posts?populate=*&sort=date`
 		);
 
         // format posts objects

@@ -74,10 +74,6 @@ module.exports = function (eleventyConfig) {
         return util.inspect(value);
     });
 
-    eleventyConfig.addFilter("filterContent", function(value) {
-        return value;
-    });
-
     /* Markdown Overrides */
 	let markdownLibrary = markdownIt({
 		html: true

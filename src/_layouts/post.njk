@@ -1,11 +1,9 @@
 ---
 layout: base.njk
 ---
-{# <script src="{{ '/scripts/edjsHTML.js' | url }}" defer></script> #}
-
 <div class="page-blog">
     <header class="post-header post-{{ post.slug }}" 
-    style="background-image: url('{{ env.STRAPI_ROOT_URL }}{{ post.featured_image.data.attributes.url }}')">
+    style="background-image: url('{{ post.featured_image.data.attributes.url }}')">
         <div class="container">
             <header class="content-section hero">
                 <h1 class="post-title">{{ post.title }}</h1>
@@ -18,7 +16,7 @@ layout: base.njk
     </header>
     <main class="container">
         <article class="content-section hero single">
-            {{ post.content | filterContent | safe }}
+            {{ post.content | safe }}
         </article>
     </main>
     <div class="post-related">
