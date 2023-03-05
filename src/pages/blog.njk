@@ -12,16 +12,14 @@ eleventyNavigation:
     order: 6
     key: "בלוג"
 pagination:
-  data: collections.post
-  size: 10
-  reverse: true
-  alias: post
+  data: posts
+  size: 100
+  alias: posts
 --- 
 <div class="page-blog">
     <div class="blog-header">
         <h1>ספר פתוח</h1>
         <p>החלטתי לנצל את הבמה ולכתוב את עצמי החוצה. אין אג׳נדה מסויימת.. אין נושא מוגדר.. יש אותי :)</p>
     </div>
-
     {% include 'posts-loop.njk' %}    
 </div>

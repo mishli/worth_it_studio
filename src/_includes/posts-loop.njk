@@ -1,22 +1,16 @@
-
-{% set blogPages = collections["posts"] %}
-
-
-
 <section class="content-section hero">
     <div class="container blog-home-grid">
-        
-        {%- for post in blogPages -%}
-            {% if post.url != page.url %}
-            <div class="blog-item-box" onclick="goToUrl('{{post.url}}')">
+        {%- for post in posts -%}
+            {% if ("/post/" + post.slug + "/") != page.url %}
+            <div class="blog-item-box" onclick="goToUrl('/post/{{post.slug}}')">
                 <div class="item-head">
-                    <img src="{{ post.data.mainImage }}" alt="">
+                    <img src="{{ post.featured_image.data.attributes.url }}" alt="">
                 </div>
 
                 <div class="item-content">
-                    <h2>{{ post.data.title }}</h2>
-                    <p>{{ post.data.description }}</p>
-                    <a href="{{ post.url | url }}" class="btn btn-main second">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.excerpt }}</p>
+                    <a href="/post/{{ post.slug | url }}" class="btn btn-main second">
                         <div>להמשך קריאה</div>
                     </a>
                 </div>
