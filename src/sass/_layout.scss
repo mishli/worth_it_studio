@@ -115,24 +115,6 @@ body {
         .image-credit {
             margin-top: 8px;
         }
-
-        :is(h2,h3,p):empty {
-            display: none;
-        }
-
-        p:has(img) {
-            margin: 0;
-        }
-
-        h2,
-        h3 {
-            border-right: 6px solid var(--color-main);
-            padding-inline-start: 8px;
-        }
-
-        h3 {
-            margin-top: 16px;
-        }
     }
 }
 

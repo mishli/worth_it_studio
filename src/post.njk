@@ -4,6 +4,10 @@ lang: "he"
 locale: "he-IL"
 dir: "rtl"
 lang_url: "/"
+eleventyComputed:
+    title: "{{ post.title }}"
+    description: "{{ post.excerpt }}"
+    shareImage: "{{ post.featured_image.data.attributes.url }}"
 pagination:
     data: posts
     size: 1
