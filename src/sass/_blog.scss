@@ -173,9 +173,19 @@
         :is(h2,h3,p):empty {
             display: none;
         }
+
+        img {
+            height: auto;
+            border-radius: 8px;
+        }
     
         p:has(img) {
-            margin: 0;
+            margin: 8px 0 24px 0;
+            font-size: em(16px);
+
+            img {
+                margin: 0 0 4px 0;                
+            }
         }
     
         h2,
