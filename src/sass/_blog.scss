@@ -202,7 +202,9 @@
         h3,
         h2,
         p, 
-        p span {
+        p span,
+        h2 span,
+        h3 span {
             color: var(--color-body) !important;
         }
     }    
