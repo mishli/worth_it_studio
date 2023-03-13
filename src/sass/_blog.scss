@@ -197,7 +197,10 @@
         h3 {
             margin-top: 16px;
         }
-
+        
+        // color fix
+        h3,
+        h2,
         p, 
         p span {
             color: var(--color-body) !important;
