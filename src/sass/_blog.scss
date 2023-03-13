@@ -197,5 +197,10 @@
         h3 {
             margin-top: 16px;
         }
+
+        p, 
+        p span {
+            color: var(--color-body) !important;
+        }
     }    
 }
