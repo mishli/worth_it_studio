@@ -50,6 +50,10 @@ p {
     }
 }
 
+a {
+    color: var(--color-main);
+}
+
 article {
 	> ul,
 	> ol {
