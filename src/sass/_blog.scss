@@ -199,11 +199,8 @@
         }
         
         // color fix
-        h3,
-        h2,
-        p, 
-        p span {
-            color: var(--color-body) !important;
+        &:has(h2, h3, p) span {
+            color: currentColor !important;
         }
     }    
 }
