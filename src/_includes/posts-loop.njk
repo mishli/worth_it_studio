@@ -1,6 +1,6 @@
 <section class="content-section hero">
     <div class="container blog-home-grid">
-        {%- for post in posts -%}
+        {%- for post in posts | reverse -%}
             {% if ("/post/" + post.slug + "/") != page.url %}
             <div class="blog-item-box" onclick="goToUrl('/post/{{post.slug}}')">
                 <div class="item-head">
