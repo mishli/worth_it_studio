@@ -1,10 +1,10 @@
-{% set currentUrl = page.url %}
-{% set homeUrl = "/en/" if lang == 'en' else "/" %}
-{% set navPages = collections["pages_" + lang] | eleventyNavigation %}
 
-<li class="menu__item">
-    <a href="/" class="menu__link" {% if currentUrl === '/' %}aria-current="page" data-active="active"{% endif %}>ראשי</a>
-</li>
+
+{% set currentUrl = page.url %}
+{% set navPages = collections["pages_" + lang] | eleventyNavigation %}
+{% set switchLang = "en" if lang == "he" else "he" %}
+{% set switchUrl = "/en" + page.url if lang == "he" else page.url | replace("/en/", "/") %}
+
 {% for page in navPages %}
 <li class="menu__item">
     <a
@@ -14,3 +14,35 @@
     </a>
 </li>
 {%- endfor %}
+
+{# loop though site.languages #}
+{% for lgg in meta.languages %}
+  {# {% if loop.first %}<ul class="c-lggnav">{% endif %} #}
+
+  {# set translatedUrl to the homepage of that language by default #}
+  {% set translatedUrl = "/" + lgg.code + "/" %}
+
+  {# set current language class #}
+  {% set activeClass = "is-active" if lgg.code == locale else "" %}
+
+  {# loop through all the content of the site #}
+  {% for item in collections.all %}
+
+    {# for each item in the loop, check if
+    - its translationKey matches the current item translationKey
+    - its locale matches the code of the language we are looping through #}
+    {% if item.data.translationKey == translationKey and item.data.locale == lgg.code %}
+      {% set translatedUrl = item.url %}
+    {% endif %}
+
+  {% endfor %} 
+  {# {% if loop.last %}</ul>{% endif %} #}
+{% endfor %}
+
+{# Display the language switcher #}
+<li><a href="{{ switchUrl }}" class="language-link">{% if switchLang == "en" %}English{% else %}עברית{% endif %}</a></li>
+
+
+
+
+

@@ -133,6 +133,16 @@ button {
             color: var(--color-body);
         }
     }
+
+    &.open-calendly {
+        button {
+            &:focus {                
+                outline-color:  var(--color-white);
+                outline-style: solid;
+                outline-offset: 2px;
+            }
+        }
+    }
 }
 
 .buttons-row {

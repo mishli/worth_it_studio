@@ -48,9 +48,11 @@
 
             padding: 0;
 
-            &.lang-he {
-                // keep nav alwyas same direction
-                flex-direction: row-reverse;
+            &.lang-en {
+                .navlist {
+                    // keep nav alwyas same direction
+                    // flex-direction: row-reverse;
+                }
             }
 
             .navlist {
@@ -69,21 +71,23 @@
         //     justify-content: space-between;
         //     padding: 0;
 
-        //     &.lang-he {
-        //         // keep nav alwyas same direction
-        //         flex-direction: row-reverse;
-        //     }
+        // &.lang-he {
+        //     // keep nav alwyas same direction
+        //     flex-direction: row-reverse;
         // }
 	}
 
 	.navlist {
         margin: 0;
+        gap: 16px;
 
         li {
             display: flex;
+           
 
             + li {
-                margin-inline-start: 1rem;
+                
+                // margin-inline-start: 1rem;
             }
 
             a {
