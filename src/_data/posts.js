@@ -8,7 +8,7 @@ module.exports = async () => {
 
         // format posts objects
         const resObj = JSON.parse(JSON.stringify(res.data.data));
-        const postsFormatted = resObj.map((item) => {           
+        const postsFormatted = resObj.map((item) => {
             return {
                 id: item.id,
                 title: item.attributes.title,
@@ -16,7 +16,7 @@ module.exports = async () => {
                 content: item.attributes.content,
                 date: item.attributes.date,
                 author: item.attributes.author,
-                slug: item.attributes.slug,                
+                slug: item.attributes.slug,
                 featured_image: item.attributes.featured_image,
                 tags: item.attributes.tags
             };
