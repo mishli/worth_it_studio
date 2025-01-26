@@ -48,30 +48,14 @@
             }
         });
     }
-
-    // Calendly
-    document.querySelector('.open-calendly').addEventListener('click', function() {    
-        const script = document.createElement('script');
-        script.src = 'https://assets.calendly.com/assets/external/widget.js';
-        document.body.appendChild(script);
-
-        document.head.insertAdjacentHTML('afterbegin', '<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">');
-
-        const promise = new Promise((resolve, reject) => {
-            script.addEventListener('load', resolve);
-            script.addEventListener('error', reject);
-        });
-
-        promise.then(() => {
-            console.log('Script loaded successfully');
-            Calendly.showPopupWidget('https://calendly.com/worth-it-studio/15min?hide_landing_page_details=1&background_color=ffffff&text_color=413C58&primary_color=4dbedd');return false;
-        }).catch(() => {
-            console.log('Failed to load script');
-        });        
-    });
 })();
 
 // funcs
 function goToUrl(url) {
     document.location.href = url;
 }
+
+function openWhatsApp() {
+    const url = 'https://wa.me/972545845515?text=%D7%94%D7%99%D7%99%20%3A)%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%90%D7%9C%D7%99%D7%9A%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9A%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%9E%D7%95%D7%9F%20%D7%A0%D7%A1%D7%99%D7%95%D7%9F!';
+    window.open(url, '_blank');
+};
