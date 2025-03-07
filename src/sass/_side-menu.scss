@@ -86,7 +86,7 @@
         list-style-type: none;
         padding: 20vh 3em;
         margin: 0;
-        background: $tdbc-color-secondary;
+        background: var(--color-second);
         overflow: hidden;
     }
     
@@ -102,13 +102,13 @@
 
     .menu__link {
         font-size: unquote("min(max(2rem, 3vw), #{$tdbc-h2-font-size})");
-        color: $tdbc-color-body;
+        color: var(--color-body);
         text-decoration: none;
 
         &:focus,
         &:hover {
             outline: none;
-            color: $tdbc-color-primary;
+            color: var(--color-main);
         }
     }
 }
