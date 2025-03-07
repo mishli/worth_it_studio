@@ -5,7 +5,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	background-color: tdbc-color("background");
+	background-color: var(--color-white);
 	color: var(--color-body);
 	font-family: $tdbc-font-family;
     padding-top: 72px;
@@ -213,5 +213,5 @@ article {
 hr {
 	margin-top: 4rem;
 	margin-bottom: 4rem;
-	border: 1px solid tdbc-color("secondary");
+	border: 1px solid var(--color-second);
 }

@@ -1,49 +1,13 @@
 :root {
-    --color-main: #4DBEDD;
+    --color-main: #67B2AD;
     --color-second: #FDCA40;
-    --color-third: #584A96;
+    --color-third: #565676;
     --color-body: #413C58;
     --color-bg: #FAFAFA;
     --color-white: #FFFFFF;
+	--color-gray: #A6A9BB;
 }
 
-
-$tdbc-color-primary: #4DBEDD !default;
-$tdbc-color-secondary: #FDCA40 !default;
-$tdbc-color-body: #413C58 !default;
-$tdbc-color-background: #FAFAFA !default;
-// 584A96
-
-$tdbc-brand-colors: (
-	"primary": $tdbc-color-primary,
-	"secondary": $tdbc-color-secondary
-) !default;
-
-$tdbc-color-gray: mix(#EEEDF3, $tdbc-color-body, 70%) !default;
-
-$tdbc-colors: map-merge(
-	$tdbc-brand-colors,
-	(
-		"text": $tdbc-color-body,
-		"background": $tdbc-color-background,
-		"light": #fff,
-		"dark": rgba(0 0 0 / 87%),
-		"gray": $tdbc-color-gray
-	)
-);
-
-@function tdbc-color($key) {
-	@return map-get($tdbc-colors, $key);
-}
-
-// Add/remove to selectively generate `ink` (text color) classes
-$tdbc-ink-colors: "primary", "secondary", "text", "gray", "light", "dark" !default;
-
-// Add/remove to selectively generate `background` (text color) classes
-$tdbc-background-colors: "primary", "secondary", "background", "gray", "light" !default;
-
-$tdbc-button-variants: "primary", "secondary", "light", "gray" !default;
-$tdbc-link-color: tdbc-color("primary") !default;
 $tdbc-border-radius: 8px !default;
 
 $tdbc-font-family: "Rubik", sans-serif !default;

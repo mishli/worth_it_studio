@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     width: 100%;
-	background-color: tdbc-color("primary");
+	background-color: var(--color-main);
     z-index: 10000;
 
 	.nav-content {
@@ -113,7 +113,7 @@
 	}
 	
 	a:not(.tdbc-button) {
-		color: tdbc-color("light");
+		color: var(--color-white);
 		text-decoration: none;
 	}
 
@@ -121,7 +121,7 @@
 		border-radius: math.div($tdbc-border-radius, 2);
 		outline-color: transparent;
 		outline-style: solid;
-		box-shadow: 0 0 1px 2px tdbc-color("light");
+		box-shadow: 0 0 1px 2px var(--color-white);
 	}
 }
 
