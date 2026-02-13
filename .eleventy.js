@@ -31,13 +31,13 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 	eleventyConfig.addShortcode("packageVersion", () => `v${packageVersion}`);
 
-    // eleventyConfig.addPlugin(i18n, {
-    //     translations,
-    //     defaultLanguage: "he-IL",
-    //     fallbackLocales: {
-    //         'en-US': 'he-IL'
-    //     }
-    // });
+    eleventyConfig.addPlugin(i18n, {
+        translations,
+        defaultLanguage: "he-IL",
+        fallbackLocales: {
+            'en-US': 'he-IL'
+        }
+    });
 
     eleventyConfig.addCollection("pages_he", function (collection) {
         return collection.getFilteredByGlob("./src/pages/*.njk");

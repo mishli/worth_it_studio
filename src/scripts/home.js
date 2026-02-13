@@ -6,7 +6,6 @@
     // Initial fold animations
     createRevealEffect('home-fold-image', {
         color: 'var(--color-second)',
-        direction: 'rl',
         immediate: true
     });
 
