@@ -159,6 +159,15 @@ footer {
     align-items: center;
     padding: 40px 0 60px 0;
 
+    .footer-accessibility-link {
+        display: block;
+        margin-top: 24px;
+        font-size: em(14px);
+        color: var(--color-body);
+        opacity: 0.6;
+        text-decoration: none;
+    }
+
     &__contact-box {
         display: flex;
         flex-direction: column;

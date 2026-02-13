@@ -34,5 +34,9 @@ module.exports = {
     footer_cta_whatsapp_button: {
         'he-IL': 'בואי נעבור לוואטסאפ',
         'en-US': 'Let\'s chat on WhatsApp'
+    },
+    footer_accessibility_link: {
+        'he-IL': 'הצהרת נגישות',
+        'en-US': 'Accessibility Statement'
     }
 };
