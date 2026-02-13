@@ -3,6 +3,7 @@
 .rev-title {
 	font-size: $tdbc-h1-font-size;
 	font-size: unquote("min(max(3rem, 5vw), #{$tdbc-h1-font-size})");
+    
 }
 
 .rev-title-inner {
@@ -10,6 +11,7 @@
 	display: inline-block;
 	position: relative;
     padding: 0 8px;
+    font-weight: 500;
 
     &.nowrap {
         @include mq($mobile-l) {        

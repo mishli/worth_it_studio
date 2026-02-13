@@ -22,4 +22,10 @@
         backgroundClass: 'blue',
         onComplete: (id) => addBg(id, 'blue')
     });
+
+    createRevealEffect('mystory-content-title-4', {
+        delay: 800,
+        backgroundClass: 'blue',
+        onComplete: (id) => addBg(id, 'blue')
+    });
 })();
