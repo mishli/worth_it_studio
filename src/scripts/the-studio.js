@@ -14,4 +14,9 @@
     createRevealEffect('the-studio-sub-1', {
         onComplete: (id) => addBg(id, 'blue')
     });
+
+    createRevealEffect('the-studio-sub-2', {
+        delay: 400,
+        onComplete: (id) => addBg(id, 'blue')
+    });
 })();
