@@ -5,13 +5,15 @@ const addClass = (el, ...classes) => el.classList.add(...classes);
 const removeClass = (el, ...classes) => el.classList.remove(...classes);
 const addBg = (id, color, prefix = 'title-bg') => addClass(document.getElementById(id), prefix, color);
 
+var isRtl = document.documentElement.dir === 'rtl';
+
 function createRevealEffect(elementId, options = {}) {
     const element = document.getElementById(elementId);
     if (!element) return;
-    
+
     const {
         color = getCssVar(element, '--color-main'),
-        direction = 'rl',
+        direction = isRtl ? 'rl' : 'lr',
         duration = 500,
         delay = 0,
         immediate = false,

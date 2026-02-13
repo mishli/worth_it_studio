@@ -3,7 +3,7 @@
 {% set navPages = collections["pages_" + lang] | eleventyNavigation %}
 
 <li class="menu__item">
-    <a href="/" class="menu__link" {% if currentUrl === '/' %}aria-current="page" data-active="active"{% endif %}>ראשי</a>
+    <a href="{{ homeUrl }}" class="menu__link" {% if currentUrl === homeUrl %}aria-current="page" data-active="active"{% endif %}>{{ "nav_home" | i18n({}, locale) }}</a>
 </li>
 {% for page in navPages %}
 <li class="menu__item">
@@ -14,3 +14,21 @@
     </a>
 </li>
 {%- endfor %}
+<li class="menu__item">
+    {% if lang == 'en' %}
+        {% set switchUrl = "/" %}
+        {% for p in collections.pages_he %}
+            {% if p.data.translationKey and p.data.translationKey == translationKey %}
+                {% set switchUrl = p.url %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% set switchUrl = "/en/" %}
+        {% for p in collections.pages_en %}
+            {% if p.data.translationKey and p.data.translationKey == translationKey %}
+                {% set switchUrl = p.url %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <a href="{{ switchUrl }}" class="menu__link lang-switch">{{ "nav_lang_switch" | i18n({}, locale) }}</a>
+</li>
