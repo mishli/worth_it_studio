@@ -147,7 +147,7 @@
 
 .contact-message {
     position: fixed;
-    bottom: 0;
+    bottom: 24px;
     left: 50%;
     transform: translate(-50%, 0);
     width: 300px;
@@ -170,5 +170,213 @@
 
     p {
         margin: 0;
+    }
+}
+
+// Online details section - tighter spacing
+.online-details {
+    padding-top: 0;
+
+    @include mq($tablet) {
+        padding-top: 16px;
+    }
+
+    .content-block {
+        margin-top: 0;
+    }
+}
+
+// Standalone contact page - split panel layout
+.contact-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 72px);
+
+    @include mq($tablet) {
+        flex-direction: row;
+    }
+
+    &__panel {
+        background-color: var(--color-second);
+        padding: 48px 24px 40px;
+        display: flex;
+        align-items: flex-start;
+
+        @include mq($tablet) {
+            width: 42%;
+            min-height: calc(100vh - 72px);
+            padding: 80px 48px 60px;
+        }
+
+        @include mq($desktop) {
+            padding: 100px 64px 60px;
+        }
+    }
+
+    &__panel-content {
+        h1 {
+            font-size: unquote("min(max(2.2rem, 4vw), 3.5rem)");
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 0.5em;
+            color: var(--color-body);
+        }
+
+        > p {
+            font-size: em(18px);
+            line-height: 1.7;
+            color: var(--color-body);
+            opacity: 0.75;
+            margin-bottom: 0;
+        }
+    }
+
+    &__quote {
+        margin: 32px 0 0;
+        padding: 0;
+        padding-inline-start: 16px;
+        border: none;
+        border-inline-start: 3px solid var(--color-main);
+        font-size: em(16px);
+        font-style: italic;
+        line-height: 1.6;
+        color: var(--color-body);
+        opacity: 0.65;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 40px;
+    }
+
+    &__info-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        text-decoration: none;
+        color: var(--color-body);
+        font-size: em(15px);
+        background-color: rgba(255, 255, 255, 0.45);
+        border-radius: 10px;
+        @include transition(all, 0.25s, ease);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        svg {
+            flex-shrink: 0;
+            color: var(--color-third);
+        }
+
+        span {
+            font-weight: 500;
+        }
+    }
+
+    &__form-side {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 24px 60px;
+
+        @include mq($tablet) {
+            padding: 80px 48px 60px;
+        }
+
+        @include mq($desktop) {
+            padding: 100px 80px 60px;
+        }
+    }
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 440px;
+
+    &__heading {
+        font-size: em(20px);
+        font-weight: 400;
+        color: var(--color-body);
+        margin-bottom: 40px;
+    }
+
+    &__field {
+        position: relative;
+        margin-bottom: 36px;
+    }
+
+    &__label {
+        position: absolute;
+        top: 12px;
+        inset-inline-start: 0;
+        font-size: em(16px);
+        color: var(--color-body);
+        opacity: 0.6;
+        pointer-events: none;
+        transform-origin: top right;
+        @include transition(all, 0.25s, ease);
+
+        [dir="ltr"] & {
+            transform-origin: top left;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        padding: 12px 0 10px;
+        font-size: em(16px);
+        font-family: $tdbc-font-family;
+        font-weight: 400;
+        color: var(--color-body);
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(65, 60, 88, 0.4);
+        border-radius: 0;
+        outline: none;
+        @include transition(border-color, 0.3s, ease);
+
+        &:focus {
+            border-bottom-color: var(--color-main);
+        }
+
+        &:focus ~ .contact-form__label,
+        &:not(:placeholder-shown) ~ .contact-form__label {
+            top: -16px;
+            font-size: em(12px);
+            opacity: 1;
+            color: var(--color-main);
+        }
+    }
+
+    &__textarea {
+        resize: none;
+        overflow: hidden;
+        min-height: 44px;
+    }
+
+    &__submit {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 14px 56px;
+        font-size: em(16px);
+        font-family: $tdbc-font-family;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: var(--color-white);
+        background-color: var(--color-third);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        @include transition(all, 0.3s, ease);
+
+        &:hover {
+            background-color: var(--color-main);
+            transform: translateY(-1px);
+        }
     }
 }
