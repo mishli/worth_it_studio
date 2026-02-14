@@ -15,11 +15,5 @@
         onComplete: (id) => addBg(id, 'blue')
     });
 
-    createRevealEffect('online-sub-2', {
-        onComplete: (id) => addBg(id, 'blue')
-    });
 
-    createRevealEffect('online-sub-3', {
-        onComplete: (id) => addBg(id, 'blue')
-    });
 })();

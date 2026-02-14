@@ -1,0 +1,68 @@
+---
+layout: page.njk
+permalink: /en/contact/
+title: "Worth It Studio | Contact Us"
+description: "Contact Worth It Studio - I'd love to hear from you and answer any questions"
+translationKey: "contact"
+shareImage: "/img/worth-it-logo-square-updated.svg"
+eleventyNavigation:
+    order: 6
+    key: "Contact"
+---
+<script src="{{ '/scripts/contact.js' | url }}" defer></script>
+
+<main class="contact-page">
+    <div class="contact-page__panel">
+        <div class="contact-page__panel-content">
+            <h1>{{ "contact_page_title" | i18n({}, locale) }}</h1>
+            <p>Have a question? Want to hear more? Just thinking about it?<br>I'm here.</p>
+            <blockquote class="contact-page__quote">
+                {{ "contact_page_quote" | i18n({}, locale) }}
+            </blockquote>
+            <div class="contact-page__info">
+                <a href="tel:0545845515" class="contact-page__info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span>054-584-5515</span>
+                </a>
+                <a href="https://www.instagram.com/hadas.worth.it/" target="_blank" class="contact-page__info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <span>hadas.worth.it</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-page__form-side">
+        <h2 class="contact-form__heading">{{ "contact_form_heading" | i18n({}, locale) }}</h2>
+        <form name="contact" method="POST" action="/en/contact/" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+            <input type="hidden" name="form-name" value="contact">
+            <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+            <div class="contact-form__field">
+                <input type="text" id="name" name="name" class="contact-form__input" placeholder=" " required>
+                <label class="contact-form__label" for="name">{{ "contact_form_name" | i18n({}, locale) }}</label>
+            </div>
+
+            <div class="contact-form__field">
+                <input type="tel" id="phone" name="phone" class="contact-form__input" placeholder=" " required>
+                <label class="contact-form__label" for="phone">{{ "contact_form_phone" | i18n({}, locale) }}</label>
+            </div>
+
+            <div class="contact-form__field">
+                <input type="email" id="email" name="email" class="contact-form__input" placeholder=" ">
+                <label class="contact-form__label" for="email">{{ "contact_form_email" | i18n({}, locale) }}</label>
+            </div>
+
+            <div class="contact-form__field">
+                <textarea id="message" name="message" class="contact-form__input contact-form__textarea" placeholder=" " rows="1"></textarea>
+                <label class="contact-form__label" for="message">{{ "contact_form_message" | i18n({}, locale) }}</label>
+            </div>
+
+            <button type="submit" class="contact-form__submit">{{ "contact_form_submit" | i18n({}, locale) }}</button>
+        </form>
+
+        <div class="contact-message" data-success-message>
+            <p>{{ "contact_form_success" | i18n({}, locale) }}</p>
+        </div>
+    </div>
+</main>
