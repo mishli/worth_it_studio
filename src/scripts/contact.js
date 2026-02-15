@@ -5,7 +5,7 @@
 (function() {
     var form = document.querySelector('.contact-form');
     var successMessage = document.querySelector('[data-success-message]');
-    var textarea = document.querySelector('.contact-form__textarea');
+    var textarea = document.querySelector('.contact-form textarea');
 
     if (!form || !successMessage) return;
 
