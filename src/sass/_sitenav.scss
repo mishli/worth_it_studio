@@ -7,8 +7,37 @@
     top: 0;
     left: 0;
     width: 100%;
+    transition: box-shadow 0.3s ease;
 	background-color: var(--color-main);
     z-index: 10000;
+
+    &.is-scrolled {
+        box-shadow: 0 6px 24px rgba(65, 60, 88, 0.18);
+    }
+
+    // reading progress, driven by --scroll-progress from main.js
+    &__progress {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(var(--scroll-progress, 0));
+        transform-origin: 0 50%;
+        background-color: var(--color-second);
+
+        [dir="rtl"] & {
+            transform-origin: 100% 50%;
+        }
+    }
+
+    .logo img {
+        transition: transform 0.5s $tdbc-ease-out;
+    }
+
+    .logo:hover img {
+        transform: rotate(-8deg) scale(1.05);
+    }
 
 	.nav-content {
         display: flex;

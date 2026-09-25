@@ -1,0 +1,13 @@
+{% set content = homeSections[lang] %}
+<section class="stats" aria-label="{{ content.statsLabel }}">
+    <ul class="stats__list list-unstyled" data-stats>
+        {% for stat in content.stats %}
+        <li class="stats__item" data-animate>
+            <span class="stats__value">
+                <span data-counter="{{ stat.value }}" {% if stat.from %}data-counter-from="{{ stat.from }}"{% endif %}>{{ stat.value }}</span>{{ stat.suffix }}
+            </span>
+            <span class="stats__label">{{ stat.label }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

@@ -1,0 +1,19 @@
+{% set content = homeSections[lang] %}
+<section class="steps">
+    <h2 class="rev-title-inner" id="home-steps-title">{{ content.steps.title }}</h2>
+    <ol class="steps__list list-unstyled">
+        {% for step in content.steps.items %}
+        <li class="steps__item" data-animate>
+            <span class="steps__number" aria-hidden="true">0{{ loop.index }}</span>
+            <h3 class="steps__title">{{ step.title }}</h3>
+            <p class="steps__text">{{ step.text }}</p>
+        </li>
+        {% endfor %}
+    </ol>
+    <div class="btn btn-main large steps__cta" data-animate>
+        <button class="whatsapp-button" onclick="openWhatsApp()">
+            {% include 'icon-whatsapp.njk' %}
+            {{ content.trialCta }}
+        </button>
+    </div>
+</section>

@@ -22,14 +22,26 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
                         <p>I believe the key to consistency, especially in fitness, is a combination of enjoyment, commitment to ourselves, and understanding that it's a process. A marathon, not a sprint.</p>
                         <p>My team and I are here to walk this path with you. To discover strengths you didn't know you had, break records and barriers, get stronger, and feel your absolute best.</p>
                         <p>I promise not to give up on you, and not to let you give up on yourself, until we reach your goals together.</p>
+                        <div class="btn btn-main large pulse main-hero__cta">
+                            <button class="whatsapp-button" onclick="openWhatsApp()">
+                                {% include 'icon-whatsapp.njk' %}
+                                {{ homeSections[lang].trialCta }}
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="rev-grid half image" id="home-fold-image">
+                <div class="rev-grid half image main-hero__image" id="home-fold-image">
                     <img class="rev-image" src="/img/content/hadas-worth-it-studio-home.jpg" alt="Hadas Worth It Fitness Studio Happy Training"/>
                 </div>
             </div>
         </section>
 
+        {% include 'home-stats.njk' %}
+    </div>
+
+    {% include 'marquee.njk' %}
+
+    <div class="container">
         <section class="content-section hero split align-right">
             <img src="/img/content/hadas-worth-it-trx-training.jpg" class="section-image" alt="Hadas Worth It with a trainee happy"/>
             <div class="content-block text-start">
@@ -61,5 +73,9 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
             </div>
             <img src="/img/content/hadas-worth-it-personal-attention.jpg" class="section-image" alt="Hadas Worth It Training"/>
         </section>
+
+        {% include 'home-gallery.njk' %}
+
+        {% include 'home-steps.njk' %}
     </div>
 </main>

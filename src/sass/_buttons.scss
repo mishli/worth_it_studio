@@ -154,3 +154,29 @@ button {
         }
     }
 }
+
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+// lift on hover for buttons without the slide effect
+.btn-main:not(.with-effect) {
+    @media (hover: hover) {
+        button:hover,
+        div:hover {
+            transform: translate3d(0, -2px, 0);
+            box-shadow: 0 8px 20px rgba(65, 60, 88, 0.2);
+        }
+    }
+}
+
+// attention ring for the main call to action
+.btn.pulse button {
+    animation: pulse-ring 2.4s ease-out infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}

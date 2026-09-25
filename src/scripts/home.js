@@ -6,7 +6,8 @@
     // Initial fold animations
     createRevealEffect('home-fold-image', {
         color: 'var(--color-second)',
-        immediate: true
+        immediate: true,
+        onComplete: (id) => addClass(document.getElementById(id), 'is-framed')
     });
 
     createRevealEffect('home-fold-title', {
@@ -39,4 +40,15 @@
     createRevealEffect('home-content-tailored-title', {
         onComplete: (id) => addBg(id, 'blue')
     });
+
+    createRevealEffect('home-gallery-title', {
+        onComplete: (id) => addBg(id, 'blue')
+    });
+
+    createRevealEffect('home-steps-title', {
+        onComplete: (id) => addBg(id, 'blue')
+    });
+
+    // Stats count up once visible
+    createCounterAnimation(document.querySelector('[data-stats]'));
 })();

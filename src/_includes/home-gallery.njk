@@ -1,0 +1,14 @@
+{% set gallery = homeSections[lang].gallery %}
+<section class="gallery">
+    <header class="gallery__header">
+        <h2 class="rev-title-inner" id="home-gallery-title">{{ gallery.title }}</h2>
+        <p class="gallery__subtitle">{{ gallery.subtitle }}</p>
+    </header>
+    <div class="gallery__grid">
+        {% for image in gallery.images %}
+        <figure class="gallery__item" data-animate="zoom">
+            <img class="gallery__image" src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
+        </figure>
+        {% endfor %}
+    </div>
+</section>

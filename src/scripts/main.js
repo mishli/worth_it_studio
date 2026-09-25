@@ -48,6 +48,33 @@
             }
         });
     }
+
+    // Nav scroll state + reading progress
+    var topNav = document.querySelector('.nav'),
+        ticking = false;
+
+    function updateNav() {
+        var scrollable = document.documentElement.scrollHeight - window.innerHeight,
+            progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+
+        topNav.classList.toggle('is-scrolled', window.scrollY > 8);
+        topNav.style.setProperty('--scroll-progress', progress.toFixed(4));
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateNav);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    updateNav();
+
+    // Content scroll animations (the home fold has its own reveal)
+    createScrollAnimations(
+        '[data-animate], .content-section:not(.main-hero) .content-block, .content-section .section-image'
+    );
 })();
 
 // funcs

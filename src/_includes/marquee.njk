@@ -1,0 +1,17 @@
+{% set items = homeSections[lang].marquee %}
+<div class="marquee">
+    <div class="marquee__track">
+        {% for copy in [0, 1] %}
+        <ul class="marquee__list list-unstyled" {% if copy %}aria-hidden="true"{% endif %}>
+            {% for item in items %}
+            <li class="marquee__item">
+                {{ item }}
+                <svg class="marquee__star" width="18" height="18" viewBox="393 4 10 10" aria-hidden="true">
+                    <path d="M402.84 8.83c-.32-.05-.63-.13-.92-.22-2.13-.68-3.34-2.33-3.74-4.46-.04-.2-.34-.2-.38 0-.46 2.47-2 4.22-4.64 4.68-.21.04-.21.33 0 .36 2.62.46 4.18 2.2 4.64 4.65.03.15.2.15.19.15.1 0 .17-.06.19-.15.23-1.26.89-2.98 2.69-3.98.58-.32 1.24-.55 1.97-.67.09-.02.16-.09.16-.18 0-.09-.07-.17-.16-.18z" fill="currentColor"/>
+                </svg>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </div>
+</div>

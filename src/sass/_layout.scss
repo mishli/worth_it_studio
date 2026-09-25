@@ -11,6 +11,43 @@ body {
     padding-top: 72px;
 }
 
+// offset color frame behind section images
+.section-image {
+    --frame-x: 12px;
+    --frame-y: 12px;
+    --frame-color: var(--color-second);
+
+    box-shadow: var(--frame-x) var(--frame-y) 0 var(--frame-color);
+
+    [dir="rtl"] & {
+        --frame-x: -12px;
+    }
+
+    @include mq($tablet) {
+        --frame-x: 20px;
+        --frame-y: 20px;
+
+        [dir="rtl"] & {
+            --frame-x: -20px;
+        }
+    }
+
+    .align-right & {
+        --frame-color: var(--color-main);
+    }
+
+    // frame slides out once the image fades in
+    &.animate-in {
+        transition: opacity 0.8s $tdbc-ease-out, transform 0.8s $tdbc-ease-out,
+            box-shadow 0.8s $tdbc-ease-out 0.35s;
+        box-shadow: 0 0 0 var(--frame-color);
+    }
+
+    &.animate-in.is-visible {
+        box-shadow: var(--frame-x) var(--frame-y) 0 var(--frame-color);
+    }
+}
+
 // stylelint-disable selector-max-type, selector-no-qualifying-type
 .container {
 	width: 100%;
@@ -189,7 +226,12 @@ footer {
         .contact-item {
             display: flex;
             align-items: center;
+            transition: transform 0.3s $tdbc-ease-out;
             text-decoration: none;
+
+            &:hover {
+                transform: translate3d(0, -2px, 0);
+            }
 
             [dir="ltr"] & {
                 flex-direction: row-reverse;
