@@ -1,0 +1,20 @@
+{% set items = homeSections[lang].marquee %}
+{% set sparkleClass = "marquee__star" %}
+<div class="marquee-cross">
+    {% for band in ["yellow", "teal"] %}
+    <div class="marquee {{ band }}" {% if loop.index > 1 %}aria-hidden="true"{% endif %}>
+        <div class="marquee__track">
+            {% for copy in [0, 1] %}
+            <ul class="marquee__list list-unstyled" {% if copy %}aria-hidden="true"{% endif %}>
+                {% for item in items %}
+                <li class="marquee__item">
+                    {{ item }}
+                    {% include 'icon-sparkle.njk' %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>

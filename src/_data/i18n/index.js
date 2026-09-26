@@ -15,6 +15,10 @@ module.exports = {
         'he-IL': 'תפריט',
         'en-US': 'Menu'
     },
+    nav_menu_close: {
+        'he-IL': 'סגירת התפריט',
+        'en-US': 'Close menu'
+    },
     nav_whatsapp_aria: {
         'he-IL': 'שליחת וצאפ',
         'en-US': 'Send WhatsApp message'
@@ -31,6 +35,10 @@ module.exports = {
         'he-IL': 'אשמח לשמוע עליך ולענות על כל שאלה שעולה 😊',
         'en-US': 'I\'d love to hear from you and answer any questions you have 😊'
     },
+    footer_cta_image_alt: {
+        'he-IL': 'הדס מורמת על ידי מתאמנים בסטודיו Worth It',
+        'en-US': 'Hadas lifted up by trainees of Worth It Studio'
+    },
     footer_cta_whatsapp_button: {
         'he-IL': 'בואי נעבור לוואטסאפ',
         'en-US': 'Let\'s chat on WhatsApp'
@@ -38,6 +46,10 @@ module.exports = {
     footer_accessibility_link: {
         'he-IL': 'הצהרת נגישות',
         'en-US': 'Accessibility Statement'
+    },
+    contact_page_eyebrow: {
+        'he-IL': 'סטודיו Worth It · תל אביב',
+        'en-US': 'Worth It Studio · Tel Aviv'
     },
     contact_page_title: {
         'he-IL': 'בואי נדבר',

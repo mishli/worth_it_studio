@@ -1,0 +1,79 @@
+@use "theme" as *;
+
+// Scroll reveal
+// `animate-in` is only added by js (see createScrollAnimations in common.js),
+// so content stays visible when js is off or motion is reduced
+.animate-in {
+    transform: translate3d(0, 32px, 0);
+    transition: opacity 0.8s $tdbc-ease-out, transform 0.8s $tdbc-ease-out;
+    opacity: 0;
+
+    &[data-animate="zoom"] {
+        transform: scale(0.92);
+    }
+
+    &.is-visible {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes marquee {
+    to {
+        transform: translate3d(var(--marquee-shift), 0, 0);
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(103, 178, 173, 0.6);
+    }
+
+    70%,
+    100% {
+        box-shadow: 0 0 0 16px rgba(103, 178, 173, 0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fade-up {
+    from {
+        transform: translate3d(0, 24px, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+// slow zoom out as a photo settles into place, used by the home hero
+@keyframes settle {
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+// hand-drawn swash stroke drawing itself in (path uses pathLength="1"); the dash is 2 long because
+// non-scaling-stroke measures it before the svg is stretched, and it's dropped once drawn
+@keyframes swash-draw {
+    from {
+        stroke-dasharray: 2;
+        stroke-dashoffset: 2;
+    }
+
+    to {
+        stroke-dasharray: 2;
+        stroke-dashoffset: 0;
+    }
+}

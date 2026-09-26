@@ -1,0 +1,40 @@
+{# hero copy and facts come from homeSections[lang].hero #}
+{% set content = homeSections[lang] %}
+{% set hero = content.hero %}
+<section class="home-hero">
+    <div class="home-hero__media">
+        <img class="home-hero__image" src="/img/content/hadas-worth-it-studio-pepole-2.jpg" alt="{{ hero.imageAlt }}" />
+    </div>
+    <div class="container home-hero__inner">
+        <div class="home-hero__content">
+            <p class="home-hero__eyebrow">{{ hero.eyebrow }}</p>
+            <h1 class="home-hero__title">
+                {% for line in hero.lines %}
+                <span class="home-hero__line {% if loop.index0 == hero.mark %}home-hero__mark{% endif %}" style="--line-index: {{ loop.index0 }}">
+                    {{ line }}
+                    {% if loop.index0 == hero.mark %}{% include 'icon-swash.njk' %}{% endif %}
+                </span>
+                {% endfor %}
+            </h1>
+            <div class="home-hero__actions">
+                <div class="btn btn-main second large pulse home-hero__cta">
+                    <button class="whatsapp-button" onclick="openWhatsApp()">
+                        {% include 'icon-whatsapp.njk' %}
+                        {{ content.trialCta }}
+                    </button>
+                </div>
+                <a href="{{ hero.studioLink.url }}" class="home-hero__link">{{ hero.studioLink.label }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="home-hero__facts">
+        <ul class="container home-hero__facts-list list-unstyled" role="list">
+            {% for fact in hero.facts %}
+            <li class="home-hero__fact" style="--fact-index: {{ loop.index0 }}">
+                <b class="home-hero__fact-value">{{ fact.value }}</b>
+                <span class="home-hero__fact-label">{{ fact.label }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

@@ -91,3 +91,36 @@ blockquote {
 .list-unstyled {
 	list-style: none;
 }
+
+// Hand-drawn swash underline (icon-swash.njk) along the bottom of a position: relative title
+.swash {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0.3em;
+	overflow: visible;
+
+	// the stroke starts low on the inline-start side
+	[dir="rtl"] & {
+		transform: scaleX(-1);
+	}
+}
+
+.swash__path {
+	fill: none;
+	stroke: var(--color-second);
+	stroke-linecap: round;
+	stroke-width: 7;
+	vector-effect: non-scaling-stroke;
+}
+
+// inside a block that fades in on scroll (createScrollAnimations), the line draws itself in after it;
+// without js or with reduced motion there's no animate-in class and it simply shows
+.animate-in:not(.is-visible) .swash {
+	visibility: hidden;
+}
+
+.animate-in.is-visible .swash__path {
+	animation: swash-draw 0.9s $tdbc-ease-out 0.35s backwards;
+}

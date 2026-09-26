@@ -1,58 +1,205 @@
 @use "theme" as *;
 @use "sass:math";
 
-.cta {
+// Rotating text ring (see badge.njk)
+// each character sits at the top of a radius-tall column rotated around the center
+.badge-ring {
+	display: block;
 	position: relative;
 	width: 100%;
-	height: 350px;
-	margin-top: 24px;
-	background-image: url("/img/content/hadas-worth-it-studio-pepole-2.jpg");
-	background-size: cover;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	z-index: 1;
+	height: 100%;
+	animation: spin 24s linear infinite;
 
-	@include mq($desktop) {
-		margin-top: 0;
-		background-attachment: fixed;
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
 	}
 
-	.content-section {
-		justify-content: center;
+	&__char {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 1em;
+		height: 50%;
+		margin-left: -0.5em;
+		transform: rotate(calc(var(--i) * 1turn / var(--total)));
+		transform-origin: 50% 100%;
+		font-size: 0.8rem;
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+// Footer call to action
+.cta-bold {
+	position: relative;
+	padding: 96px 0;
+	background-color: var(--color-body);
+	overflow: hidden;
+	isolation: isolate;
+
+	@include mq($tablet) {
+		display: flex;
 		align-items: center;
+		min-height: 560px;
+		padding: 120px 0;
 	}
 
+	// purple fade from the text side, so the photo stays visible on the other side
 	&::after {
+		position: absolute;
+		inset: 0;
+		background-image: linear-gradient(
+			to right,
+			rgba(65, 60, 88, 0.92) 0%,
+			rgba(65, 60, 88, 0.7) 45%,
+			rgba(65, 60, 88, 0.3) 100%
+		);
 		content: "";
+		z-index: -1;
+
+		[dir="rtl"] & {
+			background-image: linear-gradient(
+				to left,
+				rgba(65, 60, 88, 0.92) 0%,
+				rgba(65, 60, 88, 0.7) 45%,
+				rgba(65, 60, 88, 0.3) 100%
+			);
+		}
+
+		@include mq($tablet, max-width) {
+			background-image: linear-gradient(rgba(65, 60, 88, 0.85), rgba(65, 60, 88, 0.6));
+
+			[dir="rtl"] & {
+				background-image: linear-gradient(rgba(65, 60, 88, 0.85), rgba(65, 60, 88, 0.6));
+			}
+		}
+	}
+
+	&__bg {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		z-index: -1;
+		object-fit: cover;
+		object-position: 50% 35%;
+		z-index: -2;
 	}
 
-	&.cta-footer {
-		h2,
-		p {
-			color: var(--color-white);
-		}
+	// text on the start side, the whatsapp orb on the far side
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 32px;
 
-		h2 {
-			margin-bottom: 8px;
-			font-weight: 700;
+		@include mq($tablet) {
+			flex-direction: row;
+			justify-content: space-between;
 		}
+	}
 
-		.btn {
-			margin-top: 8px;
+	&__content {
+		max-width: 620px;
+		text-align: center;
 
-			button {
-				display: flex;
-				align-items: center;
-				gap: 8px;
-			}
+		@include mq($tablet) {
+			text-align: start;
 		}
+	}
+
+	&__title {
+		margin-bottom: 12px;
+		color: var(--color-white);
+		font-size: 2.5rem;
+		font-size: unquote("min(max(2.5rem, 6vw), 5.5rem)");
+		font-weight: bold;
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+
+	&__text {
+		margin: 0;
+		color: var(--color-cream);
+		font-size: 1.25rem;
+	}
+}
+
+// Whatsapp button: a yellow core inside a hairline circle, wrapped by a slowly spinning label
+.cta-orb {
+	--orb-size: 164px;
+	// breathing room between the disc edge and the label
+	--ring-inset: 12px;
+
+	display: grid;
+	position: relative;
+	flex: none;
+	width: var(--orb-size);
+	height: var(--orb-size);
+	border-radius: 50%;
+	// soft glass disc, so the label stays readable over the lighter side of the photo
+	background-color: rgba(65, 60, 88, 0.55);
+	color: var(--color-cream);
+	place-items: center;
+	backdrop-filter: blur(6px);
+
+	@include mq($tablet) {
+		--orb-size: 196px;
+		--ring-inset: 14px;
+	}
+
+	// hairline between the label and the core
+	&::before {
+		position: absolute;
+		inset: 21%;
+		border: 1px solid rgba(254, 239, 197, 0.35);
+		border-radius: 50%;
+		content: "";
+	}
+
+	&__ring {
+		position: absolute;
+		inset: var(--ring-inset);
+		width: auto;
+		height: auto;
+
+		// letters sized from the label length (--total, set by badge.njk), so any label fills the circle evenly
+		.badge-ring__char {
+			font-size: calc((var(--orb-size) - 2 * var(--ring-inset)) * 3.1416 / var(--total) / 1.12);
+			font-weight: 500;
+		}
+	}
+
+	&__core {
+		display: grid;
+		width: 46%;
+		height: 46%;
+		transition: transform 0.5s $tdbc-ease-out, background-color 0.3s ease;
+		border-radius: 50%;
+		background-color: var(--color-second);
+		color: var(--color-body);
+		place-items: center;
+
+		svg {
+			width: 42%;
+			height: 42%;
+		}
+	}
+
+	&:hover &__core {
+		transform: scale(1.08) rotate(-10deg);
+		background-color: var(--color-cream);
+	}
+
+	// name for assistive tech; the ring text is decorative
+	&__label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		white-space: nowrap;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
 	}
 }
 
@@ -61,14 +208,14 @@
 
 	.calendly-popup {
 		@include mq(975, max-width) {
-			max-height: 600px !important;
 			top: 50% !important;
-			transform: translate(-50%, -50%) !important;
-			height: 600px !important;
-			width: calc(100% - 40px) !important;
-			left: 50% !important;
 			right: initial !important;
 			bottom: initial !important;
+			left: 50% !important;
+			width: calc(100% - 40px) !important;
+			height: 600px !important;
+			max-height: 600px !important;
+			transform: translate(-50%, -50%) !important;
 			border-radius: 8px !important;
 			overflow: hidden !important;
 		}
@@ -80,18 +227,18 @@
 		}
 
 		&:before {
-			content: "";
+			display: flex;
 			position: absolute;
 			top: -10px;
 			left: -10px;
-			width: 40px;
-			height: 40px;
-			background-color: var(--color-main);
-			z-index: -1;
-			display: flex;
 			align-items: center;
 			justify-content: center;
+			width: 40px;
+			height: 40px;
 			border-radius: 50%;
+			background-color: var(--color-main);
+			content: "";
+			z-index: -1;
 		}
 	}
 }

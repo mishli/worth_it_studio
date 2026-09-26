@@ -4,36 +4,37 @@ title: "Worth It Studio | Hadas Mishli | Boutique Strength Training Studio in Te
 description: "A fitness studio in central Tel Aviv, small group training in an addictive atmosphere.
 Come discover your new studio that feels like home! Let's get stronger and have fun together!"
 shareImage: "/img/content/hadas-worth-it-training-3.JPG"
+navOverlay: true
 ---
 <script src="{{ '/scripts/home.js' | url }}" defer></script>
 
 <main class="page-home">
-    <div class="container">
-        <section class="content-section main-hero">
-            <div class="rev-image-text">
-                <div class="rev-grid half above">
-                    <h1 class="jumbo">
-                        <div class="rev-title-inner nowrap" id="home-fold-title">Your new home for fitness</div><br/>
-                        <div class="rev-title-inner nowrap" id="home-fold-subtitle">& happiness in Tel Aviv!</div>
-                    </h1>
+    {% include 'home-hero.njk' %}
 
-                    <div class="rev-grid-content" id="home-fold-content">
-                        <h2 class="rev-title-inner title-bg blue">So glad you're here!</h2>
-                        <p>I believe the key to consistency, especially in fitness, is a combination of enjoyment, commitment to ourselves, and understanding that it's a process. A marathon, not a sprint.</p>
-                        <p>My team and I are here to walk this path with you. To discover strengths you didn't know you had, break records and barriers, get stronger, and feel your absolute best.</p>
-                        <p>I promise not to give up on you, and not to let you give up on yourself, until we reach your goals together.</p>
-                    </div>
-                </div>
-                <div class="rev-grid half image" id="home-fold-image">
-                    <img class="rev-image" src="/img/content/hadas-worth-it-studio-home.jpg" alt="Hadas Worth It Fitness Studio Happy Training"/>
-                </div>
+    {% include 'marquee.njk' %}
+
+    <section class="intro">
+        <div class="container intro__inner">
+            <h2 class="intro__title" data-animate>
+                So glad you're here!
+                {% include 'icon-swash.njk' %}
+            </h2>
+            <div class="intro__text" data-animate>
+                <p class="intro__lead">I believe the key to consistency, especially in fitness, is a combination of enjoyment, commitment to ourselves, and understanding that it's a process. A marathon, not a sprint.</p>
+                <p>My team and I are here to walk this path with you. To discover strengths you didn't know you had, break records and barriers, get stronger, and feel your absolute best.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="content-section hero split align-right">
-            <img src="/img/content/hadas-worth-it-trx-training.jpg" class="section-image" alt="Hadas Worth It with a trainee happy"/>
-            <div class="content-block text-start">
-                <h2 class="rev-title-inner" id="home-content-why-title">Why WORTH IT?</h2>
+    {% include 'home-manifesto.njk' %}
+
+    <section class="feature yellow">
+        <div class="container feature__inner">
+            <div class="feature__media" data-animate="zoom">
+                <img src="/img/content/hadas-worth-it-trx-training.jpg" class="feature__image" data-parallax alt="Hadas Worth It with a trainee happy"/>
+            </div>
+            <div class="feature__content" data-animate>
+                <h2 class="rev-title-inner feature__title" id="home-content-why-title">Why WORTH IT?{% include 'icon-swash.njk' %}</h2>
                 <p>What makes the studio unique is the combination of high professionalism, personal attention, a customized training plan, and an atmosphere that's hard to put into words.</p>
                 <p>It might sound clich&eacute;... but you really have to experience it to understand 😊</p>
                 <p>Here, real connections are formed. Here, routines are built. And here, people stick with it because it's simply a joy to show up.</p>
@@ -48,18 +49,28 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="content-section hero split align-left">
-            <div class="content-block text-end">
-                <h2 class="rev-title-inner" id="home-content-tailored-title">What do we mean by personalized?</h2>
+    {% include 'home-stats.njk' %}
+
+    <section class="feature cream reverse">
+        <div class="container feature__inner">
+            <div class="feature__media" data-animate="zoom">
+                <img src="/img/content/hadas-worth-it-personal-attention.jpg" class="feature__image" data-parallax alt="Hadas Worth It Training"/>
+            </div>
+            <div class="feature__content" data-animate>
+                <h2 class="rev-title-inner feature__title" id="home-content-tailored-title">What do we mean by personalized?{% include 'icon-swash.njk' %}</h2>
                 <p>Everything. Is. Tailored. To you. <br>Even in a group session.</p>
                 <p>Each session has a maximum of 5 participants, so we can truly get to know you <br>and tailor the workout precisely to your needs.</p>
                 <p>Every session is built with individual adjustments for each participant, <br>based on your goals, abilities, pace, and personal journey.</p>
                 <p>So a group session with us is essentially a personal training session at a group session price.</p>
                 <p>There's a process. And there's guidance every step of the way.</p>
             </div>
-            <img src="/img/content/hadas-worth-it-personal-attention.jpg" class="section-image" alt="Hadas Worth It Training"/>
-        </section>
-    </div>
+        </div>
+    </section>
+
+    {% include 'home-gallery.njk' %}
+
+    {% include 'home-steps.njk' %}
 </main>

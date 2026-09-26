@@ -1,0 +1,28 @@
+{% set content = homeSections[lang] %}
+<section class="timeline" data-timeline>
+    <div class="container">
+        <h2 class="rev-title-inner timeline__heading" data-animate>{{ content.steps.title }}{% include 'icon-swash.njk' %}</h2>
+        <div class="timeline__body">
+            <span class="timeline__line" aria-hidden="true">
+                <span class="timeline__fill" data-timeline-fill></span>
+            </span>
+            <ol class="timeline__list list-unstyled">
+                {% for step in content.steps.items %}
+                <li class="timeline__item" data-animate>
+                    <span class="timeline__number" aria-hidden="true">0{{ loop.index }}</span>
+                    <div class="timeline__card">
+                        <h3 class="timeline__title">{{ step.title }}</h3>
+                        <p class="timeline__text">{{ step.text }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="btn btn-main large timeline__cta" data-animate>
+            <button class="whatsapp-button" onclick="openWhatsApp()">
+                {% include 'icon-whatsapp.njk' %}
+                {{ content.trialCta }}
+            </button>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+{% set content = homeSections[lang] %}
+<section class="reel" data-reel>
+    <div class="reel__sticky">
+        <div class="reel__track" data-reel-track>
+            <header class="reel__intro">
+                <h2 class="reel__title">{{ content.gallery.title }}</h2>
+                <p class="reel__subtitle">{{ content.gallery.subtitle }}</p>
+                <span class="reel__hint" aria-hidden="true">{{ content.galleryHint }}</span>
+            </header>
+            {% for image in content.gallery.images %}
+            <figure class="reel__item">
+                <img class="reel__image" src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
+            </figure>
+            {% endfor %}
+        </div>
+    </div>
+</section>

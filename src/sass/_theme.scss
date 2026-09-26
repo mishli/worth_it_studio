@@ -1,6 +1,7 @@
 :root {
     --color-main: #67B2AD;
     --color-second: #FDCA40;
+    --color-cream: #FEEFC5;
     --color-third: #565676;
     --color-body: #413C58;
     --color-bg: #FAFAFA;
@@ -9,6 +10,7 @@
 }
 
 $tdbc-border-radius: 8px !default;
+$tdbc-ease-out: cubic-bezier(0.16, 1, 0.3, 1) !default;
 
 $tdbc-font-family: "Rubik", sans-serif !default;
 $tdbc-strong-font-weight: 400 !default;
@@ -67,4 +69,16 @@ $web: 1300;
 // transition
 @mixin transition($transition-property, $transition-time, $method) {
     transition: $transition-property $transition-time $method;
+}
+// leaf shape: big rounded corners at top-start and bottom-end, small ones elsewhere
+// (logical corners, so the shape mirrors in rtl)
+@mixin leaf-corners($big: 72px, $big-tablet: 120px, $small: 16px) {
+    border-radius: $small;
+    border-start-start-radius: $big;
+    border-end-end-radius: $big;
+
+    @include mq($tablet) {
+        border-start-start-radius: $big-tablet;
+        border-end-end-radius: $big-tablet;
+    }
 }

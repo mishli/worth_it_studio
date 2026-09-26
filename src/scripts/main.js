@@ -48,6 +48,29 @@
             }
         });
     }
+
+    // Nav scroll state
+    var topNav = document.querySelector('.nav'),
+        ticking = false;
+
+    function updateNav() {
+        topNav.classList.toggle('is-scrolled', window.scrollY > 8);
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateNav);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    updateNav();
+
+    // Content scroll animations (the home fold has its own reveal)
+    createScrollAnimations(
+        '[data-animate], .content-section:not(.main-hero) .content-block, .content-section .section-image'
+    );
 })();
 
 // funcs
