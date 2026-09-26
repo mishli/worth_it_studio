@@ -74,15 +74,17 @@
         }
 
         .nav-icon,
-        .whatsapp-icon {
+        .whatsapp-icon,
+        .instagram-icon {
             display: flex;
             align-items: center;
             height: 24px;
             cursor: pointer;
         }
 
-        .whatsapp-icon {
-            margin-inline-start: 12px;
+        .whatsapp-icon,
+        .instagram-icon {
+            margin-inline-start: 14px;
         }        
 
         // the bar fits all links from desktop up; below that the side menu takes over

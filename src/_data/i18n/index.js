@@ -19,6 +19,10 @@ module.exports = {
         'he-IL': 'סגירת התפריט',
         'en-US': 'Close menu'
     },
+    nav_instagram_aria: {
+        'he-IL': 'אינסטגרם',
+        'en-US': 'Instagram'
+    },
     nav_whatsapp_aria: {
         'he-IL': 'שליחת וצאפ',
         'en-US': 'Send WhatsApp message'

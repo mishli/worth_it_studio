@@ -7,7 +7,6 @@
     </div>
     <div class="container home-hero__inner">
         <div class="home-hero__content">
-            <p class="home-hero__eyebrow">{{ hero.eyebrow }}</p>
             <h1 class="home-hero__title">
                 {% for line in hero.lines %}
                 <span class="home-hero__line {% if loop.index0 == hero.mark %}home-hero__mark{% endif %}" style="--line-index: {{ loop.index0 }}">

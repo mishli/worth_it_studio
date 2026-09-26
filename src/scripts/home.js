@@ -30,15 +30,20 @@
         });
     });
 
-    // Gallery reel: the section pins and the photos scroll sideways as you scroll down
-    // (with reduced motion it stays a native swipeable strip)
+    // Gallery reel: on wide screens the section pins and the photos slide sideways as you scroll;
+    // on phones (and with reduced motion) it's a native swipe strip with a progress line
     const reel = document.querySelector('[data-reel]');
     const reelTrack = document.querySelector('[data-reel-track]');
+    const reelStrip = document.querySelector('[data-reel-strip]');
+    const reelProgress = document.querySelector('[data-reel-progress]');
+    const wideScreen = window.matchMedia('(min-width: 50em)');
     let reelDistance = 0;
+    let reelWidth = 0;
 
     function layoutReel() {
-        const isPinned = !prefersReducedMotion;
+        const isPinned = wideScreen.matches && !prefersReducedMotion;
 
+        reelWidth = window.innerWidth;
         reel.classList.toggle('is-pinned', isPinned);
         reel.style.height = '';
         reelTrack.style.transform = '';
@@ -49,9 +54,22 @@
         reel.style.height = `${reelDistance + window.innerHeight}px`;
     }
 
+    function updateReelProgress() {
+        const scrollable = reelStrip.scrollWidth - reelStrip.clientWidth;
+        const progress = scrollable > 0 ? Math.abs(reelStrip.scrollLeft) / scrollable : 0;
+
+        // show at least a sliver, so the line reads as a track to swipe along
+        reelProgress.style.setProperty('--reel-progress', Math.max(progress, 0.08).toFixed(3));
+    }
+
     if (reel && reelTrack) {
         layoutReel();
-        window.addEventListener('resize', layoutReel);
+
+        // phones fire resize when the address bar shows/hides; only a width change needs a new layout
+        window.addEventListener('resize', () => {
+            if (window.innerWidth !== reelWidth) layoutReel();
+        });
+        wideScreen.addEventListener('change', layoutReel);
 
         createScrollScene(reel, (rect, viewportHeight) => {
             if (!reel.classList.contains('is-pinned')) return;
@@ -61,6 +79,11 @@
 
             reelTrack.style.transform = `translate3d(${shift}px, 0, 0)`;
         });
+    }
+
+    if (reelStrip && reelProgress) {
+        updateReelProgress();
+        reelStrip.addEventListener('scroll', updateReelProgress, { passive: true });
     }
 
     // Steps timeline: the line fills as you scroll past it

@@ -16,6 +16,8 @@
     flex-direction: column;
     justify-content: flex-end;
     min-height: 100vh;
+    // phones: the visible height with the browser bars shown, so the facts strip isn't hidden behind them
+    min-height: unquote("100svh");
     background-color: var(--color-body);
     color: var(--color-white);
     overflow: hidden;
@@ -70,7 +72,9 @@
 
     &__inner {
         position: relative;
-        padding-top: 300px;
+        padding-top: 140px;
+        // leave the photo room at the top, relative to the visible height so everything fits one screen
+        padding-top: unquote("max(140px, 25svh)");
         z-index: 1;
 
         @include mq($tablet) {
@@ -82,24 +86,8 @@
         max-width: 640px;
     }
 
-    &__eyebrow {
-        display: inline-flex;
-        margin: 0 0 24px;
-        padding: 6px 16px;
-        animation: fade-up 0.8s $tdbc-ease-out 0.1s backwards;
-        border: 1px solid rgba(254, 239, 197, 0.35);
-        border-radius: 999px;
-        color: var(--color-cream);
-        font-size: 0.8rem;
-        letter-spacing: 0.04em;
-
-        @include mq($mobile-l) {
-            font-size: 0.95rem;
-        }
-    }
-
     &__title {
-        margin: 0 0 36px;
+        margin: 0 0 28px;
         color: var(--color-white);
         font-size: 2.75rem;
         font-size: unquote("min(max(2.75rem, 5.2vw), 5.5rem)");
@@ -155,10 +143,10 @@
     }
 
     // lifted clear of the crossing marquee bands, which overlap the hero bottom
-    // (their negative margin-top plus the -3deg tilt, ~2.6vw at the edges)
+    // (their negative margin-top, kept in sync with .marquee-cross, plus the -3deg tilt, ~2.6vw at the edges)
     &__facts {
         position: relative;
-        margin-bottom: unquote("calc(64px + 2.6vw)");
+        margin-bottom: unquote("calc(36px + 2.6vw)");
         z-index: 1;
 
         @include mq($tablet) {
@@ -172,10 +160,10 @@
 
     &__facts-list {
         display: flex;
-        margin-top: 28px;
+        margin-top: 24px;
         margin-bottom: 0;
-        padding-top: 20px;
-        padding-bottom: 28px;
+        padding-top: 16px;
+        padding-bottom: 20px;
         border-top: 1px solid rgba(254, 239, 197, 0.16);
 
         @include mq($tablet) {
@@ -232,7 +220,6 @@
     // skip the staggered entrance entirely (the global reset only shortens durations, not delays)
     @media (prefers-reduced-motion: reduce) {
         &__image,
-        &__eyebrow,
         &__line,
         &__actions,
         &__fact,
@@ -246,7 +233,7 @@
 .marquee-cross {
     position: relative;
     height: 150px;
-    margin-top: -64px;
+    margin-top: -36px;
     pointer-events: none;
     z-index: 2;
 
@@ -589,31 +576,17 @@
     }
 }
 
-// Gallery reel - pinned + scroll-driven (see home.js); a native swipeable strip with reduced motion
+// Gallery reel - phones: native swipe strip with a progress line;
+// wide screens: pinned and scroll-driven (see home.js); reduced motion keeps the strip everywhere
 .reel {
     padding: 72px 0;
 
-    &__track {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 24px 16px;
-        overflow-x: auto;
-        // keeps the snapped first card off the screen edge
-        scroll-padding-inline: 16px;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-    }
-
     &__intro {
-        display: flex;
-        flex: none;
-        flex-direction: column;
-        justify-content: center;
-        width: 78vw;
-        max-width: 440px;
-        padding-inline-end: 16px;
-        scroll-snap-align: start;
+        padding: 0 16px;
+
+        @include mq($tablet) {
+            padding: 0 40px;
+        }
     }
 
     &__title {
@@ -626,7 +599,7 @@
     }
 
     &__subtitle {
-        margin: 0 0 24px;
+        margin: 0 0 16px;
         color: var(--color-third);
         font-size: 1.25rem;
     }
@@ -647,27 +620,40 @@
         }
     }
 
+    // the next photo peeks in, so it's clear the strip swipes
+    &__strip {
+        display: flex;
+        gap: 14px;
+        padding: 28px 16px 32px;
+        overflow-x: auto;
+        // keeps the snapped card off the screen edge
+        scroll-padding-inline: 16px;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
     &__item {
         flex: none;
-        width: 72vw;
+        width: 76vw;
         max-width: 440px;
-        height: 420px;
         margin: 0;
+        aspect-ratio: 4 / 5;
         transition: transform 0.6s $tdbc-ease-out;
         border-radius: 24px;
         overflow: hidden;
-        scroll-snap-align: center;
+        scroll-snap-align: start;
 
         &:nth-child(2n) {
-            transform: rotate(-2deg);
+            transform: rotate(-1.5deg);
         }
 
         &:nth-child(2n + 1) {
-            transform: rotate(2deg);
-        }
-
-        &:nth-child(3n) {
-            height: 340px;
+            transform: rotate(1.5deg);
         }
 
         &:hover {
@@ -681,6 +667,27 @@
         object-fit: cover;
     }
 
+    // swipe position, driven by --reel-progress from home.js
+    &__progress {
+        height: 3px;
+        margin: 0 16px;
+        border-radius: 3px;
+        background-color: rgba(65, 60, 88, 0.12);
+        overflow: hidden;
+    }
+
+    &__progress-fill {
+        display: block;
+        height: 100%;
+        transform: scaleX(var(--reel-progress, 0));
+        transform-origin: 0 50%;
+        background-color: var(--color-main);
+
+        [dir="rtl"] & {
+            transform-origin: 100% 50%;
+        }
+    }
+
     &.is-pinned {
         padding: 0;
     }
@@ -691,48 +698,40 @@
         top: 0;
         align-items: center;
         height: 100vh;
-        // phones: the visible height, without the browser bars
-        height: unquote("100svh");
         overflow: hidden;
     }
 
     &.is-pinned &__track {
-        gap: 24px;
-        padding: 0 20px;
-        overflow: visible;
-        scroll-snap-type: none;
+        display: flex;
+        align-items: center;
+        gap: 48px;
+        padding: 0 max(40px, calc((100vw - #{$web}px) / 2 + 40px));
         will-change: transform;
+    }
 
-        @include mq($tablet) {
-            gap: 48px;
-            padding: 0 max(40px, calc((100vw - #{$web}px) / 2 + 40px));
-        }
+    // the photos join the track, so the intro and photos slide together
+    &.is-pinned &__strip {
+        display: contents;
     }
 
     &.is-pinned &__intro {
-        width: 80vw;
-
-        @include mq($tablet) {
-            width: 32vw;
-        }
+        flex: none;
+        width: 32vw;
+        padding: 0;
     }
 
     &.is-pinned &__item {
-        width: 72vw;
-        height: 56vh;
+        width: 32vw;
+        height: 64vh;
+        aspect-ratio: auto;
 
         &:nth-child(3n) {
-            height: 46vh;
+            height: 52vh;
         }
+    }
 
-        @include mq($tablet) {
-            width: 32vw;
-            height: 64vh;
-
-            &:nth-child(3n) {
-                height: 52vh;
-            }
-        }
+    &.is-pinned &__progress {
+        display: none;
     }
 }
 

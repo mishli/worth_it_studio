@@ -4,7 +4,6 @@ module.exports = {
 	he: {
 		trialCta: "בואי נקבע אימון ניסיון",
 		hero: {
-			eyebrow: "סטודיו בוטיק לאימוני כוח · תל אביב",
 			lines: ["ברוכה הבאה", "לבית החדש שלך", "לכושר ולאושר בתל אביב!"],
 			mark: 1,
 			imageAlt: "מתאמנות Worth It עם הדס בסטודיו",
@@ -24,7 +23,7 @@ module.exports = {
 		stats: [
 			{ value: 5, label: "מתאמנות לכל היותר בכל אימון" },
 			{ value: 100, suffix: "%", label: "התאמה אישית, גם באימון קבוצתי" },
-			{ value: 2010, from: 1990, label: "השנה שבה הספורט שינה לי את החיים" }
+			{ value: 10, suffix: "+", label: "שנות ניסיון באימון" }
 		],
 		marquee: [
 			"אימוני כוח",
@@ -69,7 +68,6 @@ module.exports = {
 	en: {
 		trialCta: "Book a trial session",
 		hero: {
-			eyebrow: "Boutique strength training studio · Tel Aviv",
 			lines: ["Your new home", "for fitness & happiness", "in Tel Aviv!"],
 			mark: 0,
 			imageAlt: "Worth It trainees with Hadas at the studio",
@@ -89,7 +87,7 @@ module.exports = {
 		stats: [
 			{ value: 5, label: "Trainees max per session" },
 			{ value: 100, suffix: "%", label: "Personally tailored, even in a group" },
-			{ value: 2010, from: 1990, label: "The year fitness changed my life" }
+			{ value: 10, suffix: "+", label: "Years of coaching experience" }
 		],
 		marquee: [
 			"Strength training",

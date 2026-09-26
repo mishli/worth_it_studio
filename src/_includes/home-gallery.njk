@@ -1,4 +1,5 @@
 {% set content = homeSections[lang] %}
+{# phones: title above a native swipe strip with a progress line; wide screens: the section pins and the whole track slides (home.js) #}
 <section class="reel" data-reel>
     <div class="reel__sticky">
         <div class="reel__track" data-reel-track>
@@ -7,11 +8,16 @@
                 <p class="reel__subtitle">{{ content.gallery.subtitle }}</p>
                 <span class="reel__hint" aria-hidden="true">{{ content.galleryHint }}</span>
             </header>
-            {% for image in content.gallery.images %}
-            <figure class="reel__item">
-                <img class="reel__image" src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
-            </figure>
-            {% endfor %}
+            <div class="reel__strip" data-reel-strip>
+                {% for image in content.gallery.images %}
+                <figure class="reel__item">
+                    <img class="reel__image" src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="reel__progress" aria-hidden="true">
+            <span class="reel__progress-fill" data-reel-progress></span>
         </div>
     </div>
 </section>
