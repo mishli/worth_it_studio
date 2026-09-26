@@ -1,8 +1,15 @@
-// Structured content for the home page sections (stats, marquee, gallery, steps),
+// Structured content for the home page sections (hero, manifesto, stats, marquee, gallery, steps),
 // keyed by lang so both home pages render the same includes.
 module.exports = {
 	he: {
 		trialCta: "בואי נקבע אימון ניסיון",
+		heroEyebrow: "סטודיו בוטיק לאימוני כוח · תל אביב",
+		badge: "WORTH IT ✦ FITNESS STUDIO ✦ TEL AVIV ✦ ",
+		manifesto: {
+			text: "אני מבטיחה לא לוותר לך, ולא לתת לך לוותר לעצמך, עד שנשיג יחד את המטרות שלך.",
+			sign: "הדס משלי ויספלנר"
+		},
+		galleryHint: "גללי להצצה",
 		statsLabel: "Worth It במספרים",
 		stats: [
 			{ value: 5, label: "מתאמנות לכל היותר בכל אימון" },
@@ -50,6 +57,13 @@ module.exports = {
 	},
 	en: {
 		trialCta: "Book a trial session",
+		heroEyebrow: "Boutique strength training studio · Tel Aviv",
+		badge: "WORTH IT ✦ FITNESS STUDIO ✦ TEL AVIV ✦ ",
+		manifesto: {
+			text: "I promise not to give up on you, and not to let you give up on yourself, until we reach your goals together.",
+			sign: "Hadas Mishli Weisflener"
+		},
+		galleryHint: "Scroll for a peek",
 		statsLabel: "Worth It in numbers",
 		stats: [
 			{ value: 5, label: "Trainees max per session" },

@@ -1,0 +1,13 @@
+{#
+    rotating text ring; set badgeText, badgeRtl and optionally badgeClass before including.
+    characters are placed one by one around the circle (svg textPath lays hebrew out backwards),
+    rtl text is placed in reverse so it reads right-to-left around the ring
+#}
+{% if badgeRtl %}
+    {% set badgeChars = badgeText | list | reverse %}
+{% else %}
+    {% set badgeChars = badgeText | list %}
+{% endif %}
+<span class="badge-ring {{ badgeClass }}" style="--total: {{ badgeChars | length }}" aria-hidden="true">
+    {%- for char in badgeChars %}<span class="badge-ring__char" style="--i: {{ loop.index0 }}">{{ char }}</span>{% endfor -%}
+</span>

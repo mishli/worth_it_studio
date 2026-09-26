@@ -31,6 +31,12 @@
             padding: 0 8px;
         }
 
+        &.dark {
+            background-color: var(--color-body);
+            color: var(--color-cream);
+            padding: 0 8px;
+        }
+
         &.blue {
             border-inline-start: 6px solid var(--color-main);
             padding-inline-start: 8px;

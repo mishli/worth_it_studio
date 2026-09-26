@@ -1,0 +1,44 @@
+{# hero copy is passed in by each home page: heroLines (array), heroMark (index of highlighted line), studioLink #}
+{% set content = homeSections[lang] %}
+<section class="home-hero">
+    <div class="container home-hero__inner">
+        <div class="home-hero__content">
+            <p class="home-hero__eyebrow">{{ content.heroEyebrow }}</p>
+            <h1 class="home-hero__title">
+                {% for line in heroLines %}
+                <span class="home-hero__line" style="--line-index: {{ loop.index0 }}">
+                    <span class="home-hero__line-inner {% if loop.index0 == heroMark %}home-hero__mark{% endif %}">{{ line }}</span>
+                </span>
+                {% endfor %}
+            </h1>
+            <div class="home-hero__actions">
+                <div class="btn btn-main second large pulse home-hero__cta">
+                    <button class="whatsapp-button" onclick="openWhatsApp()">
+                        {% include 'icon-whatsapp.njk' %}
+                        {{ content.trialCta }}
+                    </button>
+                </div>
+                <a href="{{ studioLink.url }}" class="home-hero__link">{{ studioLink.label }}</a>
+            </div>
+        </div>
+
+        <div class="home-hero__visual">
+            <div class="home-hero__sun" aria-hidden="true"></div>
+            <div class="home-hero__photo" id="home-fold-image">
+                <img class="home-hero__image" src="/img/content/hadas-worth-it-studio-home.jpg" alt="{{ heroImageAlt }}" />
+            </div>
+            <div class="home-hero__badge">
+                {% set badgeText = content.badge %}
+                {% set badgeRtl = false %}
+                {% set badgeClass = "" %}
+                {% include 'badge.njk' %}
+                <img class="home-hero__badge-logo" src="/img/worth-it-logo-web-updated.svg" alt="" width="64" height="64" />
+            </div>
+            {% set sparkleClass = "home-hero__sparkle" %}
+            {% for i in range(0, 5) %}
+            {% include 'icon-sparkle.njk' %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="home-hero__scroll" aria-hidden="true"></div>
+</section>

@@ -1,0 +1,11 @@
+{% set manifesto = homeSections[lang].manifesto %}
+<section class="manifesto" data-manifesto>
+    <div class="container">
+        <blockquote class="manifesto__quote">
+            <p class="manifesto__text">
+                {%- for word in manifesto.text.split(" ") %}<span class="manifesto__word">{{ word }}</span> {% endfor -%}
+            </p>
+            <footer class="manifesto__sign">{{ manifesto.sign }}</footer>
+        </blockquote>
+    </div>
+</section>

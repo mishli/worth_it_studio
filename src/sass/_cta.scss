@@ -1,52 +1,137 @@
 @use "theme" as *;
 @use "sass:math";
 
-.cta {
+// Rotating text ring (see badge.njk)
+// each character sits at the top of a radius-tall column rotated around the center
+.badge-ring {
+	display: block;
 	position: relative;
 	width: 100%;
-	height: 350px;
-	margin-top: 24px;
-	background-image: url("/img/content/hadas-worth-it-studio-pepole-2.jpg");
-	background-size: cover;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	z-index: 1;
+	height: 100%;
+	animation: spin 18s linear infinite;
 
-	@include mq($desktop) {
-		margin-top: 0;
-		background-attachment: fixed;
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
 	}
 
-	.content-section {
-		justify-content: center;
+	&__char {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 1em;
+		height: 50%;
+		margin-left: -0.5em;
+		transform: rotate(calc(var(--i) * 1turn / var(--total)));
+		transform-origin: 50% 100%;
+		font-size: 0.8rem;
+		font-weight: bold;
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+// Footer call to action
+.cta-bold {
+	position: relative;
+	padding: 64px 0;
+	background-color: var(--color-second);
+	overflow: hidden;
+
+	@include mq($tablet) {
+		padding: 96px 0;
+	}
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
 		align-items: center;
+		gap: 40px;
+		text-align: center;
+
+		@include mq($tablet) {
+			flex-direction: row;
+			justify-content: space-between;
+			text-align: start;
+		}
 	}
 
-	&::after {
-		content: "";
+	&__title {
+		margin-bottom: 12px;
+		color: var(--color-body);
+		font-size: 2.5rem;
+		font-size: unquote("min(max(2.5rem, 6vw), 5.5rem)");
+		font-weight: 900;
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+
+	&__text {
+		margin: 0;
+		color: var(--color-body);
+		font-size: 1.25rem;
+	}
+}
+
+// Round whatsapp button wrapped by a spinning label
+.cta-orb {
+	display: grid;
+	position: relative;
+	flex: none;
+	width: 200px;
+	height: 200px;
+	place-items: center;
+	color: var(--color-body);
+
+	@include mq($tablet) {
+		width: 240px;
+		height: 240px;
+	}
+
+	&__ring {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		z-index: -1;
+
+		.badge-ring__char {
+			font-size: 1rem;
+
+			@include mq($tablet) {
+				font-size: 1.15rem;
+			}
+		}
 	}
 
-	&.cta-footer {
-		h2,
-		p {
-			color: var(--color-white);
-		}
+	&__core {
+		display: grid;
+		width: 58%;
+		height: 58%;
+		animation: pulse-ring 2.4s ease-out infinite;
+		transition: transform 0.5s $tdbc-ease-out, background-color 0.3s ease;
+		border-radius: 50%;
+		background-color: var(--color-body);
+		color: var(--color-cream);
+		place-items: center;
 
-		h2 {
-			margin-bottom: 8px;
-			font-weight: 700;
+		svg {
+			width: 40%;
+			height: 40%;
 		}
+	}
 
-		.btn {
-			margin-top: 8px;
-		}
+	&:hover &__core {
+		transform: scale(1.08) rotate(-10deg);
+		background-color: var(--color-main);
+	}
+
+	// name for assistive tech; the ring text is decorative
+	&__label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		white-space: nowrap;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
 	}
 }
 
@@ -55,14 +140,14 @@
 
 	.calendly-popup {
 		@include mq(975, max-width) {
-			max-height: 600px !important;
 			top: 50% !important;
-			transform: translate(-50%, -50%) !important;
-			height: 600px !important;
-			width: calc(100% - 40px) !important;
-			left: 50% !important;
 			right: initial !important;
 			bottom: initial !important;
+			left: 50% !important;
+			width: calc(100% - 40px) !important;
+			height: 600px !important;
+			max-height: 600px !important;
+			transform: translate(-50%, -50%) !important;
 			border-radius: 8px !important;
 			overflow: hidden !important;
 		}
@@ -74,18 +159,18 @@
 		}
 
 		&:before {
-			content: "";
+			display: flex;
 			position: absolute;
 			top: -10px;
 			left: -10px;
-			width: 40px;
-			height: 40px;
-			background-color: var(--color-main);
-			z-index: -1;
-			display: flex;
 			align-items: center;
 			justify-content: center;
+			width: 40px;
+			height: 40px;
 			border-radius: 50%;
+			background-color: var(--color-main);
+			content: "";
+			z-index: -1;
 		}
 	}
 }

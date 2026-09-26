@@ -12,44 +12,37 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
 <script src="{{ '/scripts/home.js' | url }}" defer></script>
 
 <main class="page-home">
-    <div class="container">
-        <section class="content-section main-hero">
-            <div class="rev-image-text">
-                <div class="rev-grid half above">
-                    <h1 class="jumbo">
-                        <div class="rev-title-inner nowrap" id="home-fold-title">ברוכה הבאה לבית החדש שלך</div><br/>
-                        <div class="rev-title-inner nowrap" id="home-fold-subtitle">לכושר ולאושר בתל אביב!</div>
-                    </h1>
-
-                    <div class="rev-grid-content" id="home-fold-content">
-                        <h2 class="rev-title-inner title-bg blue">איזה כיף שבאת!</h2>
-                        <p>אני מאמינה שהמפתח להתמדה, במיוחד בספורט, הוא שילוב של הנאה, מחויבות לעצמנו והבנה שזה תהליך. מרתון, לא ספרינט.</p>
-                        <p>אני והצוות כאן כדי לעבור איתך דרך. לגלות יחד חוזקות שלא ידעת שיש בך, לשבור שיאים ומחסומים, להתחזק ולהרגיש הכי טוב בגוף שלך.</p>
-                        <p>אני מבטיחה לא לוותר לך, ולא לתת לך לוותר לעצמך, עד שנשיג יחד את המטרות שלך.</p>
-                        <div class="btn btn-main large pulse main-hero__cta">
-                            <button class="whatsapp-button" onclick="openWhatsApp()">
-                                {% include 'icon-whatsapp.njk' %}
-                                {{ homeSections[lang].trialCta }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="rev-grid half image main-hero__image" id="home-fold-image">
-                    <img class="rev-image" src="/img/content/hadas-worth-it-studio-home.jpg" alt="Hadas Worth It Fitness Studio Happy Training"/>
-                </div>
-            </div>
-        </section>
-
-        {% include 'home-stats.njk' %}
-    </div>
+    {% set heroLines = ["ברוכה הבאה", "לבית החדש שלך", "לכושר ולאושר בתל אביב!"] %}
+    {% set heroMark = 1 %}
+    {% set heroImageAlt = "Hadas Worth It Fitness Studio Happy Training" %}
+    {% set studioLink = { url: "/the-studio/", label: "בואי להכיר את הסטודיו" } %}
+    {% include 'home-hero.njk' %}
 
     {% include 'marquee.njk' %}
 
-    <div class="container">
-        <section class="content-section hero split align-right">
-            <img src="/img/content/hadas-worth-it-trx-training.jpg" class="section-image" alt="Hadas Worth It with a trainee happy"/>
-            <div class="content-block text-start">
-                <h2 class="rev-title-inner" id="home-content-why-title">למה WORTH IT?</h2>
+    <section class="intro">
+        <div class="container intro__inner">
+            <h2 class="intro__title" data-animate>
+                איזה כיף שבאת!
+                {% include 'icon-swash.njk' %}
+            </h2>
+            <div class="intro__text" data-animate>
+                <p class="intro__lead">אני מאמינה שהמפתח להתמדה, במיוחד בספורט, הוא שילוב של הנאה, מחויבות לעצמנו והבנה שזה תהליך. מרתון, לא ספרינט.</p>
+                <p>אני והצוות כאן כדי לעבור איתך דרך. לגלות יחד חוזקות שלא ידעת שיש בך, לשבור שיאים ומחסומים, להתחזק ולהרגיש הכי טוב בגוף שלך.</p>
+            </div>
+        </div>
+    </section>
+
+    {% include 'home-manifesto.njk' %}
+
+    <section class="feature yellow">
+        <div class="container feature__inner">
+            <div class="feature__media" data-animate="zoom">
+                <img src="/img/content/hadas-worth-it-trx-training.jpg" class="feature__image" data-parallax alt="Hadas Worth It with a trainee happy"/>
+            </div>
+            <div class="feature__content" data-animate>
+                <span class="feature__index" aria-hidden="true">01</span>
+                <h2 class="rev-title-inner feature__title" id="home-content-why-title">למה WORTH IT?</h2>
                 <p>הייחודיות של הסטודיו היא השילוב בין: מקצועיות גבוהה, יחס אישי, תוכנית אימונים מותאמת, ואווירה שקשה להסביר במילים.</p>
                 <p>זה אולי נשמע נדוש… אבל באמת שזר לא יבין 😊</p>
                 <p>כאן נוצר חיבור. כאן בונות שגרה. וכאן מתמידות כי פשוט כיף לבוא.</p>
@@ -64,11 +57,19 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="content-section hero split align-left">
-            <div class="content-block text-end">
-                <h2 class="rev-title-inner" id="home-content-tailored-title">מה זאת אומרת מותאם אישית?</h2>
+    {% include 'home-stats.njk' %}
+
+    <section class="feature cream reverse">
+        <div class="container feature__inner">
+            <div class="feature__media" data-animate="zoom">
+                <img src="/img/content/hadas-worth-it-personal-attention.jpg" class="feature__image" data-parallax alt="Hadas Worth It Training"/>
+            </div>
+            <div class="feature__content" data-animate>
+                <span class="feature__index" aria-hidden="true">02</span>
+                <h2 class="rev-title-inner feature__title" id="home-content-tailored-title">מה זאת אומרת מותאם אישית?</h2>
                 <p>הכול. מותאם. אלייך. <br>גם באימון קבוצתי.</p>
                 <p>בכל אימון יש עד 5 מתאמנות בלבד, כדי שנוכל להכיר אותך באמת <br>ולהתאים לך את האימון בצורה מדויקת.</p>
                 <p>כל אימון נבנה בהתאמה אישית לכל אחת מהמשתתפות, <br>ובהתאם למטרות שלך, ליכולות שלך, לקצב שלך ולדרך האישית שלך.</p>
@@ -78,11 +79,10 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
                     <div>להסבר על מערכת השעות</div>
                 </a> #}
             </div>
-            <img src="/img/content/hadas-worth-it-personal-attention.jpg" class="section-image" alt="Hadas Worth It Training"/>
-        </section>
+        </div>
+    </section>
 
-        {% include 'home-gallery.njk' %}
+    {% include 'home-gallery.njk' %}
 
-        {% include 'home-steps.njk' %}
-    </div>
+    {% include 'home-steps.njk' %}
 </main>

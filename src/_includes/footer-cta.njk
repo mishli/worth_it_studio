@@ -1,13 +1,20 @@
-<div class="container fluid cta cta-footer">
-    <section class="content-section hero center">
-        <h2>{{ "footer_cta_heading" | i18n({}, locale) }}</h2>
-        <p>{{ "footer_cta_paragraph" | i18n({}, locale) }}</p>
-
-        <div class="btn btn-main large pulse">
-            <button class="whatsapp-button" aria-label="{{ "nav_whatsapp_aria" | i18n({}, locale) }}" onclick="openWhatsApp()">
-                {% include 'icon-whatsapp.njk' %}
-                {{ "footer_cta_whatsapp_button" | i18n({}, locale) }}
-            </button>
+<section class="cta-bold">
+    <div class="container cta-bold__inner">
+        <div class="cta-bold__content" data-animate>
+            <h2 class="cta-bold__title">{{ "footer_cta_heading" | i18n({}, locale) }}</h2>
+            <p class="cta-bold__text">{{ "footer_cta_paragraph" | i18n({}, locale) }}</p>
         </div>
-    </section>   
-</div>
+
+        {% set ringLabel = "footer_cta_whatsapp_button" | i18n({}, locale) %}
+        <button class="cta-orb" onclick="openWhatsApp()" data-animate="zoom">
+            {% set badgeText = ringLabel + " ✦ " + ringLabel + " ✦ " %}
+            {% set badgeRtl = dir == "rtl" %}
+            {% set badgeClass = "cta-orb__ring" %}
+            {% include 'badge.njk' %}
+            <span class="cta-orb__core">
+                {% include 'icon-whatsapp.njk' %}
+            </span>
+            <span class="cta-orb__label">{{ ringLabel }}</span>
+        </button>
+    </div>
+</section>

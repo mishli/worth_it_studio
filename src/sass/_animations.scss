@@ -34,3 +34,77 @@
         box-shadow: 0 0 0 16px rgba(103, 178, 173, 0);
     }
 }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        transform: scale(0.4) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1) rotate(90deg);
+        opacity: 1;
+    }
+}
+
+// masked line slide-up, used by the home hero title
+@keyframes line-up {
+    from {
+        transform: translate3d(0, 110%, 0);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+// marker highlight swept in behind text
+@keyframes marker-draw {
+    from {
+        background-size: 0% 100%;
+    }
+
+    to {
+        background-size: 100% 100%;
+    }
+}
+
+@keyframes fade-up {
+    from {
+        transform: translate3d(0, 24px, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes scroll-cue {
+    0% {
+        transform: scaleY(0);
+        transform-origin: 50% 0;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: 50% 0;
+    }
+
+    51% {
+        transform-origin: 50% 100%;
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: 50% 100%;
+    }
+}

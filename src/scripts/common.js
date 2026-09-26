@@ -101,6 +101,39 @@ function createCounterAnimation(container, options = {}) {
     });
 }
 
+// scroll-linked effects: update(rect, viewportHeight) runs once per frame while scrolling
+// or resizing, for every registered element (one shared listener for all scenes)
+const scrollScenes = [];
+let scenesTicking = false;
+
+function runScrollScenes() {
+    const viewportHeight = window.innerHeight;
+
+    scrollScenes.forEach(({ element, update }) => update(element.getBoundingClientRect(), viewportHeight));
+    scenesTicking = false;
+}
+
+function requestScrollScenes() {
+    if (!scenesTicking) {
+        window.requestAnimationFrame(runScrollScenes);
+        scenesTicking = true;
+    }
+}
+
+function createScrollScene(element, update) {
+    if (!element || prefersReducedMotion) return;
+
+    if (!scrollScenes.length) {
+        window.addEventListener('scroll', requestScrollScenes, { passive: true });
+        window.addEventListener('resize', requestScrollScenes);
+    }
+
+    scrollScenes.push({ element, update });
+    requestScrollScenes();
+}
+
+const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
+
 // make functions globally available
 window.createRevealEffect = createRevealEffect;
 window.addClass = addClass;
@@ -108,3 +141,5 @@ window.removeClass = removeClass;
 window.addBg = addBg;
 window.createScrollAnimations = createScrollAnimations;
 window.createCounterAnimation = createCounterAnimation;
+window.createScrollScene = createScrollScene;
+window.clamp = clamp;
