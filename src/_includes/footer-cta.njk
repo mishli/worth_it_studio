@@ -1,4 +1,7 @@
 <section class="cta-bold">
+    {# the crew photo fills the section; a purple fade keeps the text readable #}
+    <img class="cta-bold__bg" src="/img/content/hadas-worth-it-studio-pepole.png" alt="{{ "footer_cta_image_alt" | i18n({}, locale) }}" width="1126" height="621" loading="lazy" />
+
     <div class="container cta-bold__inner">
         <div class="cta-bold__content" data-animate>
             <h2 class="cta-bold__title">{{ "footer_cta_heading" | i18n({}, locale) }}</h2>
@@ -7,7 +10,7 @@
 
         {% set ringLabel = "footer_cta_whatsapp_button" | i18n({}, locale) %}
         <button class="cta-orb" onclick="openWhatsApp()" data-animate="zoom">
-            {% set badgeText = ringLabel + " ✦ " + ringLabel + " ✦ " %}
+            {% set badgeText = ringLabel + " ✦ " %}
             {% set badgeRtl = dir == "rtl" %}
             {% set badgeClass = "cta-orb__ring" %}
             {% include 'badge.njk' %}

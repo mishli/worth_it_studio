@@ -28,19 +28,14 @@
         padding-bottom: 0.2em;
     }
 
-    &.title-bg {
-        transition: 200ms all ease-in-out;
-
-        &.blue {
-            border-inline-start: 6px solid var(--color-main);
-            padding-inline-start: 8px;
-
-            &.full {
-                background-color: var(--color-main);
-                border: none;
-                color: var(--color-white);
-            }
-        }
+    // sub-headings: a yellow sparkle (the logo's star) on the start side
+    &.title-accent::before {
+        display: inline-block;
+        margin-inline-end: 0.35em;
+        color: var(--color-second);
+        font-size: 0.8em;
+        content: "✦";
+        vertical-align: 0.08em;
     }
 }
 

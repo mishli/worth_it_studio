@@ -31,6 +31,10 @@ module.exports = {
         'he-IL': 'אשמח לשמוע עליך ולענות על כל שאלה שעולה 😊',
         'en-US': 'I\'d love to hear from you and answer any questions you have 😊'
     },
+    footer_cta_image_alt: {
+        'he-IL': 'הדס מורמת על ידי מתאמנים בסטודיו Worth It',
+        'en-US': 'Hadas lifted up by trainees of Worth It Studio'
+    },
     footer_cta_whatsapp_button: {
         'he-IL': 'בואי נעבור לוואטסאפ',
         'en-US': 'Let\'s chat on WhatsApp'
