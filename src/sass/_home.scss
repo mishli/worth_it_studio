@@ -230,10 +230,12 @@
 }
 
 // Crossing marquee bands
+// the tilted bands must cover the hero's bottom edge along their whole width,
+// while the hero facts stay clear of them (see .home-hero__facts margin-bottom)
 .marquee-cross {
     position: relative;
-    height: 150px;
-    margin-top: -36px;
+    height: 110px;
+    margin-top: -46px;
     pointer-events: none;
     z-index: 2;
 
