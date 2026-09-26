@@ -1,55 +1,9 @@
-const getCssVar = (el, name) => getComputedStyle(el).getPropertyValue(name);
-
 // helpers for common operations
 const addClass = (el, ...classes) => el.classList.add(...classes);
 const removeClass = (el, ...classes) => el.classList.remove(...classes);
-const addBg = (id, color, prefix = 'title-bg') => addClass(document.getElementById(id), prefix, color);
 
 var isRtl = document.documentElement.dir === 'rtl';
 var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function createRevealEffect(elementId, options = {}) {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-
-    const {
-        color = getCssVar(element, '--color-main'),
-        direction = isRtl ? 'rl' : 'lr',
-        duration = 500,
-        delay = 0,
-        immediate = false,
-        offset = -150,
-        onCover = () => {},
-        onComplete = () => {}
-    } = options;
-
-    const reveal = new RevealFx(element, {
-        isContentHidden: false,
-        revealSettings: {
-            bgcolor: color,
-            direction,
-            duration,
-            delay,
-            onCover: (contentEl) => {
-                contentEl.style.opacity = 1;
-                onCover(elementId, contentEl);
-            },
-            onComplete: () => onComplete(elementId)
-        }
-    });
-
-    if (immediate) {
-        reveal.reveal();
-    } else {
-        const watcher = scrollMonitor.create(element, offset);
-        watcher.enterViewport(() => {
-            reveal.reveal();
-            watcher.destroy();
-        });
-    }
-
-    return reveal;
-}
 
 // fade elements in as they scroll into view (styles in _animations.scss)
 function createScrollAnimations(selector, options = {}) {
@@ -135,10 +89,8 @@ function createScrollScene(element, update) {
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 
 // make functions globally available
-window.createRevealEffect = createRevealEffect;
 window.addClass = addClass;
 window.removeClass = removeClass;
-window.addBg = addBg;
 window.createScrollAnimations = createScrollAnimations;
 window.createCounterAnimation = createCounterAnimation;
 window.createScrollScene = createScrollScene;

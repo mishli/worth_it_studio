@@ -2,46 +2,46 @@
 @use "theme" as *;
 
 // stylelint-disable selector-max-type
-// floating pill nav
+// full-width bar; on the home page it starts transparent over the hero (navOverlay front matter)
+// and the solid bar fades in once scrolled
 .nav {
     position: fixed;
-    top: 10px;
+    top: 0;
     left: 0;
     width: 100%;
-    pointer-events: none;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    background-color: rgba(65, 60, 88, 0.97);
     z-index: 10000;
 
-    @include mq($tablet) {
-        top: 14px;
+    &.is-scrolled {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     }
 
-    .container {
-        pointer-events: auto;
+    &--overlay:not(.is-scrolled) {
+        background-color: transparent;
+    }
+
+    // the active marker belongs to the solid bar, so it waits until the hero is scrolled past
+    &--overlay:not(.is-scrolled) [data-active]::after {
+        opacity: 0;
     }
 
     &.is-scrolled .nav-content {
-        background-color: rgba(65, 60, 88, 0.92);
-        box-shadow: 0 10px 30px rgba(65, 60, 88, 0.3);
-    }
+        --nav-pad-y: 14px;
 
-    // reading progress along the bottom edge of the pill, driven by --scroll-progress from main.js
-    &__progress {
-        position: absolute;
-        right: 32px;
-        bottom: 0;
-        left: 32px;
-        height: 3px;
-        transform: scaleX(var(--scroll-progress, 0));
-        transform-origin: 0 50%;
-        background-color: var(--color-second);
-
-        [dir="rtl"] & {
-            transform-origin: 100% 50%;
+        @include mq($tablet) {
+            --nav-pad-y: 18px;
         }
     }
 
     .logo img {
+        width: auto;
+        height: 44px;
         transition: transform 0.5s $tdbc-ease-out;
+
+        @include mq($tablet) {
+            height: 52px;
+        }
     }
 
     .logo:hover img {
@@ -49,16 +49,20 @@
     }
 
 	.nav-content {
+        --nav-pad-y: 20px;
+
         display: flex;
         position: relative;
 		flex-wrap: wrap;
 		align-items: center;
         flex-direction: row;
         justify-content: space-between;
-        padding: 8px 16px;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        border-radius: 999px;
-        background-color: var(--color-body);
+        padding: var(--nav-pad-y) 0;
+        transition: padding 0.35s ease;
+
+        @include mq($tablet) {
+            --nav-pad-y: 26px;
+        }
 
         .navlist {
             display: none;
@@ -81,15 +85,13 @@
             margin-inline-start: 12px;
         }        
 
-        // the pill fits all links from desktop up; below that the side menu takes over
+        // the bar fits all links from desktop up; below that the side menu takes over
         @include mq($desktop) {
 
             // tablet layout - for long menus
             // flex-direction: column;
             // justify-content: center;
             // padding: 1.5rem 0 0 0;
-
-            padding: 6px 8px 6px 16px;
 
             &.lang-he {
                 // keep nav alwyas same direction
@@ -119,29 +121,48 @@
         // }
 	}
 
+	// the list spans the bar's full height so the active marker sits on its bottom edge
 	.navlist {
-        margin: 0;
+        align-self: stretch;
+        margin: calc(var(--nav-pad-y) * -1) 0;
+        transition: margin 0.35s ease;
 
         li {
             display: flex;
+            position: relative;
+            align-items: center;
 
             + li {
-                margin-inline-start: 2px;
+                margin-inline-start: 8px;
+            }
+
+            // active marker on the bar's bottom edge
+            [data-active]::after {
+                position: absolute;
+                right: 12px;
+                bottom: 0;
+                left: 12px;
+                height: 3px;
+                transition: opacity 0.35s ease;
+                border-radius: 3px 3px 0 0;
+                background-color: var(--color-second);
+                content: "";
             }
 
             a {
-                padding: 10px 14px;
-                transition: background-color 0.25s ease, color 0.25s ease;
-                border-radius: 999px;
-                font-size: 0.95rem;
+                padding: 8px 12px;
+                transition: opacity 0.25s ease, color 0.25s ease;
+                opacity: 0.92;
+                font-size: 1.08rem;
+                font-weight: 500;
 
                 &:hover {
-                    background-color: rgba(255, 255, 255, 0.12);
+                    opacity: 1;
                 }
 
                 &[data-active] {
-                    background-color: var(--color-second);
-                    color: var(--color-body);
+                    opacity: 1;
+                    color: var(--color-second);
                 }
             }
         }

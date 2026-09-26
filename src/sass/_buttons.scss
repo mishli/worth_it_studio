@@ -21,6 +21,8 @@ button {
 
 .btn {
     position: relative;
+    // own stacking context, so the with-effect slide layer (z-index -1) stays above section backgrounds
+    isolation: isolate;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

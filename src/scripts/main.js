@@ -49,16 +49,12 @@
         });
     }
 
-    // Nav scroll state + reading progress
+    // Nav scroll state
     var topNav = document.querySelector('.nav'),
         ticking = false;
 
     function updateNav() {
-        var scrollable = document.documentElement.scrollHeight - window.innerHeight,
-            progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-
         topNav.classList.toggle('is-scrolled', window.scrollY > 8);
-        topNav.style.setProperty('--scroll-progress', progress.toFixed(4));
         ticking = false;
     }
 

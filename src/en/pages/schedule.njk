@@ -9,12 +9,10 @@ eleventyNavigation:
     order: 3
     key: "Schedule"
 ---
-<script src="{{ '/scripts/schedule.js' | url }}" defer></script>
-
 <main class="container">
     <section class="content-section hero split align-left">
         <div class="content-block text-end">
-            <h1 class="rev-title-inner text-start" id="schedule-main-title">Our Schedule</h1>
+            <h1 class="rev-title-inner text-start" id="schedule-main-title">Our Schedule{% include 'icon-swash.njk' %}</h1>
             <p>At Worth It Studio, everything is based on personalization.<br>
             That's why even the training schedule is built to fit you!</p>
             <p>Unlike many studios in the city, here you don't need to "chase" a spot in a session or log in at a specific time hoping you won't end up on a waiting list.</p>
@@ -31,7 +29,7 @@ eleventyNavigation:
 
     <section class="content-section hero single">
         <div class="content-block">
-            <h2 class="rev-title-inner" id="schedule-sub-1">Hours of Operation</h2>
+            <h2 class="rev-title-inner title-bg blue" id="schedule-sub-1">Hours of Operation</h2>
             <p>Sunday through Thursday:</p>
             <ul>
                 <li>Morning sessions: 07:15 | 08:15 | 09:15</li>

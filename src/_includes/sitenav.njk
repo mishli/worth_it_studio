@@ -1,7 +1,7 @@
 {% set currentUrl = page.url %}
 {% set homeUrl = "/en/" if lang == 'en' else "/" %}
 
-<nav aria-label="{{ "nav_menu" | i18n({}, locale) }}" class="nav">
+<nav aria-label="{{ "nav_menu" | i18n({}, locale) }}" class="nav{% if navOverlay %} nav--overlay{% endif %}">
     <div class="container">
         <div class="nav-content lang-{{ lang }}">
             <div class="nav-actions">
@@ -26,7 +26,6 @@
             <ul role="list" class="navlist list-unstyled">
                 {% include 'nav-loop.njk' %}
             </ul>
-            <div class="nav__progress" aria-hidden="true"></div>
         </div>
     </div>
 </nav>

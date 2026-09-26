@@ -8,14 +8,11 @@ title: "Worth It Studio | הדס משלי | סטודיו בוטיק לאימונ
 description: "סטודיו לכושר במרכז ת״א, אימונים בקבוצות קטנות באווירה ממכרת.
 בואו להכיר את הסטודיו החדש שלכם שירגיש כמו בית! נתחזק ונהנה ביחד!"
 shareImage: "/img/content/hadas-worth-it-training-3.JPG"
+navOverlay: true
 ---
 <script src="{{ '/scripts/home.js' | url }}" defer></script>
 
 <main class="page-home">
-    {% set heroLines = ["ברוכה הבאה", "לבית החדש שלך", "לכושר ולאושר בתל אביב!"] %}
-    {% set heroMark = 1 %}
-    {% set heroImageAlt = "Hadas Worth It Fitness Studio Happy Training" %}
-    {% set studioLink = { url: "/the-studio/", label: "בואי להכיר את הסטודיו" } %}
     {% include 'home-hero.njk' %}
 
     {% include 'marquee.njk' %}
@@ -41,8 +38,7 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
                 <img src="/img/content/hadas-worth-it-trx-training.jpg" class="feature__image" data-parallax alt="Hadas Worth It with a trainee happy"/>
             </div>
             <div class="feature__content" data-animate>
-                <span class="feature__index" aria-hidden="true">01</span>
-                <h2 class="rev-title-inner feature__title" id="home-content-why-title">למה WORTH IT?</h2>
+                <h2 class="rev-title-inner feature__title" id="home-content-why-title">למה WORTH IT?{% include 'icon-swash.njk' %}</h2>
                 <p>הייחודיות של הסטודיו היא השילוב בין: מקצועיות גבוהה, יחס אישי, תוכנית אימונים מותאמת, ואווירה שקשה להסביר במילים.</p>
                 <p>זה אולי נשמע נדוש… אבל באמת שזר לא יבין 😊</p>
                 <p>כאן נוצר חיבור. כאן בונות שגרה. וכאן מתמידות כי פשוט כיף לבוא.</p>
@@ -68,8 +64,7 @@ shareImage: "/img/content/hadas-worth-it-training-3.JPG"
                 <img src="/img/content/hadas-worth-it-personal-attention.jpg" class="feature__image" data-parallax alt="Hadas Worth It Training"/>
             </div>
             <div class="feature__content" data-animate>
-                <span class="feature__index" aria-hidden="true">02</span>
-                <h2 class="rev-title-inner feature__title" id="home-content-tailored-title">מה זאת אומרת מותאם אישית?</h2>
+                <h2 class="rev-title-inner feature__title" id="home-content-tailored-title">מה זאת אומרת מותאם אישית?{% include 'icon-swash.njk' %}</h2>
                 <p>הכול. מותאם. אלייך. <br>גם באימון קבוצתי.</p>
                 <p>בכל אימון יש עד 5 מתאמנות בלבד, כדי שנוכל להכיר אותך באמת <br>ולהתאים לך את האימון בצורה מדויקת.</p>
                 <p>כל אימון נבנה בהתאמה אישית לכל אחת מהמשתתפות, <br>ובהתאם למטרות שלך, ליכולות שלך, לקצב שלך ולדרך האישית שלך.</p>

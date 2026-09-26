@@ -1,7 +1,7 @@
 {% set content = homeSections[lang] %}
 <section class="timeline" data-timeline>
     <div class="container">
-        <h2 class="rev-title-inner timeline__heading" id="home-steps-title">{{ content.steps.title }}</h2>
+        <h2 class="rev-title-inner timeline__heading" data-animate>{{ content.steps.title }}{% include 'icon-swash.njk' %}</h2>
         <div class="timeline__body">
             <span class="timeline__line" aria-hidden="true">
                 <span class="timeline__fill" data-timeline-fill></span>

@@ -1,13 +1,18 @@
-{# hero copy is passed in by each home page: heroLines (array), heroMark (index of highlighted line), studioLink #}
+{# hero copy and facts come from homeSections[lang].hero #}
 {% set content = homeSections[lang] %}
+{% set hero = content.hero %}
 <section class="home-hero">
+    <div class="home-hero__media">
+        <img class="home-hero__image" src="/img/content/hadas-worth-it-studio-pepole-2.jpg" alt="{{ hero.imageAlt }}" />
+    </div>
     <div class="container home-hero__inner">
         <div class="home-hero__content">
-            <p class="home-hero__eyebrow">{{ content.heroEyebrow }}</p>
+            <p class="home-hero__eyebrow">{{ hero.eyebrow }}</p>
             <h1 class="home-hero__title">
-                {% for line in heroLines %}
-                <span class="home-hero__line" style="--line-index: {{ loop.index0 }}">
-                    <span class="home-hero__line-inner {% if loop.index0 == heroMark %}home-hero__mark{% endif %}">{{ line }}</span>
+                {% for line in hero.lines %}
+                <span class="home-hero__line {% if loop.index0 == hero.mark %}home-hero__mark{% endif %}" style="--line-index: {{ loop.index0 }}">
+                    {{ line }}
+                    {% if loop.index0 == hero.mark %}{% include 'icon-swash.njk' %}{% endif %}
                 </span>
                 {% endfor %}
             </h1>
@@ -18,27 +23,18 @@
                         {{ content.trialCta }}
                     </button>
                 </div>
-                <a href="{{ studioLink.url }}" class="home-hero__link">{{ studioLink.label }}</a>
+                <a href="{{ hero.studioLink.url }}" class="home-hero__link">{{ hero.studioLink.label }}</a>
             </div>
-        </div>
-
-        <div class="home-hero__visual">
-            <div class="home-hero__sun" aria-hidden="true"></div>
-            <div class="home-hero__photo" id="home-fold-image">
-                <img class="home-hero__image" src="/img/content/hadas-worth-it-studio-home.jpg" alt="{{ heroImageAlt }}" />
-            </div>
-            <div class="home-hero__badge">
-                {% set badgeText = content.badge %}
-                {% set badgeRtl = false %}
-                {% set badgeClass = "" %}
-                {% include 'badge.njk' %}
-                <img class="home-hero__badge-logo" src="/img/worth-it-logo-web-updated.svg" alt="" width="64" height="64" />
-            </div>
-            {% set sparkleClass = "home-hero__sparkle" %}
-            {% for i in range(0, 5) %}
-            {% include 'icon-sparkle.njk' %}
-            {% endfor %}
         </div>
     </div>
-    <div class="home-hero__scroll" aria-hidden="true"></div>
+    <div class="home-hero__facts">
+        <ul class="container home-hero__facts-list list-unstyled" role="list">
+            {% for fact in hero.facts %}
+            <li class="home-hero__fact" style="--fact-index: {{ loop.index0 }}">
+                <b class="home-hero__fact-value">{{ fact.value }}</b>
+                <span class="home-hero__fact-label">{{ fact.label }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </section>

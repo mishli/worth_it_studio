@@ -3,28 +3,6 @@
  */
 
 (function() {
-    // Initial fold animations (hero title lines animate in css)
-    createRevealEffect('home-fold-image', {
-        color: 'var(--color-second)',
-        delay: 300,
-        immediate: true
-    });
-
-    // Scroll-triggered title reveals
-    createRevealEffect('home-content-why-title', {
-        color: 'var(--color-body)',
-        onCover: (id) => addBg(id, 'dark')
-    });
-
-    createRevealEffect('home-content-tailored-title', {
-        color: 'var(--color-third)',
-        onCover: (id) => addBg(id, 'yellow')
-    });
-
-    createRevealEffect('home-steps-title', {
-        onComplete: (id) => addBg(id, 'blue')
-    });
-
     // Stats count up once visible
     createCounterAnimation(document.querySelector('[data-stats]'));
 

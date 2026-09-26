@@ -15,6 +15,22 @@ body {
     }
 }
 
+// inner pages (page.njk): soft cream wash under the nav, fading out behind the page title
+.page-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 360px;
+    background-image: linear-gradient(rgba(254, 239, 197, 0.7), rgba(254, 239, 197, 0));
+    pointer-events: none;
+    z-index: -1;
+
+    @include mq($tablet) {
+        height: 560px;
+    }
+}
+
 // offset color frame behind section images
 .section-image {
     --frame-x: 12px;
@@ -145,9 +161,10 @@ body {
         }
 
         img {
+            @include leaf-corners(48px, 72px, 8px);
+
             height: auto;
             margin: 8px 0 24px 0;
-            border-radius: 8px;
         }
 
         .img-block {

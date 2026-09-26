@@ -23,19 +23,13 @@
         align-self: flex-start;
     }
 
+    // room for the swash (icon-swash.njk) under main titles
+    &:has(.swash) {
+        padding-bottom: 0.2em;
+    }
+
     &.title-bg {
         transition: 200ms all ease-in-out;
-
-        &.yellow {
-            background-color: var(--color-second);
-            padding: 0 8px;
-        }
-
-        &.dark {
-            background-color: var(--color-body);
-            color: var(--color-cream);
-            padding: 0 8px;
-        }
 
         &.blue {
             border-inline-start: 6px solid var(--color-main);
@@ -48,6 +42,12 @@
             }
         }
     }
+}
+
+// page titles match the home hero weight
+// stylelint-disable-next-line selector-no-qualifying-type, selector-max-type
+h1.rev-title-inner {
+    font-weight: bold;
 }
 
 .rev-image-text {

@@ -3,8 +3,18 @@
 module.exports = {
 	he: {
 		trialCta: "בואי נקבע אימון ניסיון",
-		heroEyebrow: "סטודיו בוטיק לאימוני כוח · תל אביב",
-		badge: "WORTH IT ✦ FITNESS STUDIO ✦ TEL AVIV ✦ ",
+		hero: {
+			eyebrow: "סטודיו בוטיק לאימוני כוח · תל אביב",
+			lines: ["ברוכה הבאה", "לבית החדש שלך", "לכושר ולאושר בתל אביב!"],
+			mark: 1,
+			imageAlt: "מתאמנות Worth It עם הדס בסטודיו",
+			studioLink: { url: "/the-studio/", label: "בואי להכיר את הסטודיו" },
+			facts: [
+				{ value: "5", label: "מתאמנות לכל היותר באימון" },
+				{ value: "100%", label: "התאמה אישית, גם בקבוצה" },
+				{ value: "✦", label: "ימים ושעות קבועים, המקום שלך שמור" }
+			]
+		},
 		manifesto: {
 			text: "אני מבטיחה לא לוותר לך, ולא לתת לך לוותר לעצמך, עד שנשיג יחד את המטרות שלך.",
 			sign: "הדס משלי ויספלנר"
@@ -57,8 +67,18 @@ module.exports = {
 	},
 	en: {
 		trialCta: "Book a trial session",
-		heroEyebrow: "Boutique strength training studio · Tel Aviv",
-		badge: "WORTH IT ✦ FITNESS STUDIO ✦ TEL AVIV ✦ ",
+		hero: {
+			eyebrow: "Boutique strength training studio · Tel Aviv",
+			lines: ["Your new home", "for fitness & happiness", "in Tel Aviv!"],
+			mark: 0,
+			imageAlt: "Worth It trainees with Hadas at the studio",
+			studioLink: { url: "/en/the-studio/", label: "Get to know the studio" },
+			facts: [
+				{ value: "5", label: "Trainees max per session" },
+				{ value: "100%", label: "Personally tailored, even in a group" },
+				{ value: "✦", label: "Fixed days & times, your spot is saved" }
+			]
+		},
 		manifesto: {
 			text: "I promise not to give up on you, and not to let you give up on yourself, until we reach your goals together.",
 			sign: "Hadas Mishli Weisflener"
