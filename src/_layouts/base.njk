@@ -40,7 +40,7 @@
     <!-- End Google Tag Manager (noscript) -->
     {% include 'sitenav.njk' %}
     {{ content | safe }}
-    {% include 'footer-cta.njk' %}
+    {% if not hideFooterCta %}{% include 'footer-cta.njk' %}{% endif %}
     <footer class="footer-container">
         <img src="/img/worth-it-logo-square-updated.svg" class="logo" height="180" alt="{{ meta.siteName }}" />
         <div class="footer-container__contact-box">

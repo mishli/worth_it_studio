@@ -40,11 +40,12 @@ module.exports = {
 			title: "הצצה לסטודיו",
 			subtitle: "אנרגיה טובה, הרבה צחוק ועבודה רצינית.",
 			images: [
-				{ src: "/img/content/worth-it-studio-group-training.jpg", alt: "אימון קבוצתי בסטודיו Worth It" },
-				{ src: "/img/content/hadas-worth-it-training-roxy.jpeg", alt: "הדס עם מתאמנת בסטודיו" },
-				{ src: "/img/content/hadas-worth-it-working-out.jpg", alt: "אימון כוח עם מוט" },
-				{ src: "/img/content/studio-worth-it-2.jpg", alt: "הסטודיו של Worth It" },
-				{ src: "/img/content/hadas-worth-it-training-or.JPG", alt: "אימון סקוואט עם קטלבל" }
+				{ src: "/img/content/worth-it-studio-group-session.jpg", alt: "אימון קבוצתי בסטודיו Worth It" },
+				{ src: "/img/content/worth-it-studio-team-selfie.jpg", alt: "הדס ומתאמנות מחייכות בסטודיו" },
+				{ src: "/img/content/worth-it-studio-kettlebell-swings.jpg", alt: "מתאמנות בתרגיל סווינג עם קטלבל" },
+				{ src: "/img/content/worth-it-studio-plank.jpg", alt: "מתאמנת בפלאנק על מזרן" },
+				{ src: "/img/content/worth-it-studio-mom-and-baby.jpg", alt: "אימון אמא ותינוק בסטודיו" },
+				{ src: "/img/content/worth-it-studio-kettlebell.jpg", alt: "מתאמנת בתרגיל כוח עם קטלבל" }
 			]
 		},
 		steps: {
@@ -104,11 +105,12 @@ module.exports = {
 			title: "Inside the studio",
 			subtitle: "Good energy, lots of laughs, and serious work.",
 			images: [
-				{ src: "/img/content/worth-it-studio-group-training.jpg", alt: "Group training at Worth It Studio" },
-				{ src: "/img/content/hadas-worth-it-training-roxy.jpeg", alt: "Hadas with a trainee at the studio" },
-				{ src: "/img/content/hadas-worth-it-working-out.jpg", alt: "Barbell strength training" },
-				{ src: "/img/content/studio-worth-it-2.jpg", alt: "The Worth It studio space" },
-				{ src: "/img/content/hadas-worth-it-training-or.JPG", alt: "Kettlebell squat training" }
+				{ src: "/img/content/worth-it-studio-group-session.jpg", alt: "Group training at Worth It Studio" },
+				{ src: "/img/content/worth-it-studio-team-selfie.jpg", alt: "Hadas and trainees smiling at the studio" },
+				{ src: "/img/content/worth-it-studio-kettlebell-swings.jpg", alt: "Trainees doing kettlebell swings" },
+				{ src: "/img/content/worth-it-studio-plank.jpg", alt: "A trainee holding a plank on the mat" },
+				{ src: "/img/content/worth-it-studio-mom-and-baby.jpg", alt: "A mom-and-baby workout at the studio" },
+				{ src: "/img/content/worth-it-studio-kettlebell.jpg", alt: "A trainee doing a kettlebell strength exercise" }
 			]
 		},
 		steps: {

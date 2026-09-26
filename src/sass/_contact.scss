@@ -1,336 +1,296 @@
 @use "theme" as *;
-@use "sass:math";
 
-.form-overlay {
-    display: none;
-	width: 100%;
-	height: 100vh;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-    z-index: 10001;
-    pointer-events: none;
+// Contact page - dark purple like the home hero, the form in a white leaf card
+.contact-page {
+    position: relative;
+    // runs up under the transparent nav (navOverlay front matter)
+    margin-top: -88px;
+    padding: 128px 0 72px;
+    background-color: var(--color-body);
+    color: var(--color-white);
+    overflow: hidden;
 
-    &.to-position {
-        display: block;
+    @include mq($tablet) {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+        margin-top: -104px;
+        padding: 168px 0 112px;
     }
 
-    &.overlay-open {        
-        pointer-events: visible;
-
-        .form-section {
-            transform: translate3d(0, 0, 0);
-            transition: transform 1s 0.3s, opacity 1s 0.3s;
-            transition-timing-function: cubic-bezier(0.2, 1, 0.2, 1);
-            opacity: 1;
-
-            &:nth-child(2) {
-                transition-delay: 0.35s;
-            }
-
-            &:nth-child(3) {
-                transition-delay: 0.4s;
-            }
-
-            &:nth-child(4) {
-                transition-delay: 0.45s;
-            }
-
-            &:nth-child(5) {
-                transition-delay: 0.5s;
-            }
-
-            &:nth-child(6) {
-                transition-delay: 0.55s;
-            }
-
-            &:nth-child(7) {
-                transition-delay: 0.6s;
-            }
-        }
-
-        .close-form-overlay {
-            transition-delay: 0.75s;
-            opacity: 1;
-        }
-    }
-
-    .close-form-overlay {
-        position: fixed;
-        top: 8px;
-        right: 8px;
-        z-index: 1;
-        opacity: 0;
-        @include transition(0.3s, opacity, ease-in);
-
-        @include mq($tablet) {
-            top: 20px;
-            right: 20px;
-        }
-    }
-
-    .form-inner {
+    // soft teal glow behind the card side, echoing the logo colors
+    &::before {
         position: absolute;
-        width: 100%;
-        min-height: 400px;
-        top: 0;
-        left: 0;
-        padding: 5vw;
-        background: var(--color-second);
-        overflow-y: auto;
+        bottom: -30%;
+        width: 70vw;
+        height: 70vw;
+        border-radius: 50%;
+        background-image: radial-gradient(closest-side, rgba(103, 178, 173, 0.18), rgba(103, 178, 173, 0));
+        pointer-events: none;
+        content: "";
+        inset-inline-end: -20vw;
     }
 
-    .form-title {
-        padding: 24px 0 0 0;
-        margin: 0 auto;
+    &__inner {
+        display: grid;
+        position: relative;
+        align-items: center;
+        grid-gap: 56px;
 
-        @include mq($tablet) {
-            padding: 0 0 16px 0;
+        @include mq($desktop) {
+            grid-gap: 80px;
+            grid-template-columns: 1fr minmax(0, 480px);
         }
     }
 
-    .form-section {
-        text-align: start;
-        padding: 0.5em 0;
-        width: 100%;
-        margin: 0 auto;
-        transform: translate3d(0, 100px, 0);        
-        transition: transform 0s 0.6s, opacity 0s 0.6s;
-        opacity: 0;
+    &__eyebrow {
+        display: inline-flex;
+        margin: 0 0 24px;
+        padding: 6px 16px;
+        animation: fade-up 0.8s $tdbc-ease-out 0.1s backwards;
+        border: 1px solid rgba(254, 239, 197, 0.35);
+        border-radius: 999px;
+        color: var(--color-cream);
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
 
         @include mq($mobile-l) {
-            max-width: 380px;
+            font-size: 0.95rem;
+        }
+    }
+
+    &__title {
+        position: relative;
+        width: fit-content;
+        margin: 0 0 28px;
+        padding-bottom: 0.12em;
+        animation: fade-up 0.9s $tdbc-ease-out 0.2s backwards;
+        color: var(--color-white);
+        font-size: 3rem;
+        font-size: unquote("min(max(3rem, 7vw), 6rem)");
+        font-weight: bold;
+        letter-spacing: -0.01em;
+        line-height: 1.04;
+
+        .swash {
+            bottom: -0.06em;
+            height: 0.24em;
         }
 
-        .form-label {
-            display: block;
-            flex: none;
-            width: 100%;
-            padding: 0.25em 0;
+        .swash__path {
+            animation: swash-draw 0.9s $tdbc-ease-out 0.8s backwards;
+            stroke-width: 8;
+        }
+    }
+
+    &__lead {
+        max-width: 30em;
+        margin: 0 0 40px;
+        animation: fade-up 0.8s $tdbc-ease-out 0.35s backwards;
+        color: var(--color-cream);
+        font-size: 1.2rem;
+        line-height: 1.6;
+        text-wrap: pretty;
+
+        @include mq($tablet) {
+            font-size: 1.35rem;
+        }
+    }
+
+    // whatsapp first as the main action, then phone and instagram as quiet outlined rows
+    &__channels {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        max-width: 360px;
+        animation: fade-up 0.8s $tdbc-ease-out 0.5s backwards;
+
+        .btn {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__channel {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+        padding: 14px 18px;
+        transition: border-color 0.25s ease, background-color 0.25s ease;
+        border: 1px solid rgba(254, 239, 197, 0.2);
+        border-radius: 12px;
+        color: var(--color-cream);
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+            border-color: var(--color-second);
+            background-color: rgba(254, 239, 197, 0.06);
         }
 
-        .form-input {
-            padding: 8px;
-	        font-size: em(16px);
+
+    }
+
+    &__channel-icon {
+        flex: none;
+        color: var(--color-second);
+    }
+
+    &__quote {
+        margin: 40px 0 0;
+        animation: fade-up 0.8s $tdbc-ease-out 0.65s backwards;
+        opacity: 0.7;
+        color: var(--color-cream);
+        font-style: italic;
+
+        &::before {
+            margin-inline-end: 0.5em;
+            color: var(--color-second);
+            font-style: normal;
+            content: "✦";
         }
+    }
 
-        .form-input,
-        .form-select {
-            width: 100%;
-            border-radius: 8px;
-            border: 2px solid var(--color-body);
-            font-weight: 700;
-            background: transparent;
+    &__card {
+        @include leaf-corners(56px, 88px, 12px);
 
-            &:focus {
-                outline: none;
-            }
+        padding: 36px 24px 32px;
+        animation: fade-up 0.9s $tdbc-ease-out 0.4s backwards;
+        background-color: var(--color-white);
+        color: var(--color-body);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+
+        @include mq($tablet) {
+            padding: 48px 44px 44px;
         }
+    }
 
-        .form-select {
-            height: 50px;
-            padding: 8px 12px;
+    &__card-title {
+        margin: 0 0 36px;
+        color: var(--color-body);
+        font-size: 1.6rem;
+        font-weight: bold;
+
+        &::before {
+            margin-inline-end: 0.35em;
+            color: var(--color-second);
+            font-size: 0.8em;
+            content: "✦";
         }
+    }
 
-        .btn-form {
-            margin-top: 12px;
-            padding: 12px;
-            border: none;
-            background-color: var(--color-third);
-            color: var(--color-white);
-            font-size: em(16px);
-            font-weight: 400;
-            cursor: pointer;
+    @media (prefers-reduced-motion: reduce) {
+        &__eyebrow,
+        &__title,
+        &__lead,
+        &__channels,
+        &__quote,
+        &__card,
+        .swash__path {
+            animation: none;
         }
     }
 }
 
+// Contact form - floating labels over underlined fields
+.contact-form {
+    width: 100%;
+
+    .field {
+        position: relative;
+        margin-bottom: 32px;
+    }
+
+    &__label {
+        position: absolute;
+        top: 12px;
+        inset-inline-start: 0;
+        transition: all 0.25s ease;
+        opacity: 0.6;
+        color: var(--color-body);
+        font-size: em(16);
+        pointer-events: none;
+    }
+
+    &__input {
+        width: 100%;
+        min-height: 44px;
+        padding: 12px 0 10px;
+        resize: none;
+        transition: border-color 0.3s ease;
+        border: 0;
+        border-bottom: 2px solid rgba(65, 60, 88, 0.25);
+        border-radius: 0;
+        outline: none;
+        background: transparent;
+        color: var(--color-body);
+        font-family: $tdbc-font-family;
+        font-size: em(16);
+        overflow: hidden;
+
+        &:focus {
+            border-bottom-color: var(--color-body);
+        }
+    }
+
+    &__input:focus ~ &__label,
+    &__input:not(:placeholder-shown) ~ &__label {
+        top: -16px;
+        opacity: 1;
+        color: var(--color-third);
+        font-size: em(12);
+        font-weight: 500;
+    }
+
+    &__submit {
+        width: 100%;
+        margin-top: 8px;
+        padding: 16px 24px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border: 0;
+        border-radius: 8px;
+        background-color: var(--color-second);
+        color: var(--color-body);
+        font-family: $tdbc-font-family;
+        font-size: em(17);
+        font-weight: 500;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--color-body);
+            color: var(--color-cream);
+        }
+    }
+}
+
+// sent confirmation toast
 .contact-message {
     position: fixed;
     bottom: 24px;
     left: 50%;
-    transform: translate(-50%, 0);
-    width: 400px;
+    width: calc(100% - 32px);
+    max-width: 400px;
     margin: 0 auto;
-    padding: 24px;
-    border-radius: 8px;
-    text-align: center;
-    color: var(--color-white);
-    font-size: em(18px);
-    background-color: var(--color-third);    
-    z-index: 10000;
+    padding: 20px 24px;
+    transform: translate(-50%, 0);
+    transition: opacity 0.3s ease-in;
+    border-radius: 12px;
+    background-color: var(--color-body);
     opacity: 0;
+    color: var(--color-cream);
+    font-size: em(18);
+    text-align: center;
     pointer-events: none;
-    @include transition(0.3s, opacity, ease-in);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    z-index: 10000;
 
     &.active {
         opacity: 1;
         pointer-events: all;
     }
 
-    p {
+    &__text {
         margin: 0;
-    }
-}
-
-// Contact page
-.contact-page {
-    display: flex;
-    flex-direction: column;
-
-    @include mq($tablet) {
-        flex-direction: row;
-        min-height: calc(100vh - 72px);
-    }
-
-    .panel {
-        background-color: var(--color-second);
-        padding: 48px 24px 40px;
-
-        @include mq($tablet) {
-            width: 42%;
-            padding: 80px 48px 60px;
-        }
-
-        > p {
-            font-size: em(18px);
-            line-height: 1.7;
-            opacity: 0.75;
-            margin-bottom: 0;
-        }
-
-        blockquote {
-            margin: 32px 0 0;
-            padding: 0;
-            padding-inline-start: 16px;
-            border: none;
-            border-inline-start: 3px solid var(--color-main);
-            color: var(--color-bod);
-            font-size: em(16px);
-            font-style: italic;
-            line-height: 1.6;
-            opacity: 0.65;
-        }
-
-        .info {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 40px;
-
-            a {
-                display: inline-flex;
-                align-items: center;
-                gap: 12px;
-                padding: 12px 16px;
-                text-decoration: none;
-                color: var(--color-body);
-                font-size: em(15px);
-                font-weight: 500;
-                background-color: rgba(255, 255, 255, 0.45);
-                border-radius: 10px;
-                @include transition(background-color, 0.25s, ease);
-
-                &:hover {
-                    background-color: rgba(255, 255, 255, 0.75);
-                }
-
-                svg {
-                    flex-shrink: 0;
-                    color: var(--color-third);
-                }
-            }
-        }
-    }
-
-    .form-side {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 40px 24px 60px;
-
-        @include mq($tablet) {
-            padding: 80px 48px 60px;
-        }
-
-        h2 {
-            font-size: em(20px);
-            font-weight: 400;
-            margin-bottom: 40px;
-        }
-    }
-}
-
-// Contact form
-.contact-form {
-    width: 100%;
-    max-width: 440px;
-
-    .field {
-        position: relative;
-        margin-bottom: 36px;
-
-        label {
-            position: absolute;
-            top: 12px;
-            inset-inline-start: 0;
-            font-size: em(16px);
-            color: var(--color-body);
-            opacity: 0.6;
-            pointer-events: none;
-            @include transition(all, 0.25s, ease);
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 12px 0 10px;
-            font-size: em(16px);
-            font-family: $tdbc-font-family;
-            color: var(--color-body);
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid rgba(65, 60, 88, 0.4);
-            border-radius: 0;
-            outline: none;
-            @include transition(border-color, 0.3s, ease);
-
-            &:focus {
-                border-bottom-color: var(--color-main);
-            }
-
-            &:focus ~ label,
-            &:not(:placeholder-shown) ~ label {
-                top: -16px;
-                font-size: em(12px);
-                opacity: 1;
-                color: var(--color-main);
-            }
-        }
-
-        textarea {
-            resize: none;
-            overflow: hidden;
-            min-height: 44px;
-        }
-    }
-
-    button {
-        margin-top: 8px;
-        padding: 14px 56px;
-        font-size: em(16px);
-        font-family: $tdbc-font-family;
-        font-weight: 500;
-        color: var(--color-white);
-        background-color: var(--color-third);
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        @include transition(background-color, 0.3s, ease);
-
-        &:hover {
-            background-color: var(--color-main);
-        }
     }
 }

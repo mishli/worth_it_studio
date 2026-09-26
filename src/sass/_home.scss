@@ -589,7 +589,7 @@
     }
 }
 
-// Gallery reel - native horizontal scroll, pinned + scroll-driven on desktop (see home.js)
+// Gallery reel - pinned + scroll-driven (see home.js); a native swipeable strip with reduced motion
 .reel {
     padding: 72px 0;
 
@@ -599,6 +599,8 @@
         gap: 16px;
         padding: 24px 16px;
         overflow-x: auto;
+        // keeps the snapped first card off the screen edge
+        scroll-padding-inline: 16px;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
     }
@@ -618,7 +620,7 @@
         margin-bottom: 16px;
         font-size: 2.5rem;
         font-size: unquote("min(max(2.5rem, 5.5vw), 5.5rem)");
-        font-weight: 900;
+        font-weight: bold;
         letter-spacing: -0.02em;
         line-height: 1;
     }
@@ -689,27 +691,47 @@
         top: 0;
         align-items: center;
         height: 100vh;
+        // phones: the visible height, without the browser bars
+        height: unquote("100svh");
         overflow: hidden;
     }
 
     &.is-pinned &__track {
-        gap: 48px;
-        padding: 0 max(40px, calc((100vw - #{$web}px) / 2 + 40px));
+        gap: 24px;
+        padding: 0 20px;
         overflow: visible;
         scroll-snap-type: none;
         will-change: transform;
+
+        @include mq($tablet) {
+            gap: 48px;
+            padding: 0 max(40px, calc((100vw - #{$web}px) / 2 + 40px));
+        }
     }
 
     &.is-pinned &__intro {
-        width: 32vw;
+        width: 80vw;
+
+        @include mq($tablet) {
+            width: 32vw;
+        }
     }
 
     &.is-pinned &__item {
-        width: 32vw;
-        height: 64vh;
+        width: 72vw;
+        height: 56vh;
 
         &:nth-child(3n) {
-            height: 52vh;
+            height: 46vh;
+        }
+
+        @include mq($tablet) {
+            width: 32vw;
+            height: 64vh;
+
+            &:nth-child(3n) {
+                height: 52vh;
+            }
         }
     }
 }

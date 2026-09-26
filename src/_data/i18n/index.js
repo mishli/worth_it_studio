@@ -15,6 +15,10 @@ module.exports = {
         'he-IL': 'תפריט',
         'en-US': 'Menu'
     },
+    nav_menu_close: {
+        'he-IL': 'סגירת התפריט',
+        'en-US': 'Close menu'
+    },
     nav_whatsapp_aria: {
         'he-IL': 'שליחת וצאפ',
         'en-US': 'Send WhatsApp message'
@@ -42,6 +46,10 @@ module.exports = {
     footer_accessibility_link: {
         'he-IL': 'הצהרת נגישות',
         'en-US': 'Accessibility Statement'
+    },
+    contact_page_eyebrow: {
+        'he-IL': 'סטודיו Worth It · תל אביב',
+        'en-US': 'Worth It Studio · Tel Aviv'
     },
     contact_page_title: {
         'he-IL': 'בואי נדבר',

@@ -30,13 +30,23 @@
     </div>
 </nav>
 
-<nav class="side-menu">
-    <button class="close-menu">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 6L6 18M6 6L18 18" stroke="#413C58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<nav class="side-menu" aria-label="{{ "nav_menu" | i18n({}, locale) }}">
+    <button class="close-menu" aria-label="{{ "nav_menu_close" | i18n({}, locale) }}">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </button>
-    <ul class="menu__inner">
-        {% include 'nav-loop.njk' %}
-    </ul>
+    <div class="side-menu__panel">
+        <ul class="menu__inner">
+            {% include 'nav-loop.njk' %}
+        </ul>
+        <div class="side-menu__cta">
+            <div class="btn btn-main second large">
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    {% include 'icon-whatsapp.njk' %}
+                    {{ "footer_cta_whatsapp_button" | i18n({}, locale) }}
+                </button>
+            </div>
+        </div>
+    </div>
 </nav>

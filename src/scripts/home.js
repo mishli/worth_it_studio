@@ -30,14 +30,14 @@
         });
     });
 
-    // Gallery reel: on wide screens the section pins and the photos scroll sideways
+    // Gallery reel: the section pins and the photos scroll sideways as you scroll down
+    // (with reduced motion it stays a native swipeable strip)
     const reel = document.querySelector('[data-reel]');
     const reelTrack = document.querySelector('[data-reel-track]');
-    const wideScreen = window.matchMedia('(min-width: 50em)');
     let reelDistance = 0;
 
     function layoutReel() {
-        const isPinned = wideScreen.matches && !prefersReducedMotion;
+        const isPinned = !prefersReducedMotion;
 
         reel.classList.toggle('is-pinned', isPinned);
         reel.style.height = '';
